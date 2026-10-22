@@ -70,13 +70,21 @@ static u32 ksu_encode_b(void *from, void *to)
  * function's epilogue fails with an FPAC fatal exception. */
 static bool ksu_insn_is_pac_signing(u32 insn)
 {
-    return insn == 0xD503233F || insn == 0xD503237F;
+    return insn == 0xD503233F /* PACIASP */
+           || insn == 0xD503237F; /* PACIBSP */
 }
 
 static bool ksu_insn_is_bti_landing_pad(u32 insn)
 {
-    /* BTI variants: bits[31:8]=0xD50324, bit5=0 (op2 even), bits[4:0]=0x1F */
-    return (insn & 0xFFFFFF3F) == 0xD503241F || ksu_insn_is_pac_signing(insn);
+    switch (insn) {
+    case 0xD503241F: /* BTI    */
+    case 0xD503245F: /* BTI c  */
+    case 0xD503249F: /* BTI j  */
+    case 0xD50324DF: /* BTI jc */
+        return true;
+    default:
+        return ksu_insn_is_pac_signing(insn);
+    }
 }
 
 static bool ksu_insn_is_pc_relative(u32 insn)
