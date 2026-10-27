@@ -17,6 +17,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.LargeFlexibleTopAppBar
+import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
@@ -37,31 +38,43 @@ import me.weishu.k10ernelsu.ui.component.material.SegmentedColumn
 import me.weishu.k10ernelsu.ui.component.material.SegmentedListItem
 import me.weishu.k10ernelsu.ui.component.material.TopBarBackButton
 import me.weishu.k10ernelsu.ui.component.material.expressiveTopAppBarColors
+import me.weishu.k10ernelsu.ui.LocalCompactDashboardMode
 
 @Composable
 fun AboutScreenMaterial(
     state: AboutUiState,
     actions: AboutScreenActions,
 ) {
-    val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior(rememberTopAppBarState())
+    val compactDashboardMode = LocalCompactDashboardMode.current
+    val scrollBehavior = if (compactDashboardMode) null else
+        TopAppBarDefaults.exitUntilCollapsedScrollBehavior(rememberTopAppBarState())
 
     ExpressiveScaffold(
         topBar = {
-            LargeFlexibleTopAppBar(
-                title = { Text(state.title) },
-                navigationIcon = {
-                    TopBarBackButton(onClick = actions.onBack)
-                },
-                colors = expressiveTopAppBarColors(),
-                scrollBehavior = scrollBehavior
-            )
+            if (compactDashboardMode) {
+                TopAppBar(
+                    title = { Text(state.title) },
+                    navigationIcon = { TopBarBackButton(onClick = actions.onBack) },
+                    colors = expressiveTopAppBarColors(),
+                )
+            } else {
+                LargeFlexibleTopAppBar(
+                    title = { Text(state.title) },
+                    navigationIcon = { TopBarBackButton(onClick = actions.onBack) },
+                    colors = expressiveTopAppBarColors(),
+                    scrollBehavior = scrollBehavior
+                )
+            }
         },
     ) { innerPadding ->
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(innerPadding)
-                .nestedScroll(scrollBehavior.nestedScrollConnection)
+                .then(
+                    if (scrollBehavior == null) Modifier
+                    else Modifier.nestedScroll(scrollBehavior.nestedScrollConnection)
+                )
         ) {
             item {
                 Column(

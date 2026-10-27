@@ -30,6 +30,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import me.weishu.k10ernelsu.R
+import me.weishu.k10ernelsu.ui.LocalCompactDashboardMode
 import me.weishu.k10ernelsu.ui.component.miuix.EditText
 import me.weishu.k10ernelsu.ui.component.profile.RootProfileConfig
 import me.weishu.k10ernelsu.ui.theme.LocalEnableBlur
@@ -61,7 +62,8 @@ fun TemplateEditorScreenMiuix(
     state: TemplateEditorUiState,
     actions: TemplateEditorActions,
 ) {
-    val scrollBehavior = MiuixScrollBehavior()
+    val compactDashboardMode = LocalCompactDashboardMode.current
+    val scrollBehavior = if (compactDashboardMode) null else MiuixScrollBehavior()
     val enableBlur = LocalEnableBlur.current
     val backdrop = rememberBlurBackdrop(enableBlur)
     val blurActive = backdrop != null
@@ -96,7 +98,10 @@ fun TemplateEditorScreenMiuix(
                     .fillMaxHeight()
                     .scrollEndHaptic()
                     .overScrollVertical()
-                    .nestedScroll(scrollBehavior.nestedScrollConnection),
+                    .then(
+                        if (scrollBehavior == null) Modifier
+                        else Modifier.nestedScroll(scrollBehavior.nestedScrollConnection)
+                    ),
                 contentPadding = innerPadding,
                 overscrollEffect = null
             ) {
@@ -162,7 +167,7 @@ private fun TopBar(
     onBack: () -> Unit,
     onDelete: () -> Unit = {},
     onSave: () -> Unit = {},
-    scrollBehavior: ScrollBehavior,
+    scrollBehavior: ScrollBehavior?,
     backdrop: LayerBackdrop?,
     barColor: Color,
 ) {
@@ -240,4 +245,3 @@ private fun TextEdit(
         enabled = enabled,
     )
 }
-

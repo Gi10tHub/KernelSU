@@ -71,6 +71,7 @@ import com.materialkolor.PaletteStyle
 import com.materialkolor.dynamiccolor.ColorSpec
 import com.materialkolor.rememberDynamicColorScheme
 import me.weishu.k10ernelsu.R
+import me.weishu.k10ernelsu.ui.LocalCompactDashboardMode
 import me.weishu.k10ernelsu.ui.component.bottombar.useNavigationRail
 import me.weishu.k10ernelsu.ui.component.miuix.ScaleDialog
 import me.weishu.k10ernelsu.ui.theme.LocalEnableBlur
@@ -103,7 +104,8 @@ fun ColorPaletteScreenMiuix(
     state: ColorPaletteUiState,
     actions: ColorPaletteScreenActions,
 ) {
-    val scrollBehavior = MiuixScrollBehavior()
+    val compactDashboardMode = LocalCompactDashboardMode.current
+    val scrollBehavior = if (compactDashboardMode) null else MiuixScrollBehavior()
     val enableBlurState = LocalEnableBlur.current
     val backdrop = rememberBlurBackdrop(enableBlurState)
     val blurActive = backdrop != null
@@ -148,7 +150,10 @@ fun ColorPaletteScreenMiuix(
                     .fillMaxHeight()
                     .scrollEndHaptic()
                     .overScrollVertical()
-                    .nestedScroll(scrollBehavior.nestedScrollConnection)
+                    .then(
+                        if (scrollBehavior == null) Modifier
+                        else Modifier.nestedScroll(scrollBehavior.nestedScrollConnection)
+                    )
                     .padding(horizontal = 12.dp),
                 contentPadding = innerPadding,
                 overscrollEffect = null,

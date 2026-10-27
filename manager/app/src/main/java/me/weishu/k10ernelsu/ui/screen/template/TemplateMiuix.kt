@@ -61,6 +61,7 @@ import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import me.weishu.k10ernelsu.R
+import me.weishu.k10ernelsu.ui.LocalCompactDashboardMode
 import me.weishu.k10ernelsu.data.model.TemplateInfo
 import me.weishu.k10ernelsu.ui.component.ListPopupDefaults
 import me.weishu.k10ernelsu.ui.component.miuix.DropdownItem
@@ -108,7 +109,8 @@ fun AppProfileTemplateScreenMiuix(
     actions: TemplateActions,
     snackBarHost: SnackbarHostState,
 ) {
-    val scrollBehavior = MiuixScrollBehavior()
+    val compactDashboardMode = LocalCompactDashboardMode.current
+    val scrollBehavior = if (compactDashboardMode) null else MiuixScrollBehavior()
 
     val listState = rememberLazyListState()
     var fabVisible by remember { mutableStateOf(true) }
@@ -244,7 +246,10 @@ fun AppProfileTemplateScreenMiuix(
                         .scrollEndHaptic()
                         .overScrollVertical()
                         .nestedScroll(nestedScrollConnection)
-                        .nestedScroll(scrollBehavior.nestedScrollConnection)
+                        .then(
+                            if (scrollBehavior == null) Modifier
+                            else Modifier.nestedScroll(scrollBehavior.nestedScrollConnection)
+                        )
                         .padding(horizontal = 12.dp),
                     contentPadding = innerPadding,
                     overscrollEffect = null
@@ -381,7 +386,7 @@ private fun TopBar(
     onBack: () -> Unit,
     onImport: () -> Unit = {},
     onExport: () -> Unit = {},
-    scrollBehavior: ScrollBehavior,
+    scrollBehavior: ScrollBehavior?,
     backdrop: LayerBackdrop?,
     barColor: Color,
 ) {

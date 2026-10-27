@@ -49,6 +49,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import me.weishu.k10ernelsu.Natives
 import me.weishu.k10ernelsu.R
+import me.weishu.k10ernelsu.ui.LocalCompactDashboardMode
 import me.weishu.k10ernelsu.ui.component.AppIconImage
 import me.weishu.k10ernelsu.ui.component.ListPopupDefaults
 import me.weishu.k10ernelsu.ui.component.miuix.DropdownItem
@@ -97,7 +98,8 @@ fun AppProfileScreenMiuix(
     actions: AppProfileActions,
 ) {
     val enableBlur = LocalEnableBlur.current
-    val scrollBehavior = MiuixScrollBehavior()
+    val compactDashboardMode = LocalCompactDashboardMode.current
+    val scrollBehavior = if (compactDashboardMode) null else MiuixScrollBehavior()
     val backdrop = rememberBlurBackdrop(enableBlur)
     val blurActive = backdrop != null
     val barColor = if (blurActive) Color.Transparent else colorScheme.surface
@@ -126,7 +128,10 @@ fun AppProfileScreenMiuix(
                     .padding(top = 16.dp)
                     .scrollEndHaptic()
                     .overScrollVertical()
-                    .nestedScroll(scrollBehavior.nestedScrollConnection),
+                    .then(
+                        if (scrollBehavior == null) Modifier
+                        else Modifier.nestedScroll(scrollBehavior.nestedScrollConnection)
+                    ),
                 contentPadding = innerPadding,
                 overscrollEffect = null
             ) {
@@ -492,7 +497,7 @@ private fun TopBar(
     onLaunchApp: (String, Int) -> Unit = { _, _ -> },
     onForceStopApp: (String, Int) -> Unit = { _, _ -> },
     onRestartApp: (String, Int) -> Unit = { _, _ -> },
-    scrollBehavior: ScrollBehavior,
+    scrollBehavior: ScrollBehavior?,
     backdrop: LayerBackdrop?,
     barColor: Color,
 ) {

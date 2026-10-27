@@ -179,6 +179,7 @@ class MainActivity : ComponentActivity() {
                 LocalEnableFloatingBottomBarBlur provides uiState.enableFloatingBottomBarBlur,
                 LocalEnableNavigationBadge provides uiState.enableNavigationBadge,
                 LocalModuleDescriptionMaxLines provides uiState.moduleDescriptionMaxLines,
+                LocalCompactDashboardMode provides uiState.compactDashboardMode,
                 LocalUiMode provides uiMode,
             ) {
                 KernelSUTheme(appSettings = appSettings, uiMode = uiMode) {
@@ -426,7 +427,6 @@ fun MainScreen(
 
     CompositionLocalProvider(
         LocalMainPagerState provides mainPagerState,
-        LocalCompactDashboardMode provides compactDashboardMode,
     ) {
         val pagerContent = @Composable { bottomInnerPadding: Dp ->
             Box(modifier = if (blurBackdrop != null) Modifier.layerBackdrop(blurBackdrop) else Modifier) {

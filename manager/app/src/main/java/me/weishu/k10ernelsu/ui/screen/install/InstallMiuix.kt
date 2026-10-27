@@ -41,6 +41,7 @@ import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import me.weishu.k10ernelsu.R
+import me.weishu.k10ernelsu.ui.LocalCompactDashboardMode
 import me.weishu.k10ernelsu.ui.component.dialog.rememberConfirmDialog
 import me.weishu.k10ernelsu.ui.theme.LocalEnableBlur
 import me.weishu.k10ernelsu.ui.util.BlurredBar
@@ -87,7 +88,8 @@ internal fun InstallScreenMiuix(
     snackbarHost: SnackbarHostState,
 ) {
     val enableBlur = LocalEnableBlur.current
-    val scrollBehavior = MiuixScrollBehavior()
+    val compactDashboardMode = LocalCompactDashboardMode.current
+    val scrollBehavior = if (compactDashboardMode) null else MiuixScrollBehavior()
     val backdrop = rememberBlurBackdrop(enableBlur)
     val blurActive = backdrop != null
     val barColor = if (blurActive) Color.Transparent else colorScheme.surface
@@ -116,7 +118,10 @@ internal fun InstallScreenMiuix(
                     .fillMaxHeight()
                     .scrollEndHaptic()
                     .overScrollVertical()
-                    .nestedScroll(scrollBehavior.nestedScrollConnection)
+                    .then(
+                        if (scrollBehavior == null) Modifier
+                        else Modifier.nestedScroll(scrollBehavior.nestedScrollConnection)
+                    )
                     .padding(top = 12.dp)
                     .padding(horizontal = 16.dp),
                 contentPadding = innerPadding,
@@ -375,7 +380,7 @@ private fun SelectInstallMethod(
 @Composable
 private fun TopBar(
     onBack: () -> Unit = {},
-    scrollBehavior: ScrollBehavior,
+    scrollBehavior: ScrollBehavior?,
     backdrop: LayerBackdrop?,
     barColor: Color,
 ) {

@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -21,6 +22,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.LargeFlexibleTopAppBar
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.TopAppBarScrollBehavior
 import androidx.compose.material3.rememberTopAppBarState
@@ -30,6 +32,7 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import me.weishu.k10ernelsu.R
+import me.weishu.k10ernelsu.ui.LocalCompactDashboardMode
 import me.weishu.k10ernelsu.ui.component.material.ExpressiveScaffold
 import me.weishu.k10ernelsu.ui.component.material.SegmentedColumn
 import me.weishu.k10ernelsu.ui.component.material.SegmentedTextField
@@ -42,7 +45,9 @@ fun TemplateEditorScreenMaterial(
     state: TemplateEditorUiState,
     actions: TemplateEditorActions,
 ) {
-    val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior(rememberTopAppBarState())
+    val compactDashboardMode = LocalCompactDashboardMode.current
+    val scrollBehavior = if (compactDashboardMode) null else
+        TopAppBarDefaults.exitUntilCollapsedScrollBehavior(rememberTopAppBarState())
 
     ExpressiveScaffold(
         topBar = {
@@ -69,7 +74,10 @@ fun TemplateEditorScreenMaterial(
                 .padding(innerPadding)
                 .padding(top = 13.dp)
                 .imePadding()
-                .nestedScroll(scrollBehavior.nestedScrollConnection)
+                .then(
+                    if (scrollBehavior == null) Modifier
+                    else Modifier.nestedScroll(scrollBehavior.nestedScrollConnection)
+                )
                 .verticalScroll(rememberScrollState())
         ) {
             SegmentedColumn(
@@ -174,8 +182,7 @@ private fun TopBar(
     onSave: () -> Unit = {},
     scrollBehavior: TopAppBarScrollBehavior? = null
 ) {
-    LargeFlexibleTopAppBar(
-        title = {
+    val titleContent: @Composable () -> Unit = {
             Column {
                 Text(title)
                 if (summary.isNotBlank()) {
@@ -185,12 +192,10 @@ private fun TopBar(
                     )
                 }
             }
-        },
-        navigationIcon = {
-            TopBarBackButton(onClick = onBack)
-        },
-        actions = {
-            if (readOnly) return@LargeFlexibleTopAppBar
+        }
+    val navigationIcon: @Composable () -> Unit = { TopBarBackButton(onClick = onBack) }
+    val actions: @Composable RowScope.() -> Unit = {
+        if (!readOnly) {
             IconButton(onClick = onDelete) {
                 Icon(
                     Icons.Filled.DeleteForever,
@@ -203,9 +208,26 @@ private fun TopBar(
                     contentDescription = stringResource(id = R.string.app_profile_template_save)
                 )
             }
-        },
-        colors = expressiveTopAppBarColors(),
-        windowInsets = WindowInsets.safeDrawing.only(WindowInsetsSides.Top + WindowInsetsSides.Horizontal),
-        scrollBehavior = scrollBehavior
-    )
+        }
+    }
+    val colors = expressiveTopAppBarColors()
+    val windowInsets = WindowInsets.safeDrawing.only(WindowInsetsSides.Top + WindowInsetsSides.Horizontal)
+    if (LocalCompactDashboardMode.current) {
+        TopAppBar(
+            title = { Text(title) },
+            navigationIcon = navigationIcon,
+            actions = actions,
+            colors = colors,
+            windowInsets = windowInsets,
+        )
+    } else {
+        LargeFlexibleTopAppBar(
+            title = titleContent,
+            navigationIcon = navigationIcon,
+            actions = actions,
+            colors = colors,
+            windowInsets = windowInsets,
+            scrollBehavior = scrollBehavior
+        )
+    }
 }
