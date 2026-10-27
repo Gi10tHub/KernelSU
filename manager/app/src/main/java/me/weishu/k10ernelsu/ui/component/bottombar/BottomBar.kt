@@ -35,6 +35,14 @@ class MainPagerState(
     private var navJob: Job? = null
 
     fun animateToPage(targetIndex: Int) {
+        navigateToPage(targetIndex, animatePageChanges)
+    }
+
+    fun scrollToPage(targetIndex: Int) {
+        navigateToPage(targetIndex, animate = false)
+    }
+
+    private fun navigateToPage(targetIndex: Int, animate: Boolean) {
         if (targetIndex == selectedPage) return
 
         navJob?.cancel()
@@ -45,7 +53,7 @@ class MainPagerState(
         navJob = coroutineScope.launch {
             val myJob = coroutineContext.job
             try {
-                if (animatePageChanges) {
+                if (animate) {
                     pagerState.springAnimateToPage(targetIndex)
                 } else {
                     pagerState.scrollToPage(targetIndex)

@@ -316,6 +316,7 @@ fun ColorPaletteScreenMaterial(
                                 title = stringResource(id = R.string.settings_enable_swipe_dismiss),
                                 summary = stringResource(id = R.string.settings_enable_swipe_dismiss_summary),
                                 checked = uiState.enableSwipeDismiss,
+                                enabled = !uiState.compactDashboardMode,
                                 onCheckedChange = actions.onSetEnableSwipeDismiss,
                             )
                         },
@@ -329,6 +330,7 @@ fun ColorPaletteScreenMaterial(
                                     stringResource(id = R.string.settings_pager_gesture_ios_like),
                                 ),
                                 selectedIndex = uiState.pagerInterceptionMode.coerceIn(0, 2),
+                                enabled = !uiState.compactDashboardMode,
                                 onItemSelected = actions.onSetPagerInterceptionMode,
                             )
                         },

@@ -82,21 +82,21 @@ fun HomePager(
         },
         onOpenSettings = {
             if (compactDashboardMode) {
-                navigator.push(Route.Settings)
+                mainPagerState.scrollToPage(3)
             } else {
                 mainPagerState.animateToPage(3)
             }
         },
         onOpenSuperuser = {
             if (compactDashboardMode) {
-                navigator.push(Route.SuperUser)
+                mainPagerState.scrollToPage(1)
             } else {
                 mainPagerState.animateToPage(1)
             }
         },
         onOpenModules = {
             if (compactDashboardMode) {
-                navigator.push(Route.Module)
+                mainPagerState.scrollToPage(2)
             } else {
                 mainPagerState.animateToPage(2)
             }

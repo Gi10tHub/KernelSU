@@ -395,6 +395,7 @@ fun ColorPaletteScreenMiuix(
                                 )
                             },
                             checked = uiState.enableSwipeDismiss,
+                            enabled = !uiState.compactDashboardMode,
                             onCheckedChange = actions.onSetEnableSwipeDismiss,
                         )
                         OverlayDropdownPreference(
@@ -413,6 +414,7 @@ fun ColorPaletteScreenMiuix(
                                 )
                             },
                             selectedIndex = uiState.pagerInterceptionMode.coerceIn(0, 2),
+                            enabled = !uiState.compactDashboardMode,
                             onSelectedIndexChange = actions.onSetPagerInterceptionMode,
                         )
                         SwitchPreference(

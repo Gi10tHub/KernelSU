@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.os.SystemClock
 import androidx.activity.ComponentActivity
 import androidx.activity.SystemBarStyle
+import androidx.activity.compose.BackHandler
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.animation.core.FastOutSlowInEasing
@@ -36,7 +37,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.Alignment
@@ -53,10 +53,12 @@ import androidx.navigationevent.NavigationEventInfo
 import androidx.navigationevent.compose.NavigationBackHandler
 import androidx.navigationevent.compose.rememberNavigationEventState
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import me.weishu.k10ernelsu.Natives
 import me.weishu.k10ernelsu.ui.component.bottombar.BottomBar
@@ -95,7 +97,6 @@ import me.weishu.k10ernelsu.ui.theme.LocalModuleDescriptionMaxLines
 import me.weishu.k10ernelsu.ui.util.getSuperuserCount
 import me.weishu.k10ernelsu.ui.util.install
 import me.weishu.k10ernelsu.ui.util.rememberBlurBackdrop
-import me.weishu.k10ernelsu.ui.util.rememberContentReady
 import me.weishu.k10ernelsu.ui.viewmodel.MainActivityViewModel
 import me.weishu.k10ernelsu.ui.viewmodel.MainPagerConfig
 import me.weishu.k10ernelsu.ui.viewmodel.ModuleViewModel
@@ -182,7 +183,7 @@ class MainActivity : ComponentActivity() {
             ) {
                 KernelSUTheme(appSettings = appSettings, uiMode = uiMode) {
                     IntentDispatcher(intentChannel = intentChannel)
-                    val swipeDismiss = if (uiState.enableSwipeDismiss) {
+                    val swipeDismiss = if (!uiState.compactDashboardMode && uiState.enableSwipeDismiss) {
                         if (LocalLayoutDirection.current == androidx.compose.ui.unit.LayoutDirection.Rtl) {
                             NavSwipeDirection.RightToLeft
                         } else {
@@ -249,27 +250,9 @@ class MainActivity : ComponentActivity() {
                                 )
                             }
                             entry<Route.Home>(swipeDismiss = swipeDismiss) { mainScreenEntry() }
-                            entry<Route.SuperUser>(swipeDismiss = swipeDismiss) {
-                                if (uiState.compactDashboardMode) {
-                                    SuperUserPager(navigator, 0.dp)
-                                } else {
-                                    mainScreenEntry()
-                                }
-                            }
-                            entry<Route.Module>(swipeDismiss = swipeDismiss) {
-                                if (uiState.compactDashboardMode) {
-                                    ModulePager(0.dp)
-                                } else {
-                                    mainScreenEntry()
-                                }
-                            }
-                            entry<Route.Settings>(swipeDismiss = swipeDismiss) {
-                                if (uiState.compactDashboardMode) {
-                                    SettingPager(navigator, 0.dp)
-                                } else {
-                                    mainScreenEntry()
-                                }
-                            }
+                            entry<Route.SuperUser>(swipeDismiss = swipeDismiss) { mainScreenEntry() }
+                            entry<Route.Module>(swipeDismiss = swipeDismiss) { mainScreenEntry() }
+                            entry<Route.Settings>(swipeDismiss = swipeDismiss) { mainScreenEntry() }
                         }
                     }
 
@@ -328,15 +311,19 @@ fun MainScreen(
     val useNavigationRail = !compactDashboardMode && useNavigationRail(enableFloatingBottomBar)
     val pagerState = rememberPagerState(
         initialPage = if (compactDashboardMode) 0 else initialPage,
-        pageCount = { if (compactDashboardMode) 1 else MainPagerConfig.PAGE_COUNT },
+        pageCount = { MainPagerConfig.PAGE_COUNT },
     )
     val mainPagerState = rememberMainPagerState(
         pagerState = pagerState,
         animatePageChanges = !useNavigationRail,
     )
     val isFullFeatured = Natives.isFullFeatured()
-    val pagerMode = PagerInterceptionMode.entries.getOrElse(pagerInterceptionMode) {
+    val pagerMode = if (compactDashboardMode) {
         PagerInterceptionMode.Native
+    } else {
+        PagerInterceptionMode.entries.getOrElse(pagerInterceptionMode) {
+            PagerInterceptionMode.Native
+        }
     }
     val interceptPagerGestures = pagerMode == PagerInterceptionMode.CrossAxisInterceptor
     var userScrollEnabled by remember(isFullFeatured) { mutableStateOf(isFullFeatured) }
@@ -354,31 +341,32 @@ fun MainScreen(
             .distinctUntilChanged()
     }.collectAsStateWithLifecycle(0)
 
-    var startupPreloadStarted by rememberSaveable { mutableStateOf(false) }
-    LaunchedEffect(isFullFeatured) {
-        if (!isFullFeatured || startupPreloadStarted) {
-            return@LaunchedEffect
-        }
-
+    LaunchedEffect(moduleViewModel, superUserViewModel) {
         moduleViewModel.initializePreferences()
-        val moduleState = moduleViewModel.uiState.value
-        if (!moduleState.hasLoaded) {
-            if (!moduleState.isRefreshing) moduleViewModel.fetchModuleList()
-            moduleViewModel.uiState.first { it.hasLoaded }
-        }
-        moduleViewModel.syncModuleUpdateInfo(moduleViewModel.uiState.value.modules)
+        superUserViewModel.initializePreferences()
 
-        val superUserState = superUserViewModel.uiState.value
-        if (!superUserState.hasLoaded) {
-            superUserViewModel.initializePreferences()
-            if (superUserState.isRefreshing) {
-                superUserViewModel.uiState.first { it.hasLoaded }
-            } else {
-                superUserViewModel.loadAppList().join()
+        coroutineScope {
+            launch {
+                val state = superUserViewModel.uiState.value
+                if (!state.hasLoaded && !state.isRefreshing) {
+                    superUserViewModel.loadAppList().join()
+                } else if (!state.hasLoaded) {
+                    superUserViewModel.uiState.first { it.hasLoaded }
+                }
+            }
+            launch {
+                val state = moduleViewModel.uiState.value
+                if (!state.hasLoaded && !state.isRefreshing) {
+                    moduleViewModel.fetchModuleList()
+                }
+                val loadedState = if (state.hasLoaded) {
+                    state
+                } else {
+                    moduleViewModel.uiState.first { it.hasLoaded }
+                }
+                moduleViewModel.syncModuleUpdateInfo(loadedState.modules)
             }
         }
-
-        startupPreloadStarted = true
     }
 
     // Loading the app list just for a badge is too expensive; read the kernel allowlist instead.
@@ -425,12 +413,19 @@ fun MainScreen(
         }
     }
 
-    MainScreenBackHandler(mainPagerState, navController)
+    BackHandler(
+        enabled = compactDashboardMode &&
+            navController.current() is Route.Main &&
+            navController.backStackSize() == 1 &&
+            currentPage != 0,
+    ) {
+        mainPagerState.scrollToPage(0)
+    }
+    MainScreenBackHandler(mainPagerState, navController, compactDashboardMode)
 
     CompositionLocalProvider(
         LocalMainPagerState provides mainPagerState
     ) {
-        val contentReady = rememberContentReady()
         val pagerContent = @Composable { bottomInnerPadding: Dp ->
             Box(modifier = if (blurBackdrop != null) Modifier.layerBackdrop(blurBackdrop) else Modifier) {
                 HorizontalPager(
@@ -448,7 +443,7 @@ fun MainScreen(
                             }
                         ),
                     state = mainPagerState.pagerState,
-                    beyondViewportPageCount = if (contentReady) 3 else 0,
+                    beyondViewportPageCount = 3,
                     overscrollEffect = null,
                     userScrollEnabled = pagerScrollEnabled && !interceptPagerGestures,
                     pageNestedScrollConnection = if (interceptPagerGestures) {
@@ -466,7 +461,7 @@ fun MainScreen(
                 ) { page ->
                     val isCurrentPage = page == settledPage
                     when (page) {
-                        0 -> if (contentReady || isCurrentPage) {
+                        0 -> {
                             HomePager(
                                 navigator = navController,
                                 bottomInnerPadding = bottomInnerPadding,
@@ -474,9 +469,9 @@ fun MainScreen(
                                 compactDashboardMode = compactDashboardMode,
                             )
                         }
-                        1 -> if (contentReady || isCurrentPage) SuperUserPager(navController, bottomInnerPadding, isCurrentPage)
-                        2 -> if (contentReady || isCurrentPage) ModulePager(bottomInnerPadding, isCurrentPage)
-                        3 -> if (contentReady || isCurrentPage) SettingPager(navController, bottomInnerPadding, isCurrentPage)
+                        1 -> SuperUserPager(navController, bottomInnerPadding, isCurrentPage)
+                        2 -> ModulePager(bottomInnerPadding, isCurrentPage)
+                        3 -> SettingPager(navController, bottomInnerPadding, isCurrentPage)
                     }
                 }
             }
@@ -563,10 +558,14 @@ fun MainScreen(
 private fun MainScreenBackHandler(
     mainState: MainPagerState,
     navController: Navigator,
+    compactDashboardMode: Boolean,
 ) {
-    val isPagerBackHandlerEnabled by remember {
+    val isPagerBackHandlerEnabled by remember(compactDashboardMode) {
         derivedStateOf {
-            navController.current() is Route.Main && navController.backStackSize() == 1 && mainState.selectedPage != 0
+            !compactDashboardMode &&
+                navController.current() is Route.Main &&
+                navController.backStackSize() == 1 &&
+                mainState.selectedPage != 0
         }
     }
 
