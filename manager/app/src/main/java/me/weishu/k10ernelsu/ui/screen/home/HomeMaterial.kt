@@ -18,6 +18,7 @@ import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -243,14 +244,24 @@ private fun TopBar(
         title = { Text(stringResource(R.string.app_name)) },
         actions = {
             if (compactDashboardMode) {
-                IconButton(onClick = onOpenSettings) {
-                    Icon(
-                        imageVector = Icons.Filled.Settings,
-                        contentDescription = stringResource(R.string.settings),
-                    )
+                Row(
+                    horizontalArrangement = Arrangement.spacedBy(0.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    RebootListPopup(modifier = Modifier.size(40.dp))
+                    IconButton(
+                        modifier = Modifier.size(40.dp),
+                        onClick = onOpenSettings,
+                    ) {
+                        Icon(
+                            imageVector = Icons.Filled.Settings,
+                            contentDescription = stringResource(R.string.settings),
+                        )
+                    }
                 }
+            } else {
+                RebootListPopup()
             }
-            RebootListPopup()
         },
         colors = expressiveTopAppBarColors(),
         windowInsets = WindowInsets.safeDrawing.only(WindowInsetsSides.Top + WindowInsetsSides.Horizontal),
