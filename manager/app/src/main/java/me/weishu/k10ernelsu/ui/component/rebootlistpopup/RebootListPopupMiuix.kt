@@ -1,5 +1,6 @@
 package me.weishu.k10ernelsu.ui.component.rebootlistpopup
 
+import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
