@@ -1,69 +1,48 @@
- English | Español | 简体中文 | 繁體中文 | 日本語 | 한국어 | Polski | Português (Brasil) | Türkçe | Русский | Tiếng Việt | Indonesia | עברית | हिंदी | Italiano
+# KernelSU for Samsung Devices
 
-KernelSU
+A comprehensive setup, patching, and compatibility guide for deploying **KernelSU** (a kernel-based root solution) on Samsung Galaxy devices.
 
-￼
+---
 
-A kernel-based root solution for Android devices.
+## 📱 Compatibility Matrix
 
-￼ ￼ ￼ ￼ ￼
+| Architecture / Kernel | Status | Requirements for Samsung Devices |
+| :--- | :--- | :--- |
+| **GKI 2.0 (Android 12+ / Kernel 5.10+)** | Officially Supported | Direct flashing of a compatible GKI `boot.img` without requiring custom kernel source builds. |
+| **Legacy / Non-GKI (Kernel 4.14 / 4.19)** | Supported (Manual) | Requires downloading the specific kernel source from [Samsung Open Source](https://opensource.samsung.com/), integrating KernelSU patches, and building manually. |
+| **Architectures** | `arm64-v8a` | Compatible with all modern Exynos and Snapdragon Galaxy chipsets. |
 
-Features
+---
 
-Kernel-based su and root access management.
+## ⚠️ Samsung-Specific Considerations
 
-Module system based on metamodules: Pluggable infrastructure for systemless modifications.
+* **Knox Warranty Bit (0x1):** Unlocking the bootloader and flashing custom/patched binaries permanently trips Knox to `0x1`. This permanently disables hardware-backed security features including Samsung Wallet, Secure Folder, Samsung Pass, and Knox Workspace.
+* **Knox Guard / KG State:** Ensure **OEM Unlocking** is enabled in Developer Options and verify that your device's KG/RMM state in Download Mode is not `Prenormal` or `Locked` prior to flashing.
+* **AVB & dm-verity Enforcement:** Samsung bootloaders strictly verify partition signatures. A patched `vbmeta.img` with verification disabled (`--disable-verity --disable-verification`) must be flashed to prevent signature enforcement bootloops.
 
-App Profile: Lock up the root power in a cage.
+---
 
-Compatibility state
+## 🛠️ Prerequisites
 
-KernelSU officially supports Android GKI 2.0 devices (kernel 5.10+). Older kernels (4.14+) are also supported, but the kernel will need to be built manually.
+1. An unlocked bootloader on your Samsung device.
+2. Official stock firmware matching your device's exact PDA/build version.
+3. Flashing software: **Odin** (Windows) or **Heimdall** (Linux/macOS).
+4. **KernelSU Manager** application (`.apk`).
+5. A TAR packaging tool or terminal command line.
 
-With this, WSA, ChromeOS, and container-based Android are all supported.
+---
 
-Currently, the arm64-v8a and x86_64 architectures are supported.
+## 🚀 Installation & Flashing Steps
 
-Caution
+### 1. Extract the Stock Boot Image
+* Extract the `AP_*.tar.md5` package from your stock firmware.
+* Locate `boot.img.lz4` and decompress it to obtain the raw `boot.img`.
 
-Recent kernel versions have implemented a breaking change causing KernelSU to fail and potentially trigger a kernel panic on x86_64! Check the website for more info!
+### 2. Prepare the KernelSU Image
+* **For GKI Devices (Kernel 5.10+):** Replace the stock kernel inside `boot.img` with the prebuilt GKI KernelSU image.
+* **For Legacy Devices:** Compile your device-specific kernel source with KernelSU integrated into a final `boot.img`.
 
-Usage
-
-Installation
-
-How to build
-
-Official website
-
-Translation
-
-To help translate KernelSU, we no longer accept translation contributions via Weblate. All translations are now handled using LLMs.
-
-If you would like to add support for a new language, feel free to open a PR. Please note that modifications to existing English and Chinese translations are not accepted.
-
-Discussion
-
-Telegram: @KernelSU
-
-Security
-
-For information on reporting security vulnerabilities in KernelSU, see SECURITY.md.
-
-License
-
-Files under the kernel directory are GPL-2.0-only.
-
-All other parts except the kernel directory are GPL-3.0-or-later.
-
-Credits
-
-Kernel-Assisted Superuser: The KernelSU idea.
-
-Magisk: The powerful root tool.
-
-genuine: APK v2 signature validation.
-
-Diamorphine: Some rootkit skills.
-
-
+### 3. Package Image into TAR Format
+Because Samsung uses Download Mode instead of standard Fastboot, wrap the image into an Odin-flashable TAR container:
+```bash
+tar -cvf boot_ksu.tar boot.img
