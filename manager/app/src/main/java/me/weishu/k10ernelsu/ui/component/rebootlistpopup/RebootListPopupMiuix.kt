@@ -1,11 +1,13 @@
 package me.weishu.k10ernelsu.ui.component.rebootlistpopup
 
+import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
 import me.weishu.k10ernelsu.R
 import me.weishu.k10ernelsu.ui.component.KsuIsValid
 import me.weishu.k10ernelsu.ui.component.ListPopupDefaults
@@ -21,7 +23,8 @@ import top.yukonga.miuix.kmp.theme.MiuixTheme.colorScheme
 @Composable
 fun RebootListPopupMiuix(
     modifier: Modifier = Modifier,
-    alignment: PopupPositionProvider.Align = PopupPositionProvider.Align.TopEnd
+    alignment: PopupPositionProvider.Align = PopupPositionProvider.Align.TopEnd,
+    compact: Boolean = false,
 ) {
     val showTopPopup = remember { mutableStateOf(false) }
     KsuIsValid {
@@ -34,7 +37,8 @@ fun RebootListPopupMiuix(
             Icon(
                 imageVector = MiuixIcons.Close2,
                 contentDescription = stringResource(id = R.string.reboot),
-                tint = colorScheme.onBackground
+                tint = colorScheme.onBackground,
+                modifier = if (compact) Modifier.size(22.dp) else Modifier,
             )
         }
         OverlayListPopup(

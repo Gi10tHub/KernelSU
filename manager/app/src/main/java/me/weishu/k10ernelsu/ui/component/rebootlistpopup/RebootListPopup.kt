@@ -5,6 +5,7 @@ import android.os.PowerManager
 import androidx.annotation.StringRes
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import me.weishu.k10ernelsu.Natives
@@ -58,9 +59,12 @@ fun rememberRebootAction(): (String) -> Unit {
 }
 
 @Composable
-fun RebootListPopup() {
+fun RebootListPopup(
+    modifier: Modifier = Modifier,
+    compact: Boolean = false,
+) {
     when (LocalUiMode.current) {
-        UiMode.Miuix -> RebootListPopupMiuix()
-        UiMode.Material -> RebootListPopupMaterial()
+        UiMode.Miuix -> RebootListPopupMiuix(modifier = modifier, compact = compact)
+        UiMode.Material -> RebootListPopupMaterial(modifier = modifier, compact = compact)
     }
 }

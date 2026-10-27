@@ -295,15 +295,29 @@ private fun TopBar(
             title = stringResource(R.string.app_name),
             actions = {
                 if (compactDashboardMode) {
-                    IconButton(onClick = onOpenSettings) {
-                        Icon(
-                            imageVector = Icons.Filled.Settings,
-                            contentDescription = stringResource(R.string.settings),
-                            tint = colorScheme.onBackground,
+                    Row(
+                        horizontalArrangement = Arrangement.spacedBy(0.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                    ) {
+                        RebootListPopupMiuix(
+                            modifier = Modifier.size(32.dp),
+                            compact = true,
                         )
+                        IconButton(
+                            modifier = Modifier.size(32.dp),
+                            onClick = onOpenSettings,
+                        ) {
+                            Icon(
+                                imageVector = Icons.Filled.Settings,
+                                contentDescription = stringResource(R.string.settings),
+                                tint = colorScheme.onBackground,
+                                modifier = Modifier.size(22.dp),
+                            )
+                        }
                     }
+                } else {
+                    RebootListPopupMiuix()
                 }
-                RebootListPopupMiuix()
             },
             scrollBehavior = scrollBehavior
         )
