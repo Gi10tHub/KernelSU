@@ -1,6 +1,6 @@
-package me.weishu.kernelsu.data.repository
+package me.weishu.k10ernelsu.data.repository
 
-import me.weishu.kernelsu.data.model.AppInfo
+import me.weishu.k10ernelsu.data.model.AppInfo
 
 interface SuperUserRepository {
     suspend fun getAppList(): Result<Pair<List<AppInfo>, List<Int>>>

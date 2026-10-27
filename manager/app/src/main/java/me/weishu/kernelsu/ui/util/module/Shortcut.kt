@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.ui.util.module
+package me.weishu.k10ernelsu.ui.util.module
 
 import android.app.AppOpsManager
 import android.content.Context
@@ -16,14 +16,14 @@ import androidx.core.graphics.scale
 import androidx.core.net.toUri
 import com.topjohnwu.superuser.io.SuFile
 import com.topjohnwu.superuser.io.SuFileInputStream
-import me.weishu.kernelsu.R
-import me.weishu.kernelsu.data.repository.SettingsRepositoryImpl
-import me.weishu.kernelsu.ui.MainActivity
-import me.weishu.kernelsu.ui.screen.module.ShortcutType
-import me.weishu.kernelsu.ui.util.getRootShell
-import me.weishu.kernelsu.ui.util.isColorOS
-import me.weishu.kernelsu.ui.util.isHyperOS
-import me.weishu.kernelsu.ui.util.isMiui
+import me.weishu.k10ernelsu.R
+import me.weishu.k10ernelsu.data.repository.SettingsRepositoryImpl
+import me.weishu.k10ernelsu.ui.MainActivity
+import me.weishu.k10ernelsu.ui.screen.module.ShortcutType
+import me.weishu.k10ernelsu.ui.util.getRootShell
+import me.weishu.k10ernelsu.ui.util.isColorOS
+import me.weishu.k10ernelsu.ui.util.isHyperOS
+import me.weishu.k10ernelsu.ui.util.isMiui
 
 object Shortcut {
 

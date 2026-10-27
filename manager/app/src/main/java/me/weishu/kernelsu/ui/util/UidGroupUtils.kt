@@ -1,8 +1,8 @@
-package me.weishu.kernelsu.ui.util
+package me.weishu.k10ernelsu.ui.util
 
-import me.weishu.kernelsu.Natives
-import me.weishu.kernelsu.ksuApp
-import me.weishu.kernelsu.ui.viewmodel.SuperUserViewModel
+import me.weishu.k10ernelsu.Natives
+import me.weishu.k10ernelsu.ksuApp
+import me.weishu.k10ernelsu.ui.viewmodel.SuperUserViewModel
 import java.util.concurrent.ConcurrentHashMap
 
 private val PREFERRED_PKG_BY_SUID = mapOf(

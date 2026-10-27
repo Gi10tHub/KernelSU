@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.ui.component.profile.dialogs
+package me.weishu.k10ernelsu.ui.component.profile.dialogs
 
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -12,9 +12,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import me.weishu.kernelsu.R
-import me.weishu.kernelsu.ui.component.material.SegmentedColumn
-import me.weishu.kernelsu.ui.component.material.SegmentedRadioItem
+import me.weishu.k10ernelsu.R
+import me.weishu.k10ernelsu.ui.component.material.SegmentedColumn
+import me.weishu.k10ernelsu.ui.component.material.SegmentedRadioItem
 
 @Composable
 fun <T> SingleSelectDialog(

@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.ui.screen.appprofile
+package me.weishu.k10ernelsu.ui.screen.appprofile
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.Crossfade
@@ -57,23 +57,23 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import me.weishu.kernelsu.Natives
-import me.weishu.kernelsu.R
-import me.weishu.kernelsu.ui.component.AppIconImage
-import me.weishu.kernelsu.ui.component.material.ExpressiveScaffold
-import me.weishu.kernelsu.ui.component.material.ExpressiveToggleButton
-import me.weishu.kernelsu.ui.component.material.SegmentedColumn
-import me.weishu.kernelsu.ui.component.material.SegmentedListItem
-import me.weishu.kernelsu.ui.component.material.SegmentedSwitchItem
-import me.weishu.kernelsu.ui.component.material.SnackBarHost
-import me.weishu.kernelsu.ui.component.material.TopBarBackButton
-import me.weishu.kernelsu.ui.component.material.expressiveTopAppBarColors
-import me.weishu.kernelsu.ui.component.profile.AppProfileConfig
-import me.weishu.kernelsu.ui.component.profile.RootProfileConfig
-import me.weishu.kernelsu.ui.component.profile.TemplateConfig
-import me.weishu.kernelsu.ui.component.statustag.StatusTag
-import me.weishu.kernelsu.ui.util.ownerNameForUid
-import me.weishu.kernelsu.ui.viewmodel.SuperUserViewModel
+import me.weishu.k10ernelsu.Natives
+import me.weishu.k10ernelsu.R
+import me.weishu.k10ernelsu.ui.component.AppIconImage
+import me.weishu.k10ernelsu.ui.component.material.ExpressiveScaffold
+import me.weishu.k10ernelsu.ui.component.material.ExpressiveToggleButton
+import me.weishu.k10ernelsu.ui.component.material.SegmentedColumn
+import me.weishu.k10ernelsu.ui.component.material.SegmentedListItem
+import me.weishu.k10ernelsu.ui.component.material.SegmentedSwitchItem
+import me.weishu.k10ernelsu.ui.component.material.SnackBarHost
+import me.weishu.k10ernelsu.ui.component.material.TopBarBackButton
+import me.weishu.k10ernelsu.ui.component.material.expressiveTopAppBarColors
+import me.weishu.k10ernelsu.ui.component.profile.AppProfileConfig
+import me.weishu.k10ernelsu.ui.component.profile.RootProfileConfig
+import me.weishu.k10ernelsu.ui.component.profile.TemplateConfig
+import me.weishu.k10ernelsu.ui.component.statustag.StatusTag
+import me.weishu.k10ernelsu.ui.util.ownerNameForUid
+import me.weishu.k10ernelsu.ui.viewmodel.SuperUserViewModel
 
 /**
  * @author weishu

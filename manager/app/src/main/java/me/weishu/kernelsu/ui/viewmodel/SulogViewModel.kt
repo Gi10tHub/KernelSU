@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.ui.viewmodel
+package me.weishu.k10ernelsu.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -12,20 +12,20 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import me.weishu.kernelsu.data.repository.SettingsRepository
-import me.weishu.kernelsu.data.repository.SettingsRepositoryImpl
-import me.weishu.kernelsu.ui.util.SulogEntry
-import me.weishu.kernelsu.ui.util.SulogEventFilter
-import me.weishu.kernelsu.ui.util.SulogFile
-import me.weishu.kernelsu.ui.util.SulogFileCleanAction
-import me.weishu.kernelsu.ui.util.buildVisibleSulogEntries
-import me.weishu.kernelsu.ui.util.cleanSulogFile
-import me.weishu.kernelsu.ui.util.defaultSulogEventFilters
-import me.weishu.kernelsu.ui.util.deleteSulogFile
-import me.weishu.kernelsu.ui.util.listSulogFiles
-import me.weishu.kernelsu.ui.util.parseSulogLines
-import me.weishu.kernelsu.ui.util.readSulogFile
-import me.weishu.kernelsu.ui.util.resolveSulogFileCleanAction
+import me.weishu.k10ernelsu.data.repository.SettingsRepository
+import me.weishu.k10ernelsu.data.repository.SettingsRepositoryImpl
+import me.weishu.k10ernelsu.ui.util.SulogEntry
+import me.weishu.k10ernelsu.ui.util.SulogEventFilter
+import me.weishu.k10ernelsu.ui.util.SulogFile
+import me.weishu.k10ernelsu.ui.util.SulogFileCleanAction
+import me.weishu.k10ernelsu.ui.util.buildVisibleSulogEntries
+import me.weishu.k10ernelsu.ui.util.cleanSulogFile
+import me.weishu.k10ernelsu.ui.util.defaultSulogEventFilters
+import me.weishu.k10ernelsu.ui.util.deleteSulogFile
+import me.weishu.k10ernelsu.ui.util.listSulogFiles
+import me.weishu.k10ernelsu.ui.util.parseSulogLines
+import me.weishu.k10ernelsu.ui.util.readSulogFile
+import me.weishu.k10ernelsu.ui.util.resolveSulogFileCleanAction
 
 data class SulogUiState(
     val isLoading: Boolean = true,

@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.ui.screen.about
+package me.weishu.k10ernelsu.ui.screen.about
 
 import android.os.Build
 import androidx.compose.foundation.Image
@@ -56,13 +56,13 @@ import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.flow.onEach
-import me.weishu.kernelsu.R
-import me.weishu.kernelsu.ui.component.miuix.effect.BgEffectBackground
-import me.weishu.kernelsu.ui.component.miuix.effect.ColorBlendToken
-import me.weishu.kernelsu.ui.theme.LocalEnableBlur
-import me.weishu.kernelsu.ui.theme.isInDarkTheme
-import me.weishu.kernelsu.ui.util.BlurredBar
-import me.weishu.kernelsu.ui.util.rememberBlurBackdrop
+import me.weishu.k10ernelsu.R
+import me.weishu.k10ernelsu.ui.component.miuix.effect.BgEffectBackground
+import me.weishu.k10ernelsu.ui.component.miuix.effect.ColorBlendToken
+import me.weishu.k10ernelsu.ui.theme.LocalEnableBlur
+import me.weishu.k10ernelsu.ui.theme.isInDarkTheme
+import me.weishu.k10ernelsu.ui.util.BlurredBar
+import me.weishu.k10ernelsu.ui.util.rememberBlurBackdrop
 import top.yukonga.miuix.kmp.basic.Card
 import top.yukonga.miuix.kmp.basic.CardDefaults
 import top.yukonga.miuix.kmp.basic.Icon

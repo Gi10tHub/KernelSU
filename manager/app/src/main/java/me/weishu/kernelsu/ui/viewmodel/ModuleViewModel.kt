@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.ui.viewmodel
+package me.weishu.k10ernelsu.ui.viewmodel
 
 import android.os.SystemClock
 import android.util.Log
@@ -21,32 +21,32 @@ import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
 import kotlinx.coroutines.withTimeoutOrNull
-import me.weishu.kernelsu.Natives
-import me.weishu.kernelsu.R
-import me.weishu.kernelsu.data.model.Module
-import me.weishu.kernelsu.data.model.ModuleUpdateInfo
-import me.weishu.kernelsu.data.registry.UpdateVerification
-import me.weishu.kernelsu.data.repository.ModuleRepoRepository
-import me.weishu.kernelsu.data.repository.ModuleRepoRepositoryImpl
-import me.weishu.kernelsu.data.repository.ModuleRepository
-import me.weishu.kernelsu.data.repository.ModuleRepositoryImpl
-import me.weishu.kernelsu.data.repository.SettingsRepository
-import me.weishu.kernelsu.data.repository.SettingsRepositoryImpl
-import me.weishu.kernelsu.ksuApp
-import me.weishu.kernelsu.ui.component.SearchStatus
-import me.weishu.kernelsu.ui.screen.module.ModuleConfirmDialogState
-import me.weishu.kernelsu.ui.screen.module.ModuleConfirmRequest
-import me.weishu.kernelsu.ui.screen.module.ModuleEffect
-import me.weishu.kernelsu.ui.screen.module.ModuleUiState
-import me.weishu.kernelsu.ui.util.PinyinUtil
-import me.weishu.kernelsu.ui.util.hasMagisk
+import me.weishu.k10ernelsu.Natives
+import me.weishu.k10ernelsu.R
+import me.weishu.k10ernelsu.data.model.Module
+import me.weishu.k10ernelsu.data.model.ModuleUpdateInfo
+import me.weishu.k10ernelsu.data.registry.UpdateVerification
+import me.weishu.k10ernelsu.data.repository.ModuleRepoRepository
+import me.weishu.k10ernelsu.data.repository.ModuleRepoRepositoryImpl
+import me.weishu.k10ernelsu.data.repository.ModuleRepository
+import me.weishu.k10ernelsu.data.repository.ModuleRepositoryImpl
+import me.weishu.k10ernelsu.data.repository.SettingsRepository
+import me.weishu.k10ernelsu.data.repository.SettingsRepositoryImpl
+import me.weishu.k10ernelsu.ksuApp
+import me.weishu.k10ernelsu.ui.component.SearchStatus
+import me.weishu.k10ernelsu.ui.screen.module.ModuleConfirmDialogState
+import me.weishu.k10ernelsu.ui.screen.module.ModuleConfirmRequest
+import me.weishu.k10ernelsu.ui.screen.module.ModuleEffect
+import me.weishu.k10ernelsu.ui.screen.module.ModuleUiState
+import me.weishu.k10ernelsu.ui.util.PinyinUtil
+import me.weishu.k10ernelsu.ui.util.hasMagisk
 import okhttp3.Request
 import java.text.Collator
 import java.util.Locale
 import kotlin.time.Duration.Companion.milliseconds
-import me.weishu.kernelsu.ui.util.toggleModule as toggleModuleUtil
-import me.weishu.kernelsu.ui.util.undoUninstallModule as undoUninstallModuleUtil
-import me.weishu.kernelsu.ui.util.uninstallModule as uninstallModuleUtil
+import me.weishu.k10ernelsu.ui.util.toggleModule as toggleModuleUtil
+import me.weishu.k10ernelsu.ui.util.undoUninstallModule as undoUninstallModuleUtil
+import me.weishu.k10ernelsu.ui.util.uninstallModule as uninstallModuleUtil
 
 class ModuleViewModel(
     private val repo: ModuleRepository = ModuleRepositoryImpl(),

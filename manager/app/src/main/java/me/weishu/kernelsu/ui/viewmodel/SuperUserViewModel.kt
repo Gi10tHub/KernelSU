@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.ui.viewmodel
+package me.weishu.k10ernelsu.ui.viewmodel
 
 import android.content.pm.ApplicationInfo
 import android.util.Log
@@ -14,18 +14,18 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
-import me.weishu.kernelsu.Natives
-import me.weishu.kernelsu.data.repository.SettingsRepository
-import me.weishu.kernelsu.data.repository.SettingsRepositoryImpl
-import me.weishu.kernelsu.data.repository.SuperUserRepository
-import me.weishu.kernelsu.data.repository.SuperUserRepositoryImpl
-import me.weishu.kernelsu.ksuApp
-import me.weishu.kernelsu.ui.component.SearchStatus
-import me.weishu.kernelsu.ui.screen.superuser.GroupedApps
-import me.weishu.kernelsu.ui.screen.superuser.SuperUserUiState
-import me.weishu.kernelsu.ui.util.PinyinUtil
-import me.weishu.kernelsu.ui.util.ownerNameForUid
-import me.weishu.kernelsu.ui.util.pickPrimary
+import me.weishu.k10ernelsu.Natives
+import me.weishu.k10ernelsu.data.repository.SettingsRepository
+import me.weishu.k10ernelsu.data.repository.SettingsRepositoryImpl
+import me.weishu.k10ernelsu.data.repository.SuperUserRepository
+import me.weishu.k10ernelsu.data.repository.SuperUserRepositoryImpl
+import me.weishu.k10ernelsu.ksuApp
+import me.weishu.k10ernelsu.ui.component.SearchStatus
+import me.weishu.k10ernelsu.ui.screen.superuser.GroupedApps
+import me.weishu.k10ernelsu.ui.screen.superuser.SuperUserUiState
+import me.weishu.k10ernelsu.ui.util.PinyinUtil
+import me.weishu.k10ernelsu.ui.util.ownerNameForUid
+import me.weishu.k10ernelsu.ui.util.pickPrimary
 import java.text.Collator
 import java.util.Locale
 
@@ -99,7 +99,7 @@ class SuperUserViewModel(
         }
     }
 
-    typealias AppInfo = me.weishu.kernelsu.data.model.AppInfo
+    typealias AppInfo = me.weishu.k10ernelsu.data.model.AppInfo
 
     private val _uiState = MutableStateFlow(SuperUserUiState())
     val uiState: StateFlow<SuperUserUiState> = _uiState.asStateFlow()

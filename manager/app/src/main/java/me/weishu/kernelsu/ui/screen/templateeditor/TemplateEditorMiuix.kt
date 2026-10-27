@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.ui.screen.templateeditor
+package me.weishu.k10ernelsu.ui.screen.templateeditor
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Spacer
@@ -29,12 +29,12 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
-import me.weishu.kernelsu.R
-import me.weishu.kernelsu.ui.component.miuix.EditText
-import me.weishu.kernelsu.ui.component.profile.RootProfileConfig
-import me.weishu.kernelsu.ui.theme.LocalEnableBlur
-import me.weishu.kernelsu.ui.util.BlurredBar
-import me.weishu.kernelsu.ui.util.rememberBlurBackdrop
+import me.weishu.k10ernelsu.R
+import me.weishu.k10ernelsu.ui.component.miuix.EditText
+import me.weishu.k10ernelsu.ui.component.profile.RootProfileConfig
+import me.weishu.k10ernelsu.ui.theme.LocalEnableBlur
+import me.weishu.k10ernelsu.ui.util.BlurredBar
+import me.weishu.k10ernelsu.ui.util.rememberBlurBackdrop
 import top.yukonga.miuix.kmp.basic.Card
 import top.yukonga.miuix.kmp.basic.Icon
 import top.yukonga.miuix.kmp.basic.IconButton

@@ -1,12 +1,12 @@
-package me.weishu.kernelsu
+package me.weishu.k10ernelsu
 
 import android.os.Parcelable
 import androidx.annotation.Keep
 import androidx.compose.runtime.Immutable
 import kotlinx.parcelize.Parcelize
 import kotlinx.serialization.Serializable
-import me.weishu.kernelsu.Natives.Profile.RootProfileFlag
-import me.weishu.kernelsu.ui.util.rootAvailable
+import me.weishu.k10ernelsu.Natives.Profile.RootProfileFlag
+import me.weishu.k10ernelsu.ui.util.rootAvailable
 
 /**
  * @author weishu
@@ -51,6 +51,9 @@ object Natives {
         external get
 
     val isManager: Boolean
+        external get
+
+    val kernelInfoDiagnostics: String
         external get
 
     val isPrBuild: Boolean

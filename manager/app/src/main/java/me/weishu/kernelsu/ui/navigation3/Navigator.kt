@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.ui.navigation3
+package me.weishu.k10ernelsu.ui.navigation3
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.staticCompositionLocalOf

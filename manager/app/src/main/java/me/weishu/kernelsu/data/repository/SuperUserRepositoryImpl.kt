@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.data.repository
+package me.weishu.k10ernelsu.data.repository
 
 import android.content.ComponentName
 import android.content.Intent
@@ -15,14 +15,14 @@ import com.topjohnwu.superuser.ipc.RootService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlinx.coroutines.withContext
-import me.weishu.kernelsu.IKsuInterface
-import me.weishu.kernelsu.Natives
-import me.weishu.kernelsu.data.model.AppInfo
-import me.weishu.kernelsu.data.model.WEBVIEW_ZYGOTE_PROFILE_KEY
-import me.weishu.kernelsu.data.model.WEBVIEW_ZYGOTE_UID
-import me.weishu.kernelsu.ksuApp
-import me.weishu.kernelsu.ui.KsuService
-import me.weishu.kernelsu.ui.util.KsuCli
+import me.weishu.k10ernelsu.IKsuInterface
+import me.weishu.k10ernelsu.Natives
+import me.weishu.k10ernelsu.data.model.AppInfo
+import me.weishu.k10ernelsu.data.model.WEBVIEW_ZYGOTE_PROFILE_KEY
+import me.weishu.k10ernelsu.data.model.WEBVIEW_ZYGOTE_UID
+import me.weishu.k10ernelsu.ksuApp
+import me.weishu.k10ernelsu.ui.KsuService
+import me.weishu.k10ernelsu.ui.util.KsuCli
 import kotlin.coroutines.resume
 
 class SuperUserRepositoryImpl : SuperUserRepository {

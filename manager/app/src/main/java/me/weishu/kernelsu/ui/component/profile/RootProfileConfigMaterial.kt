@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.ui.component.profile
+package me.weishu.k10ernelsu.ui.component.profile
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -21,18 +21,18 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
-import me.weishu.kernelsu.Natives
-import me.weishu.kernelsu.R
-import me.weishu.kernelsu.profile.Capabilities
-import me.weishu.kernelsu.profile.Groups
-import me.weishu.kernelsu.toRawFlags
-import me.weishu.kernelsu.toRootProfileFlags
-import me.weishu.kernelsu.ui.component.material.SegmentedColumn
-import me.weishu.kernelsu.ui.component.material.SegmentedListItem
-import me.weishu.kernelsu.ui.component.material.SegmentedTextField
-import me.weishu.kernelsu.ui.component.profile.dialogs.MultiSelectDialog
-import me.weishu.kernelsu.ui.component.profile.dialogs.SingleSelectDialog
-import me.weishu.kernelsu.ui.util.isSepolicyValid
+import me.weishu.k10ernelsu.Natives
+import me.weishu.k10ernelsu.R
+import me.weishu.k10ernelsu.profile.Capabilities
+import me.weishu.k10ernelsu.profile.Groups
+import me.weishu.k10ernelsu.toRawFlags
+import me.weishu.k10ernelsu.toRootProfileFlags
+import me.weishu.k10ernelsu.ui.component.material.SegmentedColumn
+import me.weishu.k10ernelsu.ui.component.material.SegmentedListItem
+import me.weishu.k10ernelsu.ui.component.material.SegmentedTextField
+import me.weishu.k10ernelsu.ui.component.profile.dialogs.MultiSelectDialog
+import me.weishu.k10ernelsu.ui.component.profile.dialogs.SingleSelectDialog
+import me.weishu.k10ernelsu.ui.util.isSepolicyValid
 
 @Composable
 fun RootProfileConfigMaterial(

@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.ui.screen.appprofile
+package me.weishu.k10ernelsu.ui.screen.appprofile
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.expandVertically
@@ -47,22 +47,22 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import me.weishu.kernelsu.Natives
-import me.weishu.kernelsu.R
-import me.weishu.kernelsu.ui.component.AppIconImage
-import me.weishu.kernelsu.ui.component.ListPopupDefaults
-import me.weishu.kernelsu.ui.component.miuix.DropdownItem
-import me.weishu.kernelsu.ui.component.profile.AppProfileConfig
-import me.weishu.kernelsu.ui.component.profile.RootProfileConfig
-import me.weishu.kernelsu.ui.component.profile.TemplateConfig
-import me.weishu.kernelsu.ui.component.statustag.StatusTag
-import me.weishu.kernelsu.ui.theme.LocalEnableBlur
-import me.weishu.kernelsu.ui.util.BlurredBar
-import me.weishu.kernelsu.ui.util.listAppProfileTemplates
-import me.weishu.kernelsu.ui.util.ownerNameForUid
-import me.weishu.kernelsu.ui.util.rememberBlurBackdrop
-import me.weishu.kernelsu.ui.util.setSepolicy
-import me.weishu.kernelsu.ui.viewmodel.SuperUserViewModel
+import me.weishu.k10ernelsu.Natives
+import me.weishu.k10ernelsu.R
+import me.weishu.k10ernelsu.ui.component.AppIconImage
+import me.weishu.k10ernelsu.ui.component.ListPopupDefaults
+import me.weishu.k10ernelsu.ui.component.miuix.DropdownItem
+import me.weishu.k10ernelsu.ui.component.profile.AppProfileConfig
+import me.weishu.k10ernelsu.ui.component.profile.RootProfileConfig
+import me.weishu.k10ernelsu.ui.component.profile.TemplateConfig
+import me.weishu.k10ernelsu.ui.component.statustag.StatusTag
+import me.weishu.k10ernelsu.ui.theme.LocalEnableBlur
+import me.weishu.k10ernelsu.ui.util.BlurredBar
+import me.weishu.k10ernelsu.ui.util.listAppProfileTemplates
+import me.weishu.k10ernelsu.ui.util.ownerNameForUid
+import me.weishu.k10ernelsu.ui.util.rememberBlurBackdrop
+import me.weishu.k10ernelsu.ui.util.setSepolicy
+import me.weishu.k10ernelsu.ui.viewmodel.SuperUserViewModel
 import top.yukonga.miuix.kmp.basic.BasicComponent
 import top.yukonga.miuix.kmp.basic.Card
 import top.yukonga.miuix.kmp.basic.Icon
@@ -354,7 +354,7 @@ private fun AppProfileInner(
                     Mode.Template -> {
                         if (templates.isNotEmpty()) {
                             val selected = profile.rootTemplate ?: templates[0]
-                            val info = me.weishu.kernelsu.ui.viewmodel.getTemplateInfoById(selected)
+                            val info = me.weishu.k10ernelsu.ui.viewmodel.getTemplateInfoById(selected)
                             if (info != null && setSepolicy(selected, info.rules.joinToString("\n"))) {
                                 onProfileChange(
                                     profile.copy(

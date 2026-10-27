@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.ui.screen.executemoduleaction
+package me.weishu.k10ernelsu.ui.screen.executemoduleaction
 
 import android.widget.Toast
 import androidx.activity.compose.LocalActivity
@@ -14,9 +14,9 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.compose.dropUnlessResumed
 import kotlinx.coroutines.launch
-import me.weishu.kernelsu.ui.LocalUiMode
-import me.weishu.kernelsu.ui.UiMode
-import me.weishu.kernelsu.ui.navigation3.LocalNavigator
+import me.weishu.k10ernelsu.ui.LocalUiMode
+import me.weishu.k10ernelsu.ui.UiMode
+import me.weishu.k10ernelsu.ui.navigation3.LocalNavigator
 
 @Composable
 fun ExecuteModuleActionScreen(moduleId: String, fromShortcut: Boolean = false) {

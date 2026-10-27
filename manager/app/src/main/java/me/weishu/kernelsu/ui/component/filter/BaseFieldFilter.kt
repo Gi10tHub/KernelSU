@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.ui.component.filter
+package me.weishu.k10ernelsu.ui.component.filter
 
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.text.TextRange

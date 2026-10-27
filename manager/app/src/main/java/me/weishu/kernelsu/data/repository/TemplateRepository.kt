@@ -1,6 +1,6 @@
-package me.weishu.kernelsu.data.repository
+package me.weishu.k10ernelsu.data.repository
 
-import me.weishu.kernelsu.data.model.TemplateInfo
+import me.weishu.k10ernelsu.data.model.TemplateInfo
 
 interface TemplateRepository {
     suspend fun getTemplates(sync: Boolean): Result<List<TemplateInfo>>

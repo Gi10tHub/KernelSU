@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.ui.component.markdown
+package me.weishu.k10ernelsu.ui.component.markdown
 
 import android.annotation.SuppressLint
 import android.content.ActivityNotFoundException
@@ -28,15 +28,15 @@ import androidx.compose.ui.platform.LocalResources
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.webkit.WebViewAssetLoader
-import me.weishu.kernelsu.data.registry.RegistryUrls
-import me.weishu.kernelsu.ksuApp
-import me.weishu.kernelsu.ui.LocalUiMode
-import me.weishu.kernelsu.ui.UiMode
-import me.weishu.kernelsu.ui.theme.isInDarkTheme
-import me.weishu.kernelsu.ui.util.adjustLightnessArgb
-import me.weishu.kernelsu.ui.util.cssColorFromArgb
-import me.weishu.kernelsu.ui.util.ensureVisibleByMix
-import me.weishu.kernelsu.ui.util.relativeLuminance
+import me.weishu.k10ernelsu.data.registry.RegistryUrls
+import me.weishu.k10ernelsu.ksuApp
+import me.weishu.k10ernelsu.ui.LocalUiMode
+import me.weishu.k10ernelsu.ui.UiMode
+import me.weishu.k10ernelsu.ui.theme.isInDarkTheme
+import me.weishu.k10ernelsu.ui.util.adjustLightnessArgb
+import me.weishu.k10ernelsu.ui.util.cssColorFromArgb
+import me.weishu.k10ernelsu.ui.util.ensureVisibleByMix
+import me.weishu.k10ernelsu.ui.util.relativeLuminance
 import okhttp3.Headers.Companion.toHeaders
 import okhttp3.OkHttpClient
 import okhttp3.Request

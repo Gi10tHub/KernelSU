@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.ui.viewmodel
+package me.weishu.k10ernelsu.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -8,10 +8,10 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import me.weishu.kernelsu.data.model.RepoModuleDetail
-import me.weishu.kernelsu.data.registry.ModuleNotInIndexException
-import me.weishu.kernelsu.data.repository.ModuleRepoRepository
-import me.weishu.kernelsu.data.repository.ModuleRepoRepositoryImpl
+import me.weishu.k10ernelsu.data.model.RepoModuleDetail
+import me.weishu.k10ernelsu.data.registry.ModuleNotInIndexException
+import me.weishu.k10ernelsu.data.repository.ModuleRepoRepository
+import me.weishu.k10ernelsu.data.repository.ModuleRepoRepositoryImpl
 
 /** Loads the registry detail (and README) of one module for the detail screen. */
 class ModuleRepoDetailViewModel(

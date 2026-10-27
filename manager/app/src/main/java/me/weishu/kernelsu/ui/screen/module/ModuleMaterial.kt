@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.ui.screen.module
+package me.weishu.k10ernelsu.ui.screen.module
 
 import android.annotation.SuppressLint
 import android.app.Activity.RESULT_OK
@@ -126,22 +126,22 @@ import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
-import me.weishu.kernelsu.R
-import me.weishu.kernelsu.data.model.Module
-import me.weishu.kernelsu.data.model.ModuleUpdateInfo
-import me.weishu.kernelsu.data.repository.isSoftRebootPreferred
-import me.weishu.kernelsu.ui.component.ObserveAsEvents
-import me.weishu.kernelsu.ui.component.ScrollToTopOnChange
-import me.weishu.kernelsu.ui.component.dialog.rememberConfirmDialog
-import me.weishu.kernelsu.ui.component.dialog.rememberLoadingDialog
-import me.weishu.kernelsu.ui.component.material.ExpressiveScaffold
-import me.weishu.kernelsu.ui.component.material.ExpressiveSwitch
-import me.weishu.kernelsu.ui.component.material.SearchAppBar
-import me.weishu.kernelsu.ui.component.material.SnackBarHost
-import me.weishu.kernelsu.ui.component.material.TonalCard
-import me.weishu.kernelsu.ui.component.statustag.StatusTag
-import me.weishu.kernelsu.ui.theme.LocalModuleDescriptionMaxLines
-import me.weishu.kernelsu.ui.util.reboot
+import me.weishu.k10ernelsu.R
+import me.weishu.k10ernelsu.data.model.Module
+import me.weishu.k10ernelsu.data.model.ModuleUpdateInfo
+import me.weishu.k10ernelsu.data.repository.isSoftRebootPreferred
+import me.weishu.k10ernelsu.ui.component.ObserveAsEvents
+import me.weishu.k10ernelsu.ui.component.ScrollToTopOnChange
+import me.weishu.k10ernelsu.ui.component.dialog.rememberConfirmDialog
+import me.weishu.k10ernelsu.ui.component.dialog.rememberLoadingDialog
+import me.weishu.k10ernelsu.ui.component.material.ExpressiveScaffold
+import me.weishu.k10ernelsu.ui.component.material.ExpressiveSwitch
+import me.weishu.k10ernelsu.ui.component.material.SearchAppBar
+import me.weishu.k10ernelsu.ui.component.material.SnackBarHost
+import me.weishu.k10ernelsu.ui.component.material.TonalCard
+import me.weishu.k10ernelsu.ui.component.statustag.StatusTag
+import me.weishu.k10ernelsu.ui.theme.LocalModuleDescriptionMaxLines
+import me.weishu.k10ernelsu.ui.util.reboot
 
 @SuppressLint("StringFormatInvalid")
 @Composable

@@ -1,9 +1,9 @@
-package me.weishu.kernelsu.core.tasks
+package me.weishu.k10ernelsu.core.tasks
 
 import chromeos_update_engine.UpdateMetadata.DeltaArchiveManifest
 import chromeos_update_engine.UpdateMetadata.InstallOperation
 import chromeos_update_engine.UpdateMetadata.PartitionUpdate
-import me.weishu.kernelsu.core.utils.DataSourceChannel
+import me.weishu.k10ernelsu.core.utils.DataSourceChannel
 import org.apache.commons.compress.compressors.bzip2.BZip2CompressorInputStream
 import org.apache.commons.compress.compressors.xz.XZCompressorInputStream
 import java.io.ByteArrayInputStream

@@ -1,13 +1,13 @@
-package me.weishu.kernelsu.data.repository
+package me.weishu.k10ernelsu.data.repository
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import me.weishu.kernelsu.data.model.Module
-import me.weishu.kernelsu.data.model.ModuleUpdateInfo
-import me.weishu.kernelsu.ksuApp
-import me.weishu.kernelsu.ui.util.isNetworkAvailable
-import me.weishu.kernelsu.ui.util.listModules
-import me.weishu.kernelsu.ui.util.module.sanitizeVersionString
+import me.weishu.k10ernelsu.data.model.Module
+import me.weishu.k10ernelsu.data.model.ModuleUpdateInfo
+import me.weishu.k10ernelsu.ksuApp
+import me.weishu.k10ernelsu.ui.util.isNetworkAvailable
+import me.weishu.k10ernelsu.ui.util.listModules
+import me.weishu.k10ernelsu.ui.util.module.sanitizeVersionString
 import okhttp3.Request
 import org.json.JSONArray
 import org.json.JSONObject

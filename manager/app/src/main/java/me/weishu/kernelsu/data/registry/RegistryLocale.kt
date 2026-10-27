@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.data.registry
+package me.weishu.k10ernelsu.data.registry
 
 /**
  * Module content in the registry is single-language, so no content locale fallback exists.

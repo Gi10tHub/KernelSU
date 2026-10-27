@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.ui.screen.install
+package me.weishu.k10ernelsu.ui.screen.install
 
 import android.app.Activity
 import android.content.Intent
@@ -22,26 +22,26 @@ import androidx.lifecycle.compose.dropUnlessResumed
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
-import me.weishu.kernelsu.R
-import me.weishu.kernelsu.getKernelVersion
-import me.weishu.kernelsu.ui.LocalUiMode
-import me.weishu.kernelsu.ui.UiMode
-import me.weishu.kernelsu.ui.component.choosekmidialog.ChooseKmiDialog
-import me.weishu.kernelsu.ui.component.dialog.DownloadDialog
-import me.weishu.kernelsu.ui.component.dialog.rememberLoadingDialog
-import me.weishu.kernelsu.ui.navigation3.LocalNavigator
-import me.weishu.kernelsu.ui.navigation3.Route
-import me.weishu.kernelsu.ui.screen.flash.FlashIt
-import me.weishu.kernelsu.ui.util.LkmSelection
-import me.weishu.kernelsu.ui.util.getAvailablePartitions
-import me.weishu.kernelsu.ui.util.getCurrentKmi
-import me.weishu.kernelsu.ui.util.getDefaultPartition
-import me.weishu.kernelsu.ui.util.getLoadedBlockableModules
-import me.weishu.kernelsu.ui.util.isBlockModulesValid
-import me.weishu.kernelsu.ui.util.getSlotSuffix
-import me.weishu.kernelsu.ui.util.isAbDevice
-import me.weishu.kernelsu.ui.util.probeRemoteBootPartitions
-import me.weishu.kernelsu.ui.util.rootAvailable
+import me.weishu.k10ernelsu.R
+import me.weishu.k10ernelsu.getKernelVersion
+import me.weishu.k10ernelsu.ui.LocalUiMode
+import me.weishu.k10ernelsu.ui.UiMode
+import me.weishu.k10ernelsu.ui.component.choosekmidialog.ChooseKmiDialog
+import me.weishu.k10ernelsu.ui.component.dialog.DownloadDialog
+import me.weishu.k10ernelsu.ui.component.dialog.rememberLoadingDialog
+import me.weishu.k10ernelsu.ui.navigation3.LocalNavigator
+import me.weishu.k10ernelsu.ui.navigation3.Route
+import me.weishu.k10ernelsu.ui.screen.flash.FlashIt
+import me.weishu.k10ernelsu.ui.util.LkmSelection
+import me.weishu.k10ernelsu.ui.util.getAvailablePartitions
+import me.weishu.k10ernelsu.ui.util.getCurrentKmi
+import me.weishu.k10ernelsu.ui.util.getDefaultPartition
+import me.weishu.k10ernelsu.ui.util.getLoadedBlockableModules
+import me.weishu.k10ernelsu.ui.util.isBlockModulesValid
+import me.weishu.k10ernelsu.ui.util.getSlotSuffix
+import me.weishu.k10ernelsu.ui.util.isAbDevice
+import me.weishu.k10ernelsu.ui.util.probeRemoteBootPartitions
+import me.weishu.k10ernelsu.ui.util.rootAvailable
 import top.yukonga.miuix.kmp.basic.SnackbarHostState as MiuixSnackbarHostState
 
 @Composable

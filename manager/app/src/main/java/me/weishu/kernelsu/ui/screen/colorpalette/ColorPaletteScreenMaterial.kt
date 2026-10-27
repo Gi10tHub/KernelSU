@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.ui.screen.colorpalette
+package me.weishu.k10ernelsu.ui.screen.colorpalette
 
 import android.annotation.SuppressLint
 import android.os.Build
@@ -84,19 +84,19 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import com.materialkolor.PaletteStyle
 import com.materialkolor.dynamiccolor.ColorSpec
-import me.weishu.kernelsu.R
-import me.weishu.kernelsu.ui.component.bottombar.useNavigationRail
-import me.weishu.kernelsu.ui.component.material.ExpressiveScaffold
-import me.weishu.kernelsu.ui.component.material.ExpressiveToggleButton
-import me.weishu.kernelsu.ui.component.material.SegmentedColumn
-import me.weishu.kernelsu.ui.component.material.SegmentedDropdownItem
-import me.weishu.kernelsu.ui.component.material.SegmentedSwitchItem
-import me.weishu.kernelsu.ui.component.material.TonalCard
-import me.weishu.kernelsu.ui.component.material.TopBarBackButton
-import me.weishu.kernelsu.ui.component.material.expressiveTopAppBarColors
-import me.weishu.kernelsu.ui.theme.ColorMode
-import me.weishu.kernelsu.ui.theme.keyColorOptions
-import me.weishu.kernelsu.ui.theme.rememberKernelSUColorScheme
+import me.weishu.k10ernelsu.R
+import me.weishu.k10ernelsu.ui.component.bottombar.useNavigationRail
+import me.weishu.k10ernelsu.ui.component.material.ExpressiveScaffold
+import me.weishu.k10ernelsu.ui.component.material.ExpressiveToggleButton
+import me.weishu.k10ernelsu.ui.component.material.SegmentedColumn
+import me.weishu.k10ernelsu.ui.component.material.SegmentedDropdownItem
+import me.weishu.k10ernelsu.ui.component.material.SegmentedSwitchItem
+import me.weishu.k10ernelsu.ui.component.material.TonalCard
+import me.weishu.k10ernelsu.ui.component.material.TopBarBackButton
+import me.weishu.k10ernelsu.ui.component.material.expressiveTopAppBarColors
+import me.weishu.k10ernelsu.ui.theme.ColorMode
+import me.weishu.k10ernelsu.ui.theme.keyColorOptions
+import me.weishu.k10ernelsu.ui.theme.rememberKernelSUColorScheme
 import kotlin.math.roundToInt
 
 @Composable

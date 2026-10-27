@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.ui.screen.templateeditor
+package me.weishu.k10ernelsu.ui.screen.templateeditor
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -29,13 +29,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import me.weishu.kernelsu.R
-import me.weishu.kernelsu.ui.component.material.ExpressiveScaffold
-import me.weishu.kernelsu.ui.component.material.SegmentedColumn
-import me.weishu.kernelsu.ui.component.material.SegmentedTextField
-import me.weishu.kernelsu.ui.component.material.TopBarBackButton
-import me.weishu.kernelsu.ui.component.material.expressiveTopAppBarColors
-import me.weishu.kernelsu.ui.component.profile.RootProfileConfig
+import me.weishu.k10ernelsu.R
+import me.weishu.k10ernelsu.ui.component.material.ExpressiveScaffold
+import me.weishu.k10ernelsu.ui.component.material.SegmentedColumn
+import me.weishu.k10ernelsu.ui.component.material.SegmentedTextField
+import me.weishu.k10ernelsu.ui.component.material.TopBarBackButton
+import me.weishu.k10ernelsu.ui.component.material.expressiveTopAppBarColors
+import me.weishu.k10ernelsu.ui.component.profile.RootProfileConfig
 
 @Composable
 fun TemplateEditorScreenMaterial(

@@ -1,14 +1,14 @@
-package me.weishu.kernelsu.ui.navigation3
+package me.weishu.k10ernelsu.ui.navigation3
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 import kotlinx.serialization.Serializable
-import me.weishu.kernelsu.ui.screen.flash.FlashIt
-import me.weishu.kernelsu.ui.screen.modulerepo.RepoModuleArg
-import me.weishu.kernelsu.ui.util.FlashItSerializer
-import me.weishu.kernelsu.ui.util.RepoModuleArgSerializer
-import me.weishu.kernelsu.ui.util.TemplateInfoSerializer
-import me.weishu.kernelsu.ui.viewmodel.TemplateViewModel
+import me.weishu.k10ernelsu.ui.screen.flash.FlashIt
+import me.weishu.k10ernelsu.ui.screen.modulerepo.RepoModuleArg
+import me.weishu.k10ernelsu.ui.util.FlashItSerializer
+import me.weishu.k10ernelsu.ui.util.RepoModuleArgSerializer
+import me.weishu.k10ernelsu.ui.util.TemplateInfoSerializer
+import me.weishu.k10ernelsu.ui.viewmodel.TemplateViewModel
 import top.yukonga.miuix.kmp.nav.core.NavKey
 
 /**

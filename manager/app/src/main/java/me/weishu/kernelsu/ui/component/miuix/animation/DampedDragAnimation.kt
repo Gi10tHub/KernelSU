@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.ui.component.miuix.animation
+package me.weishu.k10ernelsu.ui.component.miuix.animation
 
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.spring
@@ -15,7 +15,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.android.awaitFrame
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
-import me.weishu.kernelsu.ui.component.miuix.modifier.inspectDragGestures
+import me.weishu.k10ernelsu.ui.component.miuix.modifier.inspectDragGestures
 import kotlin.math.abs
 import kotlin.time.TimeSource
 

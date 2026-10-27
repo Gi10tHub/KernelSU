@@ -16,9 +16,19 @@
 #include <climits>
 #include <sys/syscall.h>
 #include <cerrno>
+#include <string>
 #include "ksu.h"
+#include "logging.h"
 
 static int fd = -1;
+static int get_info_result = INT_MIN;
+static int get_info_errno = 0;
+static int get_legacy_info_result = INT_MIN;
+static int get_legacy_info_errno = 0;
+static int legacy_prctl_result = INT_MIN;
+static int legacy_prctl_errno = 0;
+static int32_t legacy_prctl_version = -1;
+static int32_t legacy_prctl_flags = 0;
 
 static inline int scan_driver_fd() {
     const char *kName = "[ksu_driver]";
@@ -77,14 +87,79 @@ static int ksuctl(unsigned long op, Args &&... args) {
 
 static struct ksu_get_info_cmd g_version {};
 
+static std::string format_query_result(const char *name, int result, int error) {
+    char details[160];
+    if (result < 0) {
+        snprintf(details, sizeof(details), "%s ret=%d errno=%d (%s)", name, result, error,
+                 strerror(error));
+    } else {
+        snprintf(details, sizeof(details), "%s ret=%d", name, result);
+    }
+    return details;
+}
+
 struct ksu_get_info_cmd get_info() {
     if (!g_version.version) {
-        if (ksuctl(KSU_IOCTL_GET_INFO, &g_version) < 0) {
-            ksuctl(KSU_IOCTL_GET_INFO_LEGACY, &g_version);
+        errno = 0;
+        get_info_result = ksuctl(KSU_IOCTL_GET_INFO, &g_version);
+        get_info_errno = errno;
+        if (get_info_result < 0) {
+            errno = 0;
+            get_legacy_info_result = ksuctl(KSU_IOCTL_GET_INFO_LEGACY, &g_version);
+            get_legacy_info_errno = errno;
             g_version.uapi_version = 0;
         }
     }
     return g_version;
+}
+
+std::pair<int, int> legacy_get_info() {
+    int32_t result = 0;
+    errno = 0;
+    legacy_prctl_result = prctl(
+        0xDEADBEEF,
+        2,
+        &legacy_prctl_version,
+        &legacy_prctl_flags,
+        &result);
+    legacy_prctl_errno = errno;
+    return {legacy_prctl_version, legacy_prctl_flags};
+}
+
+std::string get_kernel_info_diagnostics() {
+    const auto info = get_info();
+    if (info.version <= 0 && legacy_prctl_result == INT_MIN) {
+        legacy_get_info();
+    }
+
+    std::string details = format_query_result("GET_INFO ioctl", get_info_result, get_info_errno);
+    if (get_legacy_info_result != INT_MIN) {
+        details += "; ";
+        details += format_query_result(
+            "GET_INFO_LEGACY ioctl",
+            get_legacy_info_result,
+            get_legacy_info_errno);
+    }
+    char kernel_status[128];
+    snprintf(kernel_status, sizeof(kernel_status),
+             "; kernel version=%u flags=0x%08x manager=%s",
+             info.version, info.flags,
+             (info.flags & KSU_GET_INFO_FLAG_MANAGER) != 0 ? "true" : "false");
+    details += kernel_status;
+    if (legacy_prctl_result != INT_MIN) {
+        details += "; ";
+        details += format_query_result(
+            "legacy prctl",
+            legacy_prctl_result,
+            legacy_prctl_errno);
+        char legacy_status[96];
+        snprintf(legacy_status, sizeof(legacy_status),
+                 " version=%d flags=0x%08x",
+                 legacy_prctl_version, legacy_prctl_flags);
+        details += legacy_status;
+    }
+
+    return details;
 }
 
 uint32_t get_kernel_uapi_version() {

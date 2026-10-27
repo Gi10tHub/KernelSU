@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.core.utils
+package me.weishu.k10ernelsu.core.utils
 
 import okhttp3.OkHttpClient
 import okhttp3.Request

@@ -1,12 +1,12 @@
-package me.weishu.kernelsu.data.model
+package me.weishu.k10ernelsu.data.model
 
 import android.os.Parcelable
 import android.util.Log
 import androidx.compose.runtime.Immutable
 import kotlinx.parcelize.Parcelize
-import me.weishu.kernelsu.Natives
-import me.weishu.kernelsu.profile.Capabilities
-import me.weishu.kernelsu.profile.Groups
+import me.weishu.k10ernelsu.Natives
+import me.weishu.k10ernelsu.profile.Capabilities
+import me.weishu.k10ernelsu.profile.Groups
 import org.json.JSONArray
 import org.json.JSONObject
 import java.util.Locale

@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.ui.component.rebootlistpopup
+package me.weishu.k10ernelsu.ui.component.rebootlistpopup
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.PowerSettingsNew
@@ -15,8 +15,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.res.stringResource
-import me.weishu.kernelsu.R
-import me.weishu.kernelsu.ui.component.KsuIsValid
+import me.weishu.k10ernelsu.R
+import me.weishu.k10ernelsu.ui.component.KsuIsValid
 
 @Composable
 fun RebootDropdownItems(onItemClick: (String) -> Unit) {

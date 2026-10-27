@@ -1,10 +1,10 @@
-package me.weishu.kernelsu.ui.component.profile
+package me.weishu.k10ernelsu.ui.component.profile
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import me.weishu.kernelsu.Natives
-import me.weishu.kernelsu.ui.LocalUiMode
-import me.weishu.kernelsu.ui.UiMode
+import me.weishu.k10ernelsu.Natives
+import me.weishu.k10ernelsu.ui.LocalUiMode
+import me.weishu.k10ernelsu.ui.UiMode
 
 @Composable
 fun AppProfileConfig(

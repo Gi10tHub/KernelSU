@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.ui.screen.executemoduleaction
+package me.weishu.k10ernelsu.ui.screen.executemoduleaction
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.animation.core.animateDpAsState
@@ -46,11 +46,11 @@ import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import me.weishu.kernelsu.R
-import me.weishu.kernelsu.ui.component.KeyEventBlocker
-import me.weishu.kernelsu.ui.theme.LocalEnableBlur
-import me.weishu.kernelsu.ui.util.BlurredBar
-import me.weishu.kernelsu.ui.util.rememberBlurBackdrop
+import me.weishu.k10ernelsu.R
+import me.weishu.k10ernelsu.ui.component.KeyEventBlocker
+import me.weishu.k10ernelsu.ui.theme.LocalEnableBlur
+import me.weishu.k10ernelsu.ui.util.BlurredBar
+import me.weishu.k10ernelsu.ui.util.rememberBlurBackdrop
 import top.yukonga.miuix.kmp.basic.FloatingActionButton
 import top.yukonga.miuix.kmp.basic.Icon
 import top.yukonga.miuix.kmp.basic.IconButton

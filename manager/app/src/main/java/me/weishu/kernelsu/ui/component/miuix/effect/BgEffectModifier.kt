@@ -1,6 +1,6 @@
 // Mirrored from compose-miuix-ui example.
 
-package me.weishu.kernelsu.ui.component.miuix.effect
+package me.weishu.k10ernelsu.ui.component.miuix.effect
 
 import android.annotation.SuppressLint
 import android.os.Build

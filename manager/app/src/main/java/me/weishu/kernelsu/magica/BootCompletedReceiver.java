@@ -1,13 +1,13 @@
-package me.weishu.kernelsu.magica;
+package me.weishu.k10ernelsu.magica;
 
-import static me.weishu.kernelsu.magica.AppZygotePreload.TAG;
+import static me.weishu.k10ernelsu.magica.AppZygotePreload.TAG;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
-import me.weishu.kernelsu.ui.util.KsuCliKt;
+import me.weishu.k10ernelsu.ui.util.KsuCliKt;
 
 public class BootCompletedReceiver extends BroadcastReceiver {
 
@@ -19,7 +19,7 @@ public class BootCompletedReceiver extends BroadcastReceiver {
         var action = intent.getAction();
         if (!Intent.ACTION_LOCKED_BOOT_COMPLETED.equals(action)
                 && !Intent.ACTION_BOOT_COMPLETED.equals(action)
-                && !"me.weishu.kernelsu.magica.LAUNCH".equals(action)) {
+                && !"me.weishu.k10ernelsu.magica.LAUNCH".equals(action)) {
             return;
         }
         if (KsuCliKt.rootAvailable()) return;

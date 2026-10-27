@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.ui.component.miuix
+package me.weishu.k10ernelsu.ui.component.miuix
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
@@ -10,8 +10,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import me.weishu.kernelsu.ui.component.WarningLevel
-import me.weishu.kernelsu.ui.theme.isInDarkTheme
+import me.weishu.k10ernelsu.ui.component.WarningLevel
+import me.weishu.k10ernelsu.ui.theme.isInDarkTheme
 import top.yukonga.miuix.kmp.basic.Card
 import top.yukonga.miuix.kmp.basic.CardDefaults
 import top.yukonga.miuix.kmp.basic.Text

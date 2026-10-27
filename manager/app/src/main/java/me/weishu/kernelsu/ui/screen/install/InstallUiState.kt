@@ -1,7 +1,7 @@
-package me.weishu.kernelsu.ui.screen.install
+package me.weishu.k10ernelsu.ui.screen.install
 
 import androidx.compose.runtime.Immutable
-import me.weishu.kernelsu.ui.util.LkmSelection
+import me.weishu.k10ernelsu.ui.util.LkmSelection
 
 @Immutable
 internal data class InstallUiState(

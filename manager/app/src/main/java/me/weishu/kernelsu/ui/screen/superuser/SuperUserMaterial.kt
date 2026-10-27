@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.ui.screen.superuser
+package me.weishu.k10ernelsu.ui.screen.superuser
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.expandVertically
@@ -61,18 +61,18 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import me.weishu.kernelsu.R
-import me.weishu.kernelsu.data.model.AppInfo
-import me.weishu.kernelsu.ui.component.AppIconImage
-import me.weishu.kernelsu.ui.component.ScrollToTopOnChange
-import me.weishu.kernelsu.ui.component.material.ExpressiveScaffold
-import me.weishu.kernelsu.ui.component.material.SearchAppBar
-import me.weishu.kernelsu.ui.component.material.SegmentedColumn
-import me.weishu.kernelsu.ui.component.material.SegmentedItem
-import me.weishu.kernelsu.ui.component.material.SegmentedListItem
-import me.weishu.kernelsu.ui.component.statustag.StatusTag
-import me.weishu.kernelsu.ui.util.ownerNameForUid
-import me.weishu.kernelsu.ui.viewmodel.AppSortType
+import me.weishu.k10ernelsu.R
+import me.weishu.k10ernelsu.data.model.AppInfo
+import me.weishu.k10ernelsu.ui.component.AppIconImage
+import me.weishu.k10ernelsu.ui.component.ScrollToTopOnChange
+import me.weishu.k10ernelsu.ui.component.material.ExpressiveScaffold
+import me.weishu.k10ernelsu.ui.component.material.SearchAppBar
+import me.weishu.k10ernelsu.ui.component.material.SegmentedColumn
+import me.weishu.k10ernelsu.ui.component.material.SegmentedItem
+import me.weishu.k10ernelsu.ui.component.material.SegmentedListItem
+import me.weishu.k10ernelsu.ui.component.statustag.StatusTag
+import me.weishu.k10ernelsu.ui.util.ownerNameForUid
+import me.weishu.k10ernelsu.ui.viewmodel.AppSortType
 
 @Composable
 fun SuperUserPagerMaterial(

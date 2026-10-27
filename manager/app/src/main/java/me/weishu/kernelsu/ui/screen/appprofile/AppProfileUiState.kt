@@ -1,8 +1,8 @@
-package me.weishu.kernelsu.ui.screen.appprofile
+package me.weishu.k10ernelsu.ui.screen.appprofile
 
 import androidx.compose.runtime.Immutable
-import me.weishu.kernelsu.Natives
-import me.weishu.kernelsu.ui.screen.superuser.GroupedApps
+import me.weishu.k10ernelsu.Natives
+import me.weishu.k10ernelsu.ui.screen.superuser.GroupedApps
 
 @Immutable
 data class AppProfileUiState(

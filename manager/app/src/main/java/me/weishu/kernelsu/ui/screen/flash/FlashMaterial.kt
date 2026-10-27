@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.ui.screen.flash
+package me.weishu.k10ernelsu.ui.screen.flash
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -38,12 +38,12 @@ import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
-import me.weishu.kernelsu.R
-import me.weishu.kernelsu.ui.component.KeyEventBlocker
-import me.weishu.kernelsu.ui.component.material.ExpressiveScaffold
-import me.weishu.kernelsu.ui.component.material.SnackBarHost
-import me.weishu.kernelsu.ui.component.material.TopBarBackButton
-import me.weishu.kernelsu.ui.component.material.expressiveTopAppBarColors
+import me.weishu.k10ernelsu.R
+import me.weishu.k10ernelsu.ui.component.KeyEventBlocker
+import me.weishu.k10ernelsu.ui.component.material.ExpressiveScaffold
+import me.weishu.k10ernelsu.ui.component.material.SnackBarHost
+import me.weishu.k10ernelsu.ui.component.material.TopBarBackButton
+import me.weishu.k10ernelsu.ui.component.material.expressiveTopAppBarColors
 
 @Composable
 fun FlashScreenMaterial(

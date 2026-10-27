@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.ui.util
+package me.weishu.k10ernelsu.ui.util
 
 import android.os.SystemClock
 import com.topjohnwu.superuser.io.SuFile

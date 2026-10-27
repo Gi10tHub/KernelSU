@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.ui.component.profile.dialogs
+package me.weishu.k10ernelsu.ui.component.profile.dialogs
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -28,8 +28,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import me.weishu.kernelsu.ui.component.material.SegmentedCheckboxItem
-import me.weishu.kernelsu.ui.component.material.SegmentedColumn
+import me.weishu.k10ernelsu.ui.component.material.SegmentedCheckboxItem
+import me.weishu.k10ernelsu.ui.component.material.SegmentedColumn
 
 @Composable
 fun <T> MultiSelectDialog(

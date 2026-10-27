@@ -1,8 +1,8 @@
-package me.weishu.kernelsu.ui.component.choosekmidialog
+package me.weishu.k10ernelsu.ui.component.choosekmidialog
 
 import androidx.compose.runtime.Composable
-import me.weishu.kernelsu.ui.LocalUiMode
-import me.weishu.kernelsu.ui.UiMode
+import me.weishu.k10ernelsu.ui.LocalUiMode
+import me.weishu.k10ernelsu.ui.UiMode
 
 @Composable
 fun ChooseKmiDialog(

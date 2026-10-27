@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.ui.screen.about
+package me.weishu.k10ernelsu.ui.screen.about
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -31,12 +31,12 @@ import androidx.compose.ui.layout.FixedScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import me.weishu.kernelsu.R
-import me.weishu.kernelsu.ui.component.material.ExpressiveScaffold
-import me.weishu.kernelsu.ui.component.material.SegmentedColumn
-import me.weishu.kernelsu.ui.component.material.SegmentedListItem
-import me.weishu.kernelsu.ui.component.material.TopBarBackButton
-import me.weishu.kernelsu.ui.component.material.expressiveTopAppBarColors
+import me.weishu.k10ernelsu.R
+import me.weishu.k10ernelsu.ui.component.material.ExpressiveScaffold
+import me.weishu.k10ernelsu.ui.component.material.SegmentedColumn
+import me.weishu.k10ernelsu.ui.component.material.SegmentedListItem
+import me.weishu.k10ernelsu.ui.component.material.TopBarBackButton
+import me.weishu.k10ernelsu.ui.component.material.expressiveTopAppBarColors
 
 @Composable
 fun AboutScreenMaterial(

@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.ui.component.profile
+package me.weishu.k10ernelsu.ui.component.profile
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
@@ -13,14 +13,14 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import me.weishu.kernelsu.Natives
-import me.weishu.kernelsu.R
-import me.weishu.kernelsu.ui.component.material.SegmentedColumn
-import me.weishu.kernelsu.ui.component.material.SegmentedListItem
-import me.weishu.kernelsu.ui.component.profile.dialogs.SingleSelectDialog
-import me.weishu.kernelsu.ui.util.listAppProfileTemplates
-import me.weishu.kernelsu.ui.util.setSepolicy
-import me.weishu.kernelsu.ui.viewmodel.getTemplateInfoById
+import me.weishu.k10ernelsu.Natives
+import me.weishu.k10ernelsu.R
+import me.weishu.k10ernelsu.ui.component.material.SegmentedColumn
+import me.weishu.k10ernelsu.ui.component.material.SegmentedListItem
+import me.weishu.k10ernelsu.ui.component.profile.dialogs.SingleSelectDialog
+import me.weishu.k10ernelsu.ui.util.listAppProfileTemplates
+import me.weishu.k10ernelsu.ui.util.setSepolicy
+import me.weishu.k10ernelsu.ui.viewmodel.getTemplateInfoById
 
 private data class TemplateOption(
     val id: String,

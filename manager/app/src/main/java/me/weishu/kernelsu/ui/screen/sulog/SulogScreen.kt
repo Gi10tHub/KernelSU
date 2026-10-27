@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.ui.screen.sulog
+package me.weishu.k10ernelsu.ui.screen.sulog
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -11,16 +11,16 @@ import androidx.compose.ui.text.withStyle
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.compose.dropUnlessResumed
 import androidx.lifecycle.viewmodel.compose.viewModel
-import me.weishu.kernelsu.R
-import me.weishu.kernelsu.ui.LocalUiMode
-import me.weishu.kernelsu.ui.UiMode
-import me.weishu.kernelsu.ui.navigation3.LocalNavigator
-import me.weishu.kernelsu.ui.util.SulogEntry
-import me.weishu.kernelsu.ui.util.SulogEventFilter
-import me.weishu.kernelsu.ui.util.SulogEventType
-import me.weishu.kernelsu.ui.util.SulogFile
-import me.weishu.kernelsu.ui.util.toSulogDisplayName
-import me.weishu.kernelsu.ui.viewmodel.SulogViewModel
+import me.weishu.k10ernelsu.R
+import me.weishu.k10ernelsu.ui.LocalUiMode
+import me.weishu.k10ernelsu.ui.UiMode
+import me.weishu.k10ernelsu.ui.navigation3.LocalNavigator
+import me.weishu.k10ernelsu.ui.util.SulogEntry
+import me.weishu.k10ernelsu.ui.util.SulogEventFilter
+import me.weishu.k10ernelsu.ui.util.SulogEventType
+import me.weishu.k10ernelsu.ui.util.SulogFile
+import me.weishu.k10ernelsu.ui.util.toSulogDisplayName
+import me.weishu.k10ernelsu.ui.viewmodel.SulogViewModel
 
 @Composable
 fun SulogScreen() {

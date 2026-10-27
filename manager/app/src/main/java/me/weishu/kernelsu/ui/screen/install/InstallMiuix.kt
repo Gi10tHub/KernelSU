@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.ui.screen.install
+package me.weishu.k10ernelsu.ui.screen.install
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.expandVertically
@@ -40,12 +40,12 @@ import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import me.weishu.kernelsu.R
-import me.weishu.kernelsu.ui.component.dialog.rememberConfirmDialog
-import me.weishu.kernelsu.ui.theme.LocalEnableBlur
-import me.weishu.kernelsu.ui.util.BlurredBar
-import me.weishu.kernelsu.ui.util.LkmSelection
-import me.weishu.kernelsu.ui.util.rememberBlurBackdrop
+import me.weishu.k10ernelsu.R
+import me.weishu.k10ernelsu.ui.component.dialog.rememberConfirmDialog
+import me.weishu.k10ernelsu.ui.theme.LocalEnableBlur
+import me.weishu.k10ernelsu.ui.util.BlurredBar
+import me.weishu.k10ernelsu.ui.util.LkmSelection
+import me.weishu.k10ernelsu.ui.util.rememberBlurBackdrop
 import top.yukonga.miuix.kmp.basic.BasicComponent
 import top.yukonga.miuix.kmp.basic.ButtonDefaults
 import top.yukonga.miuix.kmp.basic.Card

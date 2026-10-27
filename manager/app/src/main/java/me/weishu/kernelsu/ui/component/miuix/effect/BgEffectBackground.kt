@@ -1,6 +1,6 @@
 // Mirrored from compose-miuix-ui example.
 
-package me.weishu.kernelsu.ui.component.miuix.effect
+package me.weishu.k10ernelsu.ui.component.miuix.effect
 
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.spring
@@ -14,8 +14,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
-import me.weishu.kernelsu.ui.theme.isInDarkTheme
-import me.weishu.kernelsu.ui.util.shouldShowSplitPane
+import me.weishu.k10ernelsu.ui.theme.isInDarkTheme
+import me.weishu.k10ernelsu.ui.util.shouldShowSplitPane
 import top.yukonga.miuix.kmp.shader.isRuntimeShaderSupported
 import top.yukonga.miuix.kmp.theme.MiuixTheme
 import kotlin.math.floor

@@ -1,4 +1,4 @@
-package me.weishu.kernelsu
+package me.weishu.k10ernelsu
 
 import android.app.Application
 import android.content.pm.ApplicationInfo
@@ -8,8 +8,8 @@ import android.system.Os
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStore
 import androidx.lifecycle.ViewModelStoreOwner
-import me.weishu.kernelsu.data.repository.SettingsRepositoryImpl
-import me.weishu.kernelsu.ui.viewmodel.SuperUserViewModel
+import me.weishu.k10ernelsu.data.repository.SettingsRepositoryImpl
+import me.weishu.k10ernelsu.ui.viewmodel.SuperUserViewModel
 import okhttp3.Cache
 import okhttp3.OkHttpClient
 import org.lsposed.hiddenapibypass.HiddenApiBypass

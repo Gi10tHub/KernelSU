@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.ui.screen.executemoduleaction
+package me.weishu.k10ernelsu.ui.screen.executemoduleaction
 
 import androidx.compose.runtime.Immutable
 

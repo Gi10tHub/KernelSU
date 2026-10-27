@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.ui.theme
+package me.weishu.k10ernelsu.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

@@ -1,8 +1,8 @@
-package me.weishu.kernelsu.ui.viewmodel
+package me.weishu.k10ernelsu.ui.viewmodel
 
 import androidx.compose.runtime.Immutable
-import me.weishu.kernelsu.ui.UiMode
-import me.weishu.kernelsu.ui.theme.AppSettings
+import me.weishu.k10ernelsu.ui.UiMode
+import me.weishu.k10ernelsu.ui.theme.AppSettings
 
 @Immutable
 data class MainActivityUiState(

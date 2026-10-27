@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.ui.screen.install
+package me.weishu.k10ernelsu.ui.screen.install
 
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.layout.Arrangement
@@ -37,18 +37,18 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import me.weishu.kernelsu.R
-import me.weishu.kernelsu.ui.component.dialog.rememberConfirmDialog
-import me.weishu.kernelsu.ui.component.material.ExpressiveScaffold
-import me.weishu.kernelsu.ui.component.material.SegmentedCheckboxItem
-import me.weishu.kernelsu.ui.component.material.SegmentedColumn
-import me.weishu.kernelsu.ui.component.material.SegmentedDropdownItem
-import me.weishu.kernelsu.ui.component.material.SegmentedListItem
-import me.weishu.kernelsu.ui.component.material.SegmentedRadioItem
-import me.weishu.kernelsu.ui.component.material.SnackBarHost
-import me.weishu.kernelsu.ui.component.material.TopBarBackButton
-import me.weishu.kernelsu.ui.component.material.expressiveTopAppBarColors
-import me.weishu.kernelsu.ui.util.LkmSelection
+import me.weishu.k10ernelsu.R
+import me.weishu.k10ernelsu.ui.component.dialog.rememberConfirmDialog
+import me.weishu.k10ernelsu.ui.component.material.ExpressiveScaffold
+import me.weishu.k10ernelsu.ui.component.material.SegmentedCheckboxItem
+import me.weishu.k10ernelsu.ui.component.material.SegmentedColumn
+import me.weishu.k10ernelsu.ui.component.material.SegmentedDropdownItem
+import me.weishu.k10ernelsu.ui.component.material.SegmentedListItem
+import me.weishu.k10ernelsu.ui.component.material.SegmentedRadioItem
+import me.weishu.k10ernelsu.ui.component.material.SnackBarHost
+import me.weishu.k10ernelsu.ui.component.material.TopBarBackButton
+import me.weishu.k10ernelsu.ui.component.material.expressiveTopAppBarColors
+import me.weishu.k10ernelsu.ui.util.LkmSelection
 
 /**
  * @author weishu

@@ -1,13 +1,13 @@
-package me.weishu.kernelsu.ui.util
+package me.weishu.k10ernelsu.ui.util
 
 import android.net.Uri
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.withContext
-import me.weishu.kernelsu.data.registry.ExpectedFile
-import me.weishu.kernelsu.ksuApp
-import me.weishu.kernelsu.ui.util.module.LatestVersionInfo
+import me.weishu.k10ernelsu.data.registry.ExpectedFile
+import me.weishu.k10ernelsu.ksuApp
+import me.weishu.k10ernelsu.ui.util.module.LatestVersionInfo
 import okhttp3.Request
 
 /**

@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.ui.screen.template
+package me.weishu.k10ernelsu.ui.screen.template
 
 import android.content.ClipData
 import androidx.compose.material3.SnackbarHostState
@@ -15,13 +15,13 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.compose.dropUnlessResumed
 import androidx.lifecycle.viewmodel.compose.viewModel
 import kotlinx.coroutines.launch
-import me.weishu.kernelsu.R
-import me.weishu.kernelsu.ui.LocalUiMode
-import me.weishu.kernelsu.ui.UiMode
-import me.weishu.kernelsu.ui.navigation3.LocalNavigator
-import me.weishu.kernelsu.ui.navigation3.Route
-import me.weishu.kernelsu.ui.util.isNetworkAvailable
-import me.weishu.kernelsu.ui.viewmodel.TemplateViewModel
+import me.weishu.k10ernelsu.R
+import me.weishu.k10ernelsu.ui.LocalUiMode
+import me.weishu.k10ernelsu.ui.UiMode
+import me.weishu.k10ernelsu.ui.navigation3.LocalNavigator
+import me.weishu.k10ernelsu.ui.navigation3.Route
+import me.weishu.k10ernelsu.ui.util.isNetworkAvailable
+import me.weishu.k10ernelsu.ui.viewmodel.TemplateViewModel
 import top.yukonga.miuix.kmp.basic.SnackbarHostState as MiuixSnackbarHostState
 
 @Composable

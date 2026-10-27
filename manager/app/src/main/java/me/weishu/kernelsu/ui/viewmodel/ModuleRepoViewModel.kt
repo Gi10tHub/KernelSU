@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.ui.viewmodel
+package me.weishu.k10ernelsu.ui.viewmodel
 
 import android.util.Log
 import android.widget.Toast
@@ -13,18 +13,18 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
-import me.weishu.kernelsu.R
-import me.weishu.kernelsu.data.registry.UnsupportedSchemaException
-import me.weishu.kernelsu.data.repository.ModuleRepoRepository
-import me.weishu.kernelsu.data.repository.ModuleRepoRepositoryImpl
-import me.weishu.kernelsu.data.repository.SettingsRepository
-import me.weishu.kernelsu.data.repository.SettingsRepositoryImpl
-import me.weishu.kernelsu.ksuApp
-import me.weishu.kernelsu.ui.component.SearchStatus
-import me.weishu.kernelsu.ui.screen.modulerepo.ModuleRepoUiState
-import me.weishu.kernelsu.ui.screen.modulerepo.RepoSort
-import me.weishu.kernelsu.ui.util.PinyinUtil
-import me.weishu.kernelsu.ui.util.isNetworkAvailable
+import me.weishu.k10ernelsu.R
+import me.weishu.k10ernelsu.data.registry.UnsupportedSchemaException
+import me.weishu.k10ernelsu.data.repository.ModuleRepoRepository
+import me.weishu.k10ernelsu.data.repository.ModuleRepoRepositoryImpl
+import me.weishu.k10ernelsu.data.repository.SettingsRepository
+import me.weishu.k10ernelsu.data.repository.SettingsRepositoryImpl
+import me.weishu.k10ernelsu.ksuApp
+import me.weishu.k10ernelsu.ui.component.SearchStatus
+import me.weishu.k10ernelsu.ui.screen.modulerepo.ModuleRepoUiState
+import me.weishu.k10ernelsu.ui.screen.modulerepo.RepoSort
+import me.weishu.k10ernelsu.ui.util.PinyinUtil
+import me.weishu.k10ernelsu.ui.util.isNetworkAvailable
 
 class ModuleRepoViewModel(
     private val repo: ModuleRepoRepository = ModuleRepoRepositoryImpl(),
@@ -35,7 +35,7 @@ class ModuleRepoViewModel(
         private const val TAG = "ModuleRepoViewModel"
     }
 
-    typealias RepoModule = me.weishu.kernelsu.data.model.RepoModule
+    typealias RepoModule = me.weishu.k10ernelsu.data.model.RepoModule
 
     private val _uiState = MutableStateFlow(ModuleRepoUiState())
     val uiState: StateFlow<ModuleRepoUiState> = _uiState.asStateFlow()

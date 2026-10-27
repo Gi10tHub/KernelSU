@@ -1,7 +1,7 @@
-package me.weishu.kernelsu.ui.screen.template
+package me.weishu.k10ernelsu.ui.screen.template
 
 import androidx.compose.runtime.Immutable
-import me.weishu.kernelsu.data.model.TemplateInfo
+import me.weishu.k10ernelsu.data.model.TemplateInfo
 
 @Immutable
 data class TemplateUiState(

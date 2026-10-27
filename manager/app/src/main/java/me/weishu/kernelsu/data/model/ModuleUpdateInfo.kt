@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.data.model
+package me.weishu.k10ernelsu.data.model
 
 import androidx.compose.runtime.Immutable
 

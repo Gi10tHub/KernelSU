@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.ui.theme
+package me.weishu.k10ernelsu.ui.theme
 
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb

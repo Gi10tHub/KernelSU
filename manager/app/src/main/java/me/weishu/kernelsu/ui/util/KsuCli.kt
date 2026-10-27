@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.ui.util
+package me.weishu.k10ernelsu.ui.util
 
 import android.content.ContentResolver
 import android.content.Context
@@ -16,16 +16,16 @@ import com.topjohnwu.superuser.ShellUtils
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlinx.parcelize.Parcelize
-import me.weishu.kernelsu.BuildConfig
-import me.weishu.kernelsu.Natives
-import me.weishu.kernelsu.core.tasks.BootKernelVersion
-import me.weishu.kernelsu.core.tasks.ExtractImage
-import me.weishu.kernelsu.core.tasks.ProbeResult
-import me.weishu.kernelsu.core.utils.DataSourceChannel
-import me.weishu.kernelsu.data.registry.DownloadVerificationException
-import me.weishu.kernelsu.data.registry.RegistryDownloadStore
-import me.weishu.kernelsu.data.registry.copyForInstall
-import me.weishu.kernelsu.ksuApp
+import me.weishu.k10ernelsu.BuildConfig
+import me.weishu.k10ernelsu.Natives
+import me.weishu.k10ernelsu.core.tasks.BootKernelVersion
+import me.weishu.k10ernelsu.core.tasks.ExtractImage
+import me.weishu.k10ernelsu.core.tasks.ProbeResult
+import me.weishu.k10ernelsu.core.utils.DataSourceChannel
+import me.weishu.k10ernelsu.data.registry.DownloadVerificationException
+import me.weishu.k10ernelsu.data.registry.RegistryDownloadStore
+import me.weishu.k10ernelsu.data.registry.copyForInstall
+import me.weishu.k10ernelsu.ksuApp
 import okhttp3.OkHttpClient
 import org.json.JSONArray
 import java.io.File

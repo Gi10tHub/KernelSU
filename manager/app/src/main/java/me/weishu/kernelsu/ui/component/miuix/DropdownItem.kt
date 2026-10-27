@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.ui.component.miuix
+package me.weishu.k10ernelsu.ui.component.miuix
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable

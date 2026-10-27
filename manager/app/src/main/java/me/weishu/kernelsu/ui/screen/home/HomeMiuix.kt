@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.ui.screen.home
+package me.weishu.k10ernelsu.ui.screen.home
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.expandVertically
@@ -54,19 +54,19 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import me.weishu.kernelsu.KernelVersion
-import me.weishu.kernelsu.Natives
-import me.weishu.kernelsu.R
-import me.weishu.kernelsu.ui.component.WarningLevel
-import me.weishu.kernelsu.ui.component.dialog.rememberConfirmDialog
-import me.weishu.kernelsu.ui.component.miuix.WarningCard
-import me.weishu.kernelsu.ui.component.rebootlistpopup.RebootListPopupMiuix
-import me.weishu.kernelsu.ui.component.statustag.StatusTag
-import me.weishu.kernelsu.ui.theme.LocalEnableBlur
-import me.weishu.kernelsu.ui.theme.isInDarkTheme
-import me.weishu.kernelsu.ui.util.BlurredBar
-import me.weishu.kernelsu.ui.util.module.LatestVersionInfo
-import me.weishu.kernelsu.ui.util.rememberBlurBackdrop
+import me.weishu.k10ernelsu.KernelVersion
+import me.weishu.k10ernelsu.Natives
+import me.weishu.k10ernelsu.R
+import me.weishu.k10ernelsu.ui.component.WarningLevel
+import me.weishu.k10ernelsu.ui.component.dialog.rememberConfirmDialog
+import me.weishu.k10ernelsu.ui.component.miuix.WarningCard
+import me.weishu.k10ernelsu.ui.component.rebootlistpopup.RebootListPopupMiuix
+import me.weishu.k10ernelsu.ui.component.statustag.StatusTag
+import me.weishu.k10ernelsu.ui.theme.LocalEnableBlur
+import me.weishu.k10ernelsu.ui.theme.isInDarkTheme
+import me.weishu.k10ernelsu.ui.util.BlurredBar
+import me.weishu.k10ernelsu.ui.util.module.LatestVersionInfo
+import me.weishu.k10ernelsu.ui.util.rememberBlurBackdrop
 import top.yukonga.miuix.kmp.basic.BasicComponent
 import top.yukonga.miuix.kmp.basic.ButtonDefaults
 import top.yukonga.miuix.kmp.basic.Card
@@ -382,7 +382,10 @@ private fun StatusCard(
                     ) {
                         BasicComponent(
                             title = stringResource(R.string.home_not_installed),
-                            summary = stringResource(R.string.home_click_to_install),
+                            summary = listOfNotNull(
+                                stringResource(R.string.home_click_to_install),
+                                state.kernelInfoDiagnostics,
+                            ).joinToString("\n"),
                             startAction = {
                                 Icon(
                                     Icons.Rounded.ErrorOutline,
@@ -705,5 +708,6 @@ private fun previewHomeScreenState(
     currentManagerVersionCode = 10000,
     systemInfo = previewSystemInfo.copy(selinuxStatus = selinuxStatus),
     kernelUAPIVersion = 1,
+    kernelInfoDiagnostics = null,
     managerUAPIVersion = 1,
 )

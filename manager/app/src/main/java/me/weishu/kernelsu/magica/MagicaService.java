@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.magica;
+package me.weishu.k10ernelsu.magica;
 
 import android.app.Service;
 import android.content.Intent;

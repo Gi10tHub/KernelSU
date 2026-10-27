@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.ui.theme
+package me.weishu.k10ernelsu.ui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.runtime.Composable
@@ -6,10 +6,10 @@ import androidx.compose.runtime.ReadOnlyComposable
 import androidx.compose.runtime.staticCompositionLocalOf
 import com.materialkolor.PaletteStyle
 import com.materialkolor.dynamiccolor.ColorSpec
-import me.weishu.kernelsu.data.repository.SettingsRepository
-import me.weishu.kernelsu.data.repository.SettingsRepositoryImpl
-import me.weishu.kernelsu.ui.LocalUiMode
-import me.weishu.kernelsu.ui.UiMode
+import me.weishu.k10ernelsu.data.repository.SettingsRepository
+import me.weishu.k10ernelsu.data.repository.SettingsRepositoryImpl
+import me.weishu.k10ernelsu.ui.LocalUiMode
+import me.weishu.k10ernelsu.ui.UiMode
 
 enum class ColorMode(val value: Int) {
     SYSTEM(0),

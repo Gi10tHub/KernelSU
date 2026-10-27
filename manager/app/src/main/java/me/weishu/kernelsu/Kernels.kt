@@ -1,4 +1,4 @@
-package me.weishu.kernelsu
+package me.weishu.k10ernelsu
 
 import android.system.Os
 

@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.ui.screen.home
+package me.weishu.k10ernelsu.ui.screen.home
 
 import android.content.Intent
 import android.widget.Toast
@@ -20,14 +20,14 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import me.weishu.kernelsu.R
-import me.weishu.kernelsu.magica.MagicaService
-import me.weishu.kernelsu.ui.LocalUiMode
-import me.weishu.kernelsu.ui.UiMode
-import me.weishu.kernelsu.ui.component.dialog.rememberLoadingDialog
-import me.weishu.kernelsu.ui.navigation3.Navigator
-import me.weishu.kernelsu.ui.navigation3.Route
-import me.weishu.kernelsu.ui.viewmodel.HomeViewModel
+import me.weishu.k10ernelsu.R
+import me.weishu.k10ernelsu.magica.MagicaService
+import me.weishu.k10ernelsu.ui.LocalUiMode
+import me.weishu.k10ernelsu.ui.UiMode
+import me.weishu.k10ernelsu.ui.component.dialog.rememberLoadingDialog
+import me.weishu.k10ernelsu.ui.navigation3.Navigator
+import me.weishu.k10ernelsu.ui.navigation3.Route
+import me.weishu.k10ernelsu.ui.viewmodel.HomeViewModel
 import kotlin.time.Duration.Companion.milliseconds
 
 @Composable

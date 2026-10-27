@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.ui.viewmodel
+package me.weishu.k10ernelsu.ui.viewmodel
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -7,11 +7,11 @@ import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import me.weishu.kernelsu.data.repository.SettingsRepository
-import me.weishu.kernelsu.data.repository.SettingsRepositoryImpl
-import me.weishu.kernelsu.ksuApp
-import me.weishu.kernelsu.ui.UiMode
-import me.weishu.kernelsu.ui.theme.ThemeController
+import me.weishu.k10ernelsu.data.repository.SettingsRepository
+import me.weishu.k10ernelsu.data.repository.SettingsRepositoryImpl
+import me.weishu.k10ernelsu.ksuApp
+import me.weishu.k10ernelsu.ui.UiMode
+import me.weishu.k10ernelsu.ui.theme.ThemeController
 
 class MainActivityViewModel(
     savedStateHandle: SavedStateHandle,

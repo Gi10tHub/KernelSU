@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.ui.util
+package me.weishu.k10ernelsu.ui.util
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalResources

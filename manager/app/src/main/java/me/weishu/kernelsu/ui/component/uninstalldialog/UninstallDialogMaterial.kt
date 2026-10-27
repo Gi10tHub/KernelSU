@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.ui.component.uninstalldialog
+package me.weishu.k10ernelsu.ui.component.uninstalldialog
 
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Icon
@@ -9,16 +9,16 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import me.weishu.kernelsu.R
-import me.weishu.kernelsu.ui.component.dialog.rememberConfirmDialog
-import me.weishu.kernelsu.ui.component.material.SegmentedColumn
-import me.weishu.kernelsu.ui.component.material.SegmentedListItem
-import me.weishu.kernelsu.ui.navigation3.LocalNavigator
-import me.weishu.kernelsu.ui.navigation3.Route
-import me.weishu.kernelsu.ui.screen.flash.FlashIt
-import me.weishu.kernelsu.ui.screen.flash.UninstallType
-import me.weishu.kernelsu.ui.screen.flash.UninstallType.PERMANENT
-import me.weishu.kernelsu.ui.screen.flash.UninstallType.RESTORE_STOCK_IMAGE
+import me.weishu.k10ernelsu.R
+import me.weishu.k10ernelsu.ui.component.dialog.rememberConfirmDialog
+import me.weishu.k10ernelsu.ui.component.material.SegmentedColumn
+import me.weishu.k10ernelsu.ui.component.material.SegmentedListItem
+import me.weishu.k10ernelsu.ui.navigation3.LocalNavigator
+import me.weishu.k10ernelsu.ui.navigation3.Route
+import me.weishu.k10ernelsu.ui.screen.flash.FlashIt
+import me.weishu.k10ernelsu.ui.screen.flash.UninstallType
+import me.weishu.k10ernelsu.ui.screen.flash.UninstallType.PERMANENT
+import me.weishu.k10ernelsu.ui.screen.flash.UninstallType.RESTORE_STOCK_IMAGE
 
 @Composable
 fun UninstallDialogMaterial(

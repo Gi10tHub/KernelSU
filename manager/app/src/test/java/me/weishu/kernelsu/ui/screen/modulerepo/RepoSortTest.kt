@@ -1,7 +1,7 @@
-package me.weishu.kernelsu.ui.screen.modulerepo
+package me.weishu.k10ernelsu.ui.screen.modulerepo
 
-import me.weishu.kernelsu.R
-import me.weishu.kernelsu.data.model.RepoModule
+import me.weishu.k10ernelsu.R
+import me.weishu.k10ernelsu.data.model.RepoModule
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
 import org.junit.Test

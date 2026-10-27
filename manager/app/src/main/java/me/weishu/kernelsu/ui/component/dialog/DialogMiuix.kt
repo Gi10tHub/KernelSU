@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.ui.component.dialog
+package me.weishu.k10ernelsu.ui.component.dialog
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -23,9 +23,9 @@ import androidx.compose.ui.unit.dp
 import androidx.navigationevent.NavigationEventInfo
 import androidx.navigationevent.compose.NavigationBackHandler
 import androidx.navigationevent.compose.rememberNavigationEventState
-import me.weishu.kernelsu.R
-import me.weishu.kernelsu.data.registry.RegistryUrls
-import me.weishu.kernelsu.ui.component.markdown.MarkdownContent
+import me.weishu.k10ernelsu.R
+import me.weishu.k10ernelsu.data.registry.RegistryUrls
+import me.weishu.k10ernelsu.ui.component.markdown.MarkdownContent
 import top.yukonga.miuix.kmp.basic.ButtonDefaults
 import top.yukonga.miuix.kmp.basic.InfiniteProgressIndicator
 import top.yukonga.miuix.kmp.basic.Text

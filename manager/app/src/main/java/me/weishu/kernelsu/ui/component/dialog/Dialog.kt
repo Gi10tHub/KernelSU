@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.ui.component.dialog
+package me.weishu.k10ernelsu.ui.component.dialog
 
 import android.os.Parcelable
 import android.util.Log
@@ -22,8 +22,8 @@ import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlinx.parcelize.Parcelize
-import me.weishu.kernelsu.ui.LocalUiMode
-import me.weishu.kernelsu.ui.UiMode
+import me.weishu.k10ernelsu.ui.LocalUiMode
+import me.weishu.k10ernelsu.ui.UiMode
 import kotlin.coroutines.resume
 
 private const val TAG = "DialogComponent"

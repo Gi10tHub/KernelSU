@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.data.repository
+package me.weishu.k10ernelsu.data.repository
 
 import android.content.ComponentName
 import android.content.Context
@@ -8,15 +8,15 @@ import androidx.core.content.edit
 import com.materialkolor.PaletteStyle
 import com.materialkolor.dynamiccolor.ColorSpec
 import com.topjohnwu.superuser.ShellUtils
-import me.weishu.kernelsu.Natives
-import me.weishu.kernelsu.ksuApp
-import me.weishu.kernelsu.magica.BootCompletedReceiver
-import me.weishu.kernelsu.ui.UiMode
-import me.weishu.kernelsu.ui.screen.modulerepo.RepoSort
-import me.weishu.kernelsu.ui.util.execKsud
-import me.weishu.kernelsu.ui.util.getFeaturePersistValue
-import me.weishu.kernelsu.ui.util.getFeatureValue
-import me.weishu.kernelsu.ui.util.getFeatureStatus
+import me.weishu.k10ernelsu.Natives
+import me.weishu.k10ernelsu.ksuApp
+import me.weishu.k10ernelsu.magica.BootCompletedReceiver
+import me.weishu.k10ernelsu.ui.UiMode
+import me.weishu.k10ernelsu.ui.screen.modulerepo.RepoSort
+import me.weishu.k10ernelsu.ui.util.execKsud
+import me.weishu.k10ernelsu.ui.util.getFeaturePersistValue
+import me.weishu.k10ernelsu.ui.util.getFeatureValue
+import me.weishu.k10ernelsu.ui.util.getFeatureStatus
 import java.security.SecureRandom
 
 private const val SETTINGS_PREFS = "settings"

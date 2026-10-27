@@ -1,11 +1,11 @@
-package me.weishu.kernelsu.ui.screen.modulerepo
+package me.weishu.k10ernelsu.ui.screen.modulerepo
 
 import androidx.compose.runtime.Immutable
-import me.weishu.kernelsu.R
-import me.weishu.kernelsu.data.model.RepoModule
-import me.weishu.kernelsu.data.model.RepoModuleDetail
-import me.weishu.kernelsu.data.registry.UnsupportedSchemaException
-import me.weishu.kernelsu.ui.component.SearchStatus
+import me.weishu.k10ernelsu.R
+import me.weishu.k10ernelsu.data.model.RepoModule
+import me.weishu.k10ernelsu.data.model.RepoModuleDetail
+import me.weishu.k10ernelsu.data.registry.UnsupportedSchemaException
+import me.weishu.k10ernelsu.ui.component.SearchStatus
 import java.text.Collator
 import java.util.Locale
 

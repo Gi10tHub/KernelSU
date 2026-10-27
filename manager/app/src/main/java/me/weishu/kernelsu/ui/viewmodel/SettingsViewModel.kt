@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.ui.viewmodel
+package me.weishu.k10ernelsu.ui.viewmodel
 
 import android.system.OsConstants
 import android.widget.Toast
@@ -11,13 +11,13 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import me.weishu.kernelsu.Natives
-import me.weishu.kernelsu.R
-import me.weishu.kernelsu.data.repository.SettingsRepository
-import me.weishu.kernelsu.data.repository.SettingsRepositoryImpl
-import me.weishu.kernelsu.ksuApp
-import me.weishu.kernelsu.ui.screen.settings.SettingsUiState
-import me.weishu.kernelsu.ui.theme.ColorMode
+import me.weishu.k10ernelsu.Natives
+import me.weishu.k10ernelsu.R
+import me.weishu.k10ernelsu.data.repository.SettingsRepository
+import me.weishu.k10ernelsu.data.repository.SettingsRepositoryImpl
+import me.weishu.k10ernelsu.ksuApp
+import me.weishu.k10ernelsu.ui.screen.settings.SettingsUiState
+import me.weishu.k10ernelsu.ui.theme.ColorMode
 
 class SettingsViewModel(
     private val repo: SettingsRepository = SettingsRepositoryImpl()

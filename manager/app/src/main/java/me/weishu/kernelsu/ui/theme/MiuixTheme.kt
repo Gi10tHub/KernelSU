@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.ui.theme
+package me.weishu.k10ernelsu.ui.theme
 
 import android.app.Activity
 import androidx.compose.foundation.isSystemInDarkTheme
@@ -11,7 +11,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.core.view.WindowInsetsControllerCompat
 import com.materialkolor.dynamiccolor.ColorSpec
-import me.weishu.kernelsu.ui.webui.MonetColorsProvider
+import me.weishu.k10ernelsu.ui.webui.MonetColorsProvider
 import top.yukonga.miuix.kmp.theme.ColorSchemeMode
 import top.yukonga.miuix.kmp.theme.LocalContentColor
 import top.yukonga.miuix.kmp.theme.MiuixTheme

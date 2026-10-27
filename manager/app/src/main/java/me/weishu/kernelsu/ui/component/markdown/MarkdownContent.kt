@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.ui.component.markdown
+package me.weishu.k10ernelsu.ui.component.markdown
 
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.animateFloatAsState
@@ -19,8 +19,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.unit.dp
-import me.weishu.kernelsu.ui.LocalUiMode
-import me.weishu.kernelsu.ui.UiMode
+import me.weishu.k10ernelsu.ui.LocalUiMode
+import me.weishu.k10ernelsu.ui.UiMode
 import top.yukonga.miuix.kmp.basic.InfiniteProgressIndicator
 
 @Composable

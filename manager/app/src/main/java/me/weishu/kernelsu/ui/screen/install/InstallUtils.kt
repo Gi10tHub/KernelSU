@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.ui.screen.install
+package me.weishu.k10ernelsu.ui.screen.install
 
 import android.content.Context
 import android.net.Uri
@@ -7,7 +7,7 @@ import android.provider.OpenableColumns
 import androidx.annotation.StringRes
 import kotlinx.parcelize.IgnoredOnParcel
 import kotlinx.parcelize.Parcelize
-import me.weishu.kernelsu.R
+import me.weishu.k10ernelsu.R
 
 @Parcelize
 internal sealed class InstallMethod : Parcelable {

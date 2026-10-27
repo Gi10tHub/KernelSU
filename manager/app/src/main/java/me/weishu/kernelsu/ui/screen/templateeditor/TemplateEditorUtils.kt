@@ -1,10 +1,10 @@
-package me.weishu.kernelsu.ui.screen.templateeditor
+package me.weishu.k10ernelsu.ui.screen.templateeditor
 
-import me.weishu.kernelsu.Natives
-import me.weishu.kernelsu.data.model.TemplateInfo
-import me.weishu.kernelsu.toRawFlags
-import me.weishu.kernelsu.ui.util.getAppProfileTemplate
-import me.weishu.kernelsu.ui.util.setAppProfileTemplate
+import me.weishu.k10ernelsu.Natives
+import me.weishu.k10ernelsu.data.model.TemplateInfo
+import me.weishu.k10ernelsu.toRawFlags
+import me.weishu.k10ernelsu.ui.util.getAppProfileTemplate
+import me.weishu.k10ernelsu.ui.util.setAppProfileTemplate
 
 fun toNativeProfile(templateInfo: TemplateInfo): Natives.Profile {
     val allFlags = Natives.Profile.RootProfileFlag.entries

@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.ui.component
+package me.weishu.k10ernelsu.ui.component
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect

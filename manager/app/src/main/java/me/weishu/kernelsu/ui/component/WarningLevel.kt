@@ -1,3 +1,3 @@
-package me.weishu.kernelsu.ui.component
+package me.weishu.k10ernelsu.ui.component
 
 enum class WarningLevel { Error, Notice }

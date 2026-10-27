@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.magica;
+package me.weishu.k10ernelsu.magica;
 
 import android.app.ZygotePreload;
 import android.content.pm.ApplicationInfo;

@@ -1,6 +1,6 @@
 // Adapted from compose-miuix-ui example (IosLiquidGlassNavigationBar) — Apache 2.0.
 
-package me.weishu.kernelsu.ui.component
+package me.weishu.k10ernelsu.ui.component
 
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.EaseOut
@@ -63,14 +63,14 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.util.fastCoerceIn
 import androidx.compose.ui.util.lerp
 import kotlinx.coroutines.launch
-import me.weishu.kernelsu.ui.component.liquid.InnerShadow
-import me.weishu.kernelsu.ui.component.liquid.innerShadow
-import me.weishu.kernelsu.ui.component.liquid.lens
-import me.weishu.kernelsu.ui.component.liquid.rememberCombinedBackdrop
-import me.weishu.kernelsu.ui.component.liquid.vibrancy
-import me.weishu.kernelsu.ui.component.miuix.animation.DampedDragAnimation
-import me.weishu.kernelsu.ui.component.miuix.animation.InteractiveHighlight
-import me.weishu.kernelsu.ui.theme.isInDarkTheme
+import me.weishu.k10ernelsu.ui.component.liquid.InnerShadow
+import me.weishu.k10ernelsu.ui.component.liquid.innerShadow
+import me.weishu.k10ernelsu.ui.component.liquid.lens
+import me.weishu.k10ernelsu.ui.component.liquid.rememberCombinedBackdrop
+import me.weishu.k10ernelsu.ui.component.liquid.vibrancy
+import me.weishu.k10ernelsu.ui.component.miuix.animation.DampedDragAnimation
+import me.weishu.k10ernelsu.ui.component.miuix.animation.InteractiveHighlight
+import me.weishu.k10ernelsu.ui.theme.isInDarkTheme
 import top.yukonga.miuix.kmp.blur.Backdrop
 import top.yukonga.miuix.kmp.blur.blur
 import top.yukonga.miuix.kmp.blur.drawBackdrop

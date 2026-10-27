@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.ui.screen.sulog
+package me.weishu.k10ernelsu.ui.screen.sulog
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -64,19 +64,19 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import me.weishu.kernelsu.R
-import me.weishu.kernelsu.ui.component.ScrollToTopOnChange
-import me.weishu.kernelsu.ui.component.material.ExpressiveScaffold
-import me.weishu.kernelsu.ui.component.material.SearchAppBar
-import me.weishu.kernelsu.ui.component.material.SegmentedColumn
-import me.weishu.kernelsu.ui.component.material.SegmentedDropdownItem
-import me.weishu.kernelsu.ui.component.material.SegmentedItem
-import me.weishu.kernelsu.ui.component.material.SegmentedListItem
-import me.weishu.kernelsu.ui.component.material.TonalCard
-import me.weishu.kernelsu.ui.component.material.TopBarBackButton
-import me.weishu.kernelsu.ui.component.statustag.StatusTag
-import me.weishu.kernelsu.ui.util.SulogEntry
-import me.weishu.kernelsu.ui.util.SulogEventFilter
+import me.weishu.k10ernelsu.R
+import me.weishu.k10ernelsu.ui.component.ScrollToTopOnChange
+import me.weishu.k10ernelsu.ui.component.material.ExpressiveScaffold
+import me.weishu.k10ernelsu.ui.component.material.SearchAppBar
+import me.weishu.k10ernelsu.ui.component.material.SegmentedColumn
+import me.weishu.k10ernelsu.ui.component.material.SegmentedDropdownItem
+import me.weishu.k10ernelsu.ui.component.material.SegmentedItem
+import me.weishu.k10ernelsu.ui.component.material.SegmentedListItem
+import me.weishu.k10ernelsu.ui.component.material.TonalCard
+import me.weishu.k10ernelsu.ui.component.material.TopBarBackButton
+import me.weishu.k10ernelsu.ui.component.statustag.StatusTag
+import me.weishu.k10ernelsu.ui.util.SulogEntry
+import me.weishu.k10ernelsu.ui.util.SulogEventFilter
 
 @Composable
 fun SulogScreenMaterial(

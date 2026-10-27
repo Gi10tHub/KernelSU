@@ -1,14 +1,14 @@
-package me.weishu.kernelsu.ui.component.bottombar
+package me.weishu.k10ernelsu.ui.component.bottombar
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import me.weishu.kernelsu.Natives
-import me.weishu.kernelsu.R
-import me.weishu.kernelsu.data.repository.SettingsRepositoryImpl
-import me.weishu.kernelsu.ui.LocalMainPagerState
+import me.weishu.k10ernelsu.Natives
+import me.weishu.k10ernelsu.R
+import me.weishu.k10ernelsu.data.repository.SettingsRepositoryImpl
+import me.weishu.k10ernelsu.ui.LocalMainPagerState
 import top.yukonga.miuix.kmp.basic.NavigationRail
 import top.yukonga.miuix.kmp.basic.NavigationRailItem
 import top.yukonga.miuix.kmp.basic.NavigationRailValue

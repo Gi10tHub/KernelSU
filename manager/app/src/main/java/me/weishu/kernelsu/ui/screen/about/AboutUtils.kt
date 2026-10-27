@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.ui.screen.about
+package me.weishu.k10ernelsu.ui.screen.about
 
 import android.text.Html
 import android.text.Spanned

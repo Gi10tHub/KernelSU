@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.ui.webui
+package me.weishu.k10ernelsu.ui.webui
 
 import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.MaterialTheme
@@ -7,8 +7,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import me.weishu.kernelsu.ui.LocalUiMode
-import me.weishu.kernelsu.ui.UiMode
+import me.weishu.k10ernelsu.ui.LocalUiMode
+import me.weishu.k10ernelsu.ui.UiMode
 import top.yukonga.miuix.kmp.theme.MiuixTheme
 import java.util.concurrent.atomic.AtomicReference
 

@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.ui.webui
+package me.weishu.k10ernelsu.ui.webui
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -19,12 +19,12 @@ import android.webkit.WebViewClient
 import androidx.webkit.WebViewAssetLoader
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import me.weishu.kernelsu.R
-import me.weishu.kernelsu.data.repository.ModuleRepositoryImpl
-import me.weishu.kernelsu.ui.util.AppIconCache
-import me.weishu.kernelsu.ui.util.createRootShell
-import me.weishu.kernelsu.ui.util.withMainUserUid
-import me.weishu.kernelsu.ui.viewmodel.SuperUserViewModel
+import me.weishu.k10ernelsu.R
+import me.weishu.k10ernelsu.data.repository.ModuleRepositoryImpl
+import me.weishu.k10ernelsu.ui.util.AppIconCache
+import me.weishu.k10ernelsu.ui.util.createRootShell
+import me.weishu.k10ernelsu.ui.util.withMainUserUid
+import me.weishu.k10ernelsu.ui.viewmodel.SuperUserViewModel
 import java.io.File
 
 fun Activity.setTaskDescription(label: String) {

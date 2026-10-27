@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.ui.util
+package me.weishu.k10ernelsu.ui.util
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -23,14 +23,14 @@ import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.launch
-import me.weishu.kernelsu.R
-import me.weishu.kernelsu.data.registry.DownloadVerificationException
-import me.weishu.kernelsu.data.registry.ExpectedFile
-import me.weishu.kernelsu.data.registry.RegistryDownloadStore
-import me.weishu.kernelsu.data.registry.RegistryUrls
-import me.weishu.kernelsu.data.repository.SettingsRepositoryImpl
-import me.weishu.kernelsu.ksuApp
-import me.weishu.kernelsu.ui.MainActivity
+import me.weishu.k10ernelsu.R
+import me.weishu.k10ernelsu.data.registry.DownloadVerificationException
+import me.weishu.k10ernelsu.data.registry.ExpectedFile
+import me.weishu.k10ernelsu.data.registry.RegistryDownloadStore
+import me.weishu.k10ernelsu.data.registry.RegistryUrls
+import me.weishu.k10ernelsu.data.repository.SettingsRepositoryImpl
+import me.weishu.k10ernelsu.ksuApp
+import me.weishu.k10ernelsu.ui.MainActivity
 import okhttp3.Call
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -42,10 +42,10 @@ class DownloadService : Service() {
 
     companion object {
         const val CHANNEL_ID = "download_channel"
-        const val ACTION_DOWNLOAD = "me.weishu.kernelsu.action.DOWNLOAD"
-        const val ACTION_CANCEL = "me.weishu.kernelsu.action.CANCEL_DOWNLOAD"
-        const val ACTION_DISMISS_DOWNLOAD = "me.weishu.kernelsu.action.DISMISS_DOWNLOAD"
-        const val ACTION_INSTALL_MODULE = "me.weishu.kernelsu.action.INSTALL_MODULE"
+        const val ACTION_DOWNLOAD = "me.weishu.k10ernelsu.action.DOWNLOAD"
+        const val ACTION_CANCEL = "me.weishu.k10ernelsu.action.CANCEL_DOWNLOAD"
+        const val ACTION_DISMISS_DOWNLOAD = "me.weishu.k10ernelsu.action.DISMISS_DOWNLOAD"
+        const val ACTION_INSTALL_MODULE = "me.weishu.k10ernelsu.action.INSTALL_MODULE"
         const val EXTRA_URL = "url"
         const val EXTRA_TOKEN = "token"
         const val EXTRA_FILE_NAME = "fileName"

@@ -6,6 +6,7 @@
 #define KERNELSU_KSU_H
 
 #include <cstdint>
+#include <string>
 #include <sys/ioctl.h>
 #include <sys/prctl.h>
 #include <utility>
@@ -32,6 +33,8 @@ bool is_manager();
 
 bool is_pr_build();
 
+std::string get_kernel_info_diagnostics();
+
 using p_key_t = char[KSU_MAX_PACKAGE_NAME];
 
 bool set_app_profile(const app_profile *profile);
@@ -55,12 +58,6 @@ bool is_selinux_hide_enabled();
 
 bool get_allow_list(struct ksu_new_get_allow_list_cmd *);
 
-inline std::pair<int, int> legacy_get_info() {
-    int32_t version = -1;
-    int32_t flags = 0;
-    int32_t result = 0;
-    prctl(0xDEADBEEF, 2, &version, &flags, &result);
-    return {version, flags};
-}
+std::pair<int, int> legacy_get_info();
 
 #endif //KERNELSU_KSU_H

@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.ui.component.material
+package me.weishu.k10ernelsu.ui.component.material
 
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.material3.MaterialTheme

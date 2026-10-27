@@ -1,8 +1,8 @@
-package me.weishu.kernelsu.data.repository
+package me.weishu.k10ernelsu.data.repository
 
-import me.weishu.kernelsu.data.model.RepoModuleDetail
-import me.weishu.kernelsu.data.model.RepoModuleList
-import me.weishu.kernelsu.data.registry.UpdateVerification
+import me.weishu.k10ernelsu.data.model.RepoModuleDetail
+import me.weishu.k10ernelsu.data.model.RepoModuleList
+import me.weishu.k10ernelsu.data.registry.UpdateVerification
 
 interface ModuleRepoRepository {
     /** Index + module list; falls back to the last complete cached copy on failure. */
@@ -10,7 +10,7 @@ interface ModuleRepoRepository {
 
     /**
      * Detail (and readme) of a module in the current index. Fails with
-     * [me.weishu.kernelsu.data.registry.ModuleNotInIndexException] if it is not listed.
+     * [me.weishu.k10ernelsu.data.registry.ModuleNotInIndexException] if it is not listed.
      */
     suspend fun fetchDetail(moduleId: String): Result<RepoModuleDetail>
 

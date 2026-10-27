@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.ui.screen.home
+package me.weishu.k10ernelsu.ui.screen.home
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.expandVertically
@@ -60,18 +60,18 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import me.weishu.kernelsu.KernelVersion
-import me.weishu.kernelsu.Natives
-import me.weishu.kernelsu.R
-import me.weishu.kernelsu.ui.component.WarningLevel
-import me.weishu.kernelsu.ui.component.dialog.rememberConfirmDialog
-import me.weishu.kernelsu.ui.component.material.ExpressiveScaffold
-import me.weishu.kernelsu.ui.component.material.SegmentedColumn
-import me.weishu.kernelsu.ui.component.material.SegmentedListItem
-import me.weishu.kernelsu.ui.component.material.TonalCard
-import me.weishu.kernelsu.ui.component.material.expressiveTopAppBarColors
-import me.weishu.kernelsu.ui.component.rebootlistpopup.RebootListPopup
-import me.weishu.kernelsu.ui.component.statustag.StatusTag
+import me.weishu.k10ernelsu.KernelVersion
+import me.weishu.k10ernelsu.Natives
+import me.weishu.k10ernelsu.R
+import me.weishu.k10ernelsu.ui.component.WarningLevel
+import me.weishu.k10ernelsu.ui.component.dialog.rememberConfirmDialog
+import me.weishu.k10ernelsu.ui.component.material.ExpressiveScaffold
+import me.weishu.k10ernelsu.ui.component.material.SegmentedColumn
+import me.weishu.k10ernelsu.ui.component.material.SegmentedListItem
+import me.weishu.k10ernelsu.ui.component.material.TonalCard
+import me.weishu.k10ernelsu.ui.component.material.expressiveTopAppBarColors
+import me.weishu.k10ernelsu.ui.component.rebootlistpopup.RebootListPopup
+import me.weishu.k10ernelsu.ui.component.statustag.StatusTag
 
 @Composable
 fun HomePagerMaterial(
@@ -222,6 +222,11 @@ private fun StatusCard(
             notInstalled -> stringResource(R.string.home_click_to_install)
             else -> stringResource(R.string.home_unsupported_reason)
         }
+        val statusDetails = if (notInstalled) {
+            listOfNotNull(statusSummary, state.kernelInfoDiagnostics).joinToString("\n")
+        } else {
+            statusSummary
+        }
         val workingMode = if (ksuActive) {
             when (state.lkmMode) {
                 null -> ""
@@ -273,7 +278,7 @@ private fun StatusCard(
                 supportingContent = {
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         Text(
-                            text = statusSummary,
+                            text = statusDetails,
                             modifier = Modifier.weight(1f, fill = false),
                             style = MaterialTheme.typography.bodyMedium
                         )
@@ -601,9 +606,10 @@ private fun previewHomeScreenState(
     isSafeMode = isSafeMode,
     isLateLoadMode = isLateLoadMode,
     checkUpdateEnabled = false,
-    latestVersionInfo = me.weishu.kernelsu.ui.util.module.LatestVersionInfo(),
+    latestVersionInfo = me.weishu.k10ernelsu.ui.util.module.LatestVersionInfo(),
     currentManagerVersionCode = 10000,
     systemInfo = previewSystemInfo.copy(selinuxStatus = selinuxStatus),
     kernelUAPIVersion = 1,
+    kernelInfoDiagnostics = null,
     managerUAPIVersion = 1,
 )

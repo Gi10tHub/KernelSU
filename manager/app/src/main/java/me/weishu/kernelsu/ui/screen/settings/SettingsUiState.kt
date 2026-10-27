@@ -1,9 +1,9 @@
-package me.weishu.kernelsu.ui.screen.settings
+package me.weishu.k10ernelsu.ui.screen.settings
 
 import androidx.compose.runtime.Immutable
 import com.materialkolor.PaletteStyle
 import com.materialkolor.dynamiccolor.ColorSpec
-import me.weishu.kernelsu.ui.UiMode
+import me.weishu.k10ernelsu.ui.UiMode
 
 @Immutable
 data class SettingsUiState(

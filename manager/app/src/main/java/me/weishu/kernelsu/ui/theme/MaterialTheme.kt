@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.ui.theme
+package me.weishu.k10ernelsu.ui.theme
 
 import android.app.Activity
 import androidx.compose.foundation.isSystemInDarkTheme
@@ -9,7 +9,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.core.view.WindowInsetsControllerCompat
-import me.weishu.kernelsu.ui.webui.MonetColorsProvider
+import me.weishu.k10ernelsu.ui.webui.MonetColorsProvider
 
 @Composable
 fun MaterialKernelSUTheme(

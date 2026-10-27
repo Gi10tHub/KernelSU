@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.ui.screen.superuser
+package me.weishu.k10ernelsu.ui.screen.superuser
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -11,12 +11,12 @@ import androidx.lifecycle.compose.LifecycleResumeEffect
 import androidx.compose.ui.unit.Dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
-import me.weishu.kernelsu.ui.component.SearchStatus
-import me.weishu.kernelsu.ui.LocalUiMode
-import me.weishu.kernelsu.ui.UiMode
-import me.weishu.kernelsu.ui.navigation3.Navigator
-import me.weishu.kernelsu.ui.navigation3.Route
-import me.weishu.kernelsu.ui.viewmodel.SuperUserViewModel
+import me.weishu.k10ernelsu.ui.component.SearchStatus
+import me.weishu.k10ernelsu.ui.LocalUiMode
+import me.weishu.k10ernelsu.ui.UiMode
+import me.weishu.k10ernelsu.ui.navigation3.Navigator
+import me.weishu.k10ernelsu.ui.navigation3.Route
+import me.weishu.k10ernelsu.ui.viewmodel.SuperUserViewModel
 
 @Composable
 fun SuperUserPager(

@@ -1,8 +1,8 @@
-package me.weishu.kernelsu.ui.screen.home
+package me.weishu.k10ernelsu.ui.screen.home
 
 import androidx.compose.runtime.Immutable
-import me.weishu.kernelsu.KernelVersion
-import me.weishu.kernelsu.ui.util.module.LatestVersionInfo
+import me.weishu.k10ernelsu.KernelVersion
+import me.weishu.k10ernelsu.ui.util.module.LatestVersionInfo
 
 @Immutable
 data class HomeUiState(
@@ -10,6 +10,7 @@ data class HomeUiState(
     val ksuVersion: Int?,
     val managerUAPIVersion: Int,
     val kernelUAPIVersion: Int?,
+    val kernelInfoDiagnostics: String?,
     val lkmMode: Boolean?,
     val isLkmBundled: Boolean,
     val isManager: Boolean,

@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.ui.component.profile
+package me.weishu.k10ernelsu.ui.component.profile
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.runtime.Composable
@@ -9,9 +9,9 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import me.weishu.kernelsu.Natives
-import me.weishu.kernelsu.R
-import me.weishu.kernelsu.ui.component.miuix.EditText
+import me.weishu.k10ernelsu.Natives
+import me.weishu.k10ernelsu.R
+import me.weishu.k10ernelsu.ui.component.miuix.EditText
 import top.yukonga.miuix.kmp.preference.SwitchPreference
 
 @Composable

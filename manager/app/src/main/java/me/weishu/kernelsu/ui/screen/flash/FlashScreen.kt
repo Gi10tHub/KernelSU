@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.ui.screen.flash
+package me.weishu.k10ernelsu.ui.screen.flash
 
 import android.widget.Toast
 import androidx.compose.material3.SnackbarHostState
@@ -18,13 +18,13 @@ import androidx.navigationevent.compose.rememberNavigationEventState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import me.weishu.kernelsu.Natives
-import me.weishu.kernelsu.R
-import me.weishu.kernelsu.data.repository.isSoftRebootPreferred
-import me.weishu.kernelsu.ui.LocalUiMode
-import me.weishu.kernelsu.ui.UiMode
-import me.weishu.kernelsu.ui.navigation3.LocalNavigator
-import me.weishu.kernelsu.ui.util.reboot
+import me.weishu.k10ernelsu.Natives
+import me.weishu.k10ernelsu.R
+import me.weishu.k10ernelsu.data.repository.isSoftRebootPreferred
+import me.weishu.k10ernelsu.ui.LocalUiMode
+import me.weishu.k10ernelsu.ui.UiMode
+import me.weishu.k10ernelsu.ui.navigation3.LocalNavigator
+import me.weishu.k10ernelsu.ui.util.reboot
 
 @Composable
 fun FlashScreen(flashIt: FlashIt, onBackEnabledChange: (Boolean) -> Unit) {

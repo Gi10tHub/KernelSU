@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package me.weishu.kernelsu.ui.webui;
+package me.weishu.k10ernelsu.ui.webui;
 
 import java.net.URLConnection;
 

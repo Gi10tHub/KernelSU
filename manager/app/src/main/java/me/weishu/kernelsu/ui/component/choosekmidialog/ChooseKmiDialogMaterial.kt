@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.ui.component.choosekmidialog
+package me.weishu.k10ernelsu.ui.component.choosekmidialog
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -14,11 +14,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import me.weishu.kernelsu.R
-import me.weishu.kernelsu.ui.component.material.SegmentedColumn
-import me.weishu.kernelsu.ui.component.material.SegmentedRadioItem
-import me.weishu.kernelsu.ui.util.getCurrentKmi
-import me.weishu.kernelsu.ui.util.getSupportedKmis
+import me.weishu.k10ernelsu.R
+import me.weishu.k10ernelsu.ui.component.material.SegmentedColumn
+import me.weishu.k10ernelsu.ui.component.material.SegmentedRadioItem
+import me.weishu.k10ernelsu.ui.util.getCurrentKmi
+import me.weishu.k10ernelsu.ui.util.getSupportedKmis
 
 @Composable
 fun ChooseKmiDialogMaterial(

@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.ui.component.rebootlistpopup
+package me.weishu.k10ernelsu.ui.component.rebootlistpopup
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
@@ -6,9 +6,9 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import me.weishu.kernelsu.R
-import me.weishu.kernelsu.ui.component.KsuIsValid
-import me.weishu.kernelsu.ui.component.ListPopupDefaults
+import me.weishu.k10ernelsu.R
+import me.weishu.k10ernelsu.ui.component.KsuIsValid
+import me.weishu.k10ernelsu.ui.component.ListPopupDefaults
 import top.yukonga.miuix.kmp.basic.Icon
 import top.yukonga.miuix.kmp.basic.IconButton
 import top.yukonga.miuix.kmp.basic.ListPopupColumn
@@ -71,7 +71,7 @@ fun RebootDropdownItem(
     index: Int,
     onReboot: (String) -> Unit,
 ) {
-    me.weishu.kernelsu.ui.component.miuix.DropdownItem(
+    me.weishu.k10ernelsu.ui.component.miuix.DropdownItem(
         text = stringResource(option.labelRes),
         optionSize = optionSize,
         onSelectedIndexChange = {

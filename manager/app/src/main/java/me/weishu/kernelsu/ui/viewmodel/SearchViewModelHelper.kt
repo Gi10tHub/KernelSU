@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.ui.viewmodel
+package me.weishu.k10ernelsu.ui.viewmodel
 
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.FlowPreview
@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
-import me.weishu.kernelsu.ui.component.SearchStatus
+import me.weishu.k10ernelsu.ui.component.SearchStatus
 import kotlin.time.Duration.Companion.milliseconds
 
 private const val SEARCH_DEBOUNCE_MILLIS = 150L

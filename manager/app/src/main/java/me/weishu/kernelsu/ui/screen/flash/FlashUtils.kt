@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.ui.screen.flash
+package me.weishu.k10ernelsu.ui.screen.flash
 
 import android.net.Uri
 import android.os.Environment
@@ -28,14 +28,14 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlinx.parcelize.Parcelize
-import me.weishu.kernelsu.R
-import me.weishu.kernelsu.ui.util.FlashResult
-import me.weishu.kernelsu.ui.util.LkmSelection
-import me.weishu.kernelsu.ui.util.downloadBoot
-import me.weishu.kernelsu.ui.util.flashModule
-import me.weishu.kernelsu.ui.util.installBoot
-import me.weishu.kernelsu.ui.util.restoreBoot
-import me.weishu.kernelsu.ui.util.uninstallPermanently
+import me.weishu.k10ernelsu.R
+import me.weishu.k10ernelsu.ui.util.FlashResult
+import me.weishu.k10ernelsu.ui.util.LkmSelection
+import me.weishu.k10ernelsu.ui.util.downloadBoot
+import me.weishu.k10ernelsu.ui.util.flashModule
+import me.weishu.k10ernelsu.ui.util.installBoot
+import me.weishu.k10ernelsu.ui.util.restoreBoot
+import me.weishu.k10ernelsu.ui.util.uninstallPermanently
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.Date

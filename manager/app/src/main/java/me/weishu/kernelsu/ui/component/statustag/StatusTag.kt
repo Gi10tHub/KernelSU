@@ -1,10 +1,10 @@
-package me.weishu.kernelsu.ui.component.statustag
+package me.weishu.k10ernelsu.ui.component.statustag
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import me.weishu.kernelsu.ui.LocalUiMode
-import me.weishu.kernelsu.ui.UiMode
+import me.weishu.k10ernelsu.ui.LocalUiMode
+import me.weishu.k10ernelsu.ui.UiMode
 
 @Composable
 fun StatusTag(

@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.ui.screen.templateeditor
+package me.weishu.k10ernelsu.ui.screen.templateeditor
 
 import android.widget.Toast
 import androidx.compose.runtime.Composable
@@ -10,14 +10,14 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.compose.dropUnlessResumed
-import me.weishu.kernelsu.R
-import me.weishu.kernelsu.toOrdinalList
-import me.weishu.kernelsu.toRootProfileFlags
-import me.weishu.kernelsu.ui.LocalUiMode
-import me.weishu.kernelsu.ui.UiMode
-import me.weishu.kernelsu.ui.navigation3.LocalNavigator
-import me.weishu.kernelsu.ui.util.deleteAppProfileTemplate
-import me.weishu.kernelsu.ui.viewmodel.TemplateViewModel
+import me.weishu.k10ernelsu.R
+import me.weishu.k10ernelsu.toOrdinalList
+import me.weishu.k10ernelsu.toRootProfileFlags
+import me.weishu.k10ernelsu.ui.LocalUiMode
+import me.weishu.k10ernelsu.ui.UiMode
+import me.weishu.k10ernelsu.ui.navigation3.LocalNavigator
+import me.weishu.k10ernelsu.ui.util.deleteAppProfileTemplate
+import me.weishu.k10ernelsu.ui.viewmodel.TemplateViewModel
 
 @Composable
 fun TemplateEditorScreen(template: TemplateViewModel.TemplateInfo, readOnly: Boolean) {

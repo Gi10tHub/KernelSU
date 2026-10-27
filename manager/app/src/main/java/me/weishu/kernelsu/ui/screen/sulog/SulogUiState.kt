@@ -1,8 +1,8 @@
-package me.weishu.kernelsu.ui.screen.sulog
+package me.weishu.k10ernelsu.ui.screen.sulog
 
-import me.weishu.kernelsu.ui.util.SulogEntry
-import me.weishu.kernelsu.ui.util.SulogEventFilter
-import me.weishu.kernelsu.ui.util.SulogFile
+import me.weishu.k10ernelsu.ui.util.SulogEntry
+import me.weishu.k10ernelsu.ui.util.SulogEventFilter
+import me.weishu.k10ernelsu.ui.util.SulogFile
 
 data class SulogScreenState(
     val isLoading: Boolean = true,

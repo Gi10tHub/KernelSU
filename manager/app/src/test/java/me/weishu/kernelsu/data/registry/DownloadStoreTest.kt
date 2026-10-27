@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.data.registry
+package me.weishu.k10ernelsu.data.registry
 
 import org.junit.Assert.assertArrayEquals
 import org.junit.Assert.assertEquals

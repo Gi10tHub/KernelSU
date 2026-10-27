@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.ui.screen.settings
+package me.weishu.k10ernelsu.ui.screen.settings
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -47,18 +47,18 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import me.weishu.kernelsu.R
-import me.weishu.kernelsu.ui.UiMode
-import me.weishu.kernelsu.ui.component.KsuIsValid
-import me.weishu.kernelsu.ui.component.material.ExpressiveScaffold
-import me.weishu.kernelsu.ui.component.material.SegmentedColumn
-import me.weishu.kernelsu.ui.component.material.SegmentedDropdownItem
-import me.weishu.kernelsu.ui.component.material.SegmentedListItem
-import me.weishu.kernelsu.ui.component.material.SegmentedSwitchItem
-import me.weishu.kernelsu.ui.component.material.SendLogBottomSheet
-import me.weishu.kernelsu.ui.component.material.SnackBarHost
-import me.weishu.kernelsu.ui.component.material.expressiveTopAppBarColors
-import me.weishu.kernelsu.ui.component.uninstalldialog.UninstallDialog
+import me.weishu.k10ernelsu.R
+import me.weishu.k10ernelsu.ui.UiMode
+import me.weishu.k10ernelsu.ui.component.KsuIsValid
+import me.weishu.k10ernelsu.ui.component.material.ExpressiveScaffold
+import me.weishu.k10ernelsu.ui.component.material.SegmentedColumn
+import me.weishu.k10ernelsu.ui.component.material.SegmentedDropdownItem
+import me.weishu.k10ernelsu.ui.component.material.SegmentedListItem
+import me.weishu.k10ernelsu.ui.component.material.SegmentedSwitchItem
+import me.weishu.k10ernelsu.ui.component.material.SendLogBottomSheet
+import me.weishu.k10ernelsu.ui.component.material.SnackBarHost
+import me.weishu.k10ernelsu.ui.component.material.expressiveTopAppBarColors
+import me.weishu.k10ernelsu.ui.component.uninstalldialog.UninstallDialog
 
 /**
  * @author weishu

@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.data.repository
+package me.weishu.k10ernelsu.data.repository
 
 interface SettingsRepository {
     var uiMode: String
@@ -22,7 +22,7 @@ interface SettingsRepository {
     var enableWebDebugging: Boolean
     var moduleSortEnabledFirst: Boolean
     var moduleSortActionFirst: Boolean
-    /** Name of the [me.weishu.kernelsu.ui.screen.modulerepo.RepoSort] entry. */
+    /** Name of the [me.weishu.k10ernelsu.ui.screen.modulerepo.RepoSort] entry. */
     var moduleRepoSortOrder: String
     var superuserShowSystemApps: Boolean
     var superuserShowOnlyPrimaryUserApps: Boolean

@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.ui.component.material
+package me.weishu.k10ernelsu.ui.component.material
 
 import android.content.Context
 import android.content.ContextWrapper
@@ -41,10 +41,10 @@ import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import me.weishu.kernelsu.BuildConfig
-import me.weishu.kernelsu.R
-import me.weishu.kernelsu.ui.component.dialog.rememberLoadingDialog
-import me.weishu.kernelsu.ui.util.getBugreportFile
+import me.weishu.k10ernelsu.BuildConfig
+import me.weishu.k10ernelsu.R
+import me.weishu.k10ernelsu.ui.component.dialog.rememberLoadingDialog
+import me.weishu.k10ernelsu.ui.util.getBugreportFile
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 

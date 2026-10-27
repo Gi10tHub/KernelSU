@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.ui.webui
+package me.weishu.k10ernelsu.ui.webui
 
 import android.app.Activity
 import android.content.Intent
@@ -10,7 +10,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import com.topjohnwu.superuser.Shell
-import me.weishu.kernelsu.R
+import me.weishu.k10ernelsu.R
 
 sealed class WebUIEvent {
     data object Loading : WebUIEvent()

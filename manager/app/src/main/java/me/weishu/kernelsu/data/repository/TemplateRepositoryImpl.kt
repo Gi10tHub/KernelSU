@@ -1,13 +1,13 @@
-package me.weishu.kernelsu.data.repository
+package me.weishu.k10ernelsu.data.repository
 
 import android.util.Log
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import me.weishu.kernelsu.data.model.TemplateInfo
-import me.weishu.kernelsu.ksuApp
-import me.weishu.kernelsu.ui.util.getAppProfileTemplate
-import me.weishu.kernelsu.ui.util.listAppProfileTemplates
-import me.weishu.kernelsu.ui.util.setAppProfileTemplate
+import me.weishu.k10ernelsu.data.model.TemplateInfo
+import me.weishu.k10ernelsu.ksuApp
+import me.weishu.k10ernelsu.ui.util.getAppProfileTemplate
+import me.weishu.k10ernelsu.ui.util.listAppProfileTemplates
+import me.weishu.k10ernelsu.ui.util.setAppProfileTemplate
 import okhttp3.Request
 import org.json.JSONArray
 import org.json.JSONObject

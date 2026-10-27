@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.ui.screen.appprofile
+package me.weishu.k10ernelsu.ui.screen.appprofile
 
 import android.widget.Toast
 import androidx.compose.material3.SnackbarHostState
@@ -16,19 +16,19 @@ import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.compose.dropUnlessResumed
 import androidx.lifecycle.viewmodel.compose.viewModel
 import kotlinx.coroutines.launch
-import me.weishu.kernelsu.Natives
-import me.weishu.kernelsu.R
-import me.weishu.kernelsu.ui.LocalUiMode
-import me.weishu.kernelsu.ui.UiMode
-import me.weishu.kernelsu.ui.navigation3.LocalNavigator
-import me.weishu.kernelsu.ui.navigation3.Route
-import me.weishu.kernelsu.ui.util.forceStopApp
-import me.weishu.kernelsu.ui.util.getSepolicy
-import me.weishu.kernelsu.ui.util.launchApp
-import me.weishu.kernelsu.ui.util.restartApp
-import me.weishu.kernelsu.ui.util.setSepolicy
-import me.weishu.kernelsu.ui.viewmodel.SuperUserViewModel
-import me.weishu.kernelsu.ui.viewmodel.getTemplateInfoById
+import me.weishu.k10ernelsu.Natives
+import me.weishu.k10ernelsu.R
+import me.weishu.k10ernelsu.ui.LocalUiMode
+import me.weishu.k10ernelsu.ui.UiMode
+import me.weishu.k10ernelsu.ui.navigation3.LocalNavigator
+import me.weishu.k10ernelsu.ui.navigation3.Route
+import me.weishu.k10ernelsu.ui.util.forceStopApp
+import me.weishu.k10ernelsu.ui.util.getSepolicy
+import me.weishu.k10ernelsu.ui.util.launchApp
+import me.weishu.k10ernelsu.ui.util.restartApp
+import me.weishu.k10ernelsu.ui.util.setSepolicy
+import me.weishu.k10ernelsu.ui.viewmodel.SuperUserViewModel
+import me.weishu.k10ernelsu.ui.viewmodel.getTemplateInfoById
 
 @Composable
 fun AppProfileScreen(uid: Int) {

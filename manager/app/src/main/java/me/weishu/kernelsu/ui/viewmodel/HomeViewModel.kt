@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.ui.viewmodel
+package me.weishu.k10ernelsu.ui.viewmodel
 
 import android.os.Build
 import android.system.Os
@@ -11,20 +11,20 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import me.weishu.kernelsu.BuildConfig
-import me.weishu.kernelsu.Natives
-import me.weishu.kernelsu.data.repository.SettingsRepository
-import me.weishu.kernelsu.data.repository.SettingsRepositoryImpl
-import me.weishu.kernelsu.getKernelVersion
-import me.weishu.kernelsu.ksuApp
-import me.weishu.kernelsu.ui.screen.home.HomeUiState
-import me.weishu.kernelsu.ui.screen.home.SystemInfo
-import me.weishu.kernelsu.ui.screen.home.getManagerVersion
-import me.weishu.kernelsu.ui.util.checkNewVersion
-import me.weishu.kernelsu.ui.util.getSELinuxStatusRaw
-import me.weishu.kernelsu.ui.util.module.LatestVersionInfo
-import me.weishu.kernelsu.ui.util.resolveDeviceName
-import me.weishu.kernelsu.ui.util.rootAvailable
+import me.weishu.k10ernelsu.BuildConfig
+import me.weishu.k10ernelsu.Natives
+import me.weishu.k10ernelsu.data.repository.SettingsRepository
+import me.weishu.k10ernelsu.data.repository.SettingsRepositoryImpl
+import me.weishu.k10ernelsu.getKernelVersion
+import me.weishu.k10ernelsu.ksuApp
+import me.weishu.k10ernelsu.ui.screen.home.HomeUiState
+import me.weishu.k10ernelsu.ui.screen.home.SystemInfo
+import me.weishu.k10ernelsu.ui.screen.home.getManagerVersion
+import me.weishu.k10ernelsu.ui.util.checkNewVersion
+import me.weishu.k10ernelsu.ui.util.getSELinuxStatusRaw
+import me.weishu.k10ernelsu.ui.util.module.LatestVersionInfo
+import me.weishu.k10ernelsu.ui.util.resolveDeviceName
+import me.weishu.k10ernelsu.ui.util.rootAvailable
 
 class HomeViewModel(
     private val settingsRepo: SettingsRepository = SettingsRepositoryImpl()
@@ -65,6 +65,7 @@ class HomeViewModel(
             requiresNewKernel = isManager && Natives.managerUAPIVersion > Natives.kernelUAPIVersion,
             requiresNewManager = isManager && Natives.managerUAPIVersion < Natives.kernelUAPIVersion,
             kernelUAPIVersion = kernelUAPIVersion,
+            kernelInfoDiagnostics = if (isManager) null else Natives.kernelInfoDiagnostics,
             managerUAPIVersion = managerUAPIVersion,
             isRootAvailable = isRootAvailable,
             isSafeMode = Natives.isSafeMode,

@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.profile
+package me.weishu.k10ernelsu.profile
 
 /**
  * @author weishu

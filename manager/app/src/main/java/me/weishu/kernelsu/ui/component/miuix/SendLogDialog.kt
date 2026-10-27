@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.ui.component.miuix
+package me.weishu.k10ernelsu.ui.component.miuix
 
 import android.content.Intent
 import android.net.Uri
@@ -24,10 +24,10 @@ import androidx.core.content.FileProvider
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import me.weishu.kernelsu.BuildConfig
-import me.weishu.kernelsu.R
-import me.weishu.kernelsu.ui.component.dialog.LoadingDialogHandle
-import me.weishu.kernelsu.ui.util.getBugreportFile
+import me.weishu.k10ernelsu.BuildConfig
+import me.weishu.k10ernelsu.R
+import me.weishu.k10ernelsu.ui.component.dialog.LoadingDialogHandle
+import me.weishu.k10ernelsu.ui.util.getBugreportFile
 import top.yukonga.miuix.kmp.basic.Icon
 import top.yukonga.miuix.kmp.basic.Text
 import top.yukonga.miuix.kmp.basic.TextButton

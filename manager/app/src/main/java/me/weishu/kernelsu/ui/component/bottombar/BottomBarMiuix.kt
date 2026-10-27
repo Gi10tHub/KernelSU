@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.ui.component.bottombar
+package me.weishu.k10ernelsu.ui.component.bottombar
 
 import androidx.annotation.StringRes
 import androidx.compose.foundation.gestures.detectTapGestures
@@ -21,14 +21,14 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import me.weishu.kernelsu.Natives
-import me.weishu.kernelsu.R
-import me.weishu.kernelsu.ui.LocalMainPagerState
-import me.weishu.kernelsu.ui.component.FloatingBottomBar
-import me.weishu.kernelsu.ui.component.FloatingBottomBarItem
-import me.weishu.kernelsu.ui.theme.LocalEnableFloatingBottomBar
-import me.weishu.kernelsu.ui.theme.LocalEnableFloatingBottomBarBlur
-import me.weishu.kernelsu.ui.util.BlurredBar
+import me.weishu.k10ernelsu.Natives
+import me.weishu.k10ernelsu.R
+import me.weishu.k10ernelsu.ui.LocalMainPagerState
+import me.weishu.k10ernelsu.ui.component.FloatingBottomBar
+import me.weishu.k10ernelsu.ui.component.FloatingBottomBarItem
+import me.weishu.k10ernelsu.ui.theme.LocalEnableFloatingBottomBar
+import me.weishu.k10ernelsu.ui.theme.LocalEnableFloatingBottomBarBlur
+import me.weishu.k10ernelsu.ui.util.BlurredBar
 import top.yukonga.miuix.kmp.basic.Badge
 import top.yukonga.miuix.kmp.basic.BadgedBox
 import top.yukonga.miuix.kmp.basic.Icon

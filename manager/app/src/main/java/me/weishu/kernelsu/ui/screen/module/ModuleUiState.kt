@@ -1,11 +1,11 @@
-package me.weishu.kernelsu.ui.screen.module
+package me.weishu.k10ernelsu.ui.screen.module
 
 import android.net.Uri
 import androidx.compose.runtime.Immutable
-import me.weishu.kernelsu.data.registry.ExpectedFile
-import me.weishu.kernelsu.data.model.Module
-import me.weishu.kernelsu.data.model.ModuleUpdateInfo
-import me.weishu.kernelsu.ui.component.SearchStatus
+import me.weishu.k10ernelsu.data.registry.ExpectedFile
+import me.weishu.k10ernelsu.data.model.Module
+import me.weishu.k10ernelsu.data.model.ModuleUpdateInfo
+import me.weishu.k10ernelsu.ui.component.SearchStatus
 
 sealed interface ModuleConfirmRequest {
     data class Update(

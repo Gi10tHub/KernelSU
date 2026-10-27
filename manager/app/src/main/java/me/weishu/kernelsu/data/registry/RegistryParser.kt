@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.data.registry
+package me.weishu.k10ernelsu.data.registry
 
 import kotlinx.serialization.SerializationException
 import kotlinx.serialization.json.Json

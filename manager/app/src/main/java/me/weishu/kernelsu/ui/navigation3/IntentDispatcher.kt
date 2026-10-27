@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.ui.navigation3
+package me.weishu.k10ernelsu.ui.navigation3
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -15,15 +15,15 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalResources
 import androidx.core.net.toUri
 import kotlinx.coroutines.channels.ReceiveChannel
-import me.weishu.kernelsu.Natives
-import me.weishu.kernelsu.R
-import me.weishu.kernelsu.data.repository.SettingsRepositoryImpl
-import me.weishu.kernelsu.ksuApp
-import me.weishu.kernelsu.ui.component.dialog.rememberConfirmDialog
-import me.weishu.kernelsu.ui.screen.flash.FlashIt
-import me.weishu.kernelsu.ui.util.DownloadService
-import me.weishu.kernelsu.ui.util.getFileName
-import me.weishu.kernelsu.ui.webui.WebUIActivity
+import me.weishu.k10ernelsu.Natives
+import me.weishu.k10ernelsu.R
+import me.weishu.k10ernelsu.data.repository.SettingsRepositoryImpl
+import me.weishu.k10ernelsu.ksuApp
+import me.weishu.k10ernelsu.ui.component.dialog.rememberConfirmDialog
+import me.weishu.k10ernelsu.ui.screen.flash.FlashIt
+import me.weishu.k10ernelsu.ui.util.DownloadService
+import me.weishu.k10ernelsu.ui.util.getFileName
+import me.weishu.k10ernelsu.ui.webui.WebUIActivity
 
 private const val SCHEME_KSU = "ksu"
 private const val HOST_ACTION = "action"

@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.ui.screen.settings
+package me.weishu.k10ernelsu.ui.screen.settings
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Spacer
@@ -40,15 +40,15 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import me.weishu.kernelsu.R
-import me.weishu.kernelsu.ui.UiMode
-import me.weishu.kernelsu.ui.component.KsuIsValid
-import me.weishu.kernelsu.ui.component.dialog.rememberLoadingDialog
-import me.weishu.kernelsu.ui.component.miuix.SendLogDialog
-import me.weishu.kernelsu.ui.component.uninstalldialog.UninstallDialog
-import me.weishu.kernelsu.ui.theme.LocalEnableBlur
-import me.weishu.kernelsu.ui.util.BlurredBar
-import me.weishu.kernelsu.ui.util.rememberBlurBackdrop
+import me.weishu.k10ernelsu.R
+import me.weishu.k10ernelsu.ui.UiMode
+import me.weishu.k10ernelsu.ui.component.KsuIsValid
+import me.weishu.k10ernelsu.ui.component.dialog.rememberLoadingDialog
+import me.weishu.k10ernelsu.ui.component.miuix.SendLogDialog
+import me.weishu.k10ernelsu.ui.component.uninstalldialog.UninstallDialog
+import me.weishu.k10ernelsu.ui.theme.LocalEnableBlur
+import me.weishu.k10ernelsu.ui.util.BlurredBar
+import me.weishu.k10ernelsu.ui.util.rememberBlurBackdrop
 import top.yukonga.miuix.kmp.basic.Card
 import top.yukonga.miuix.kmp.basic.Icon
 import top.yukonga.miuix.kmp.basic.MiuixScrollBehavior

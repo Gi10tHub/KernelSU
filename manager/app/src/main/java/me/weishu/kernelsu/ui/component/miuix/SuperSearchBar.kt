@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.ui.component.miuix
+package me.weishu.k10ernelsu.ui.component.miuix
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.FastOutSlowInEasing
@@ -67,7 +67,7 @@ import androidx.compose.ui.zIndex
 import androidx.navigationevent.NavigationEventInfo
 import androidx.navigationevent.compose.NavigationBackHandler
 import androidx.navigationevent.compose.rememberNavigationEventState
-import me.weishu.kernelsu.ui.component.SearchStatus
+import me.weishu.k10ernelsu.ui.component.SearchStatus
 import top.yukonga.miuix.kmp.basic.Icon
 import top.yukonga.miuix.kmp.basic.InputField
 import top.yukonga.miuix.kmp.basic.Text

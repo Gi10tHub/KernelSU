@@ -1,8 +1,8 @@
-package me.weishu.kernelsu.ui.screen.templateeditor
+package me.weishu.k10ernelsu.ui.screen.templateeditor
 
 import androidx.compose.runtime.Immutable
-import me.weishu.kernelsu.Natives
-import me.weishu.kernelsu.data.model.TemplateInfo
+import me.weishu.k10ernelsu.Natives
+import me.weishu.k10ernelsu.data.model.TemplateInfo
 
 @Immutable
 data class TemplateEditorUiState(

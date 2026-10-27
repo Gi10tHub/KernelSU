@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.ui.component.bottombar
+package me.weishu.k10ernelsu.ui.component.bottombar
 
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.WindowInsetsSides
@@ -26,9 +26,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
-import me.weishu.kernelsu.Natives
-import me.weishu.kernelsu.R
-import me.weishu.kernelsu.ui.LocalMainPagerState
+import me.weishu.k10ernelsu.Natives
+import me.weishu.k10ernelsu.R
+import me.weishu.k10ernelsu.ui.LocalMainPagerState
 
 @Composable
 fun BottomBarMaterial(navigationBadge: NavigationBadgeState) {

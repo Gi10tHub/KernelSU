@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.ui.component
+package me.weishu.k10ernelsu.ui.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box

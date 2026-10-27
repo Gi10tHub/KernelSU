@@ -1,4 +1,4 @@
-package me.weishu.kernelsu.ui.screen.modulerepo
+package me.weishu.k10ernelsu.ui.screen.modulerepo
 
 import android.content.Context
 import android.graphics.BitmapFactory
@@ -30,22 +30,22 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import me.weishu.kernelsu.R
-import me.weishu.kernelsu.data.model.RepoRelease
-import me.weishu.kernelsu.data.registry.DownloadVerificationException
-import me.weishu.kernelsu.data.registry.ExpectedFile
-import me.weishu.kernelsu.data.registry.RegistryUrls
-import me.weishu.kernelsu.ksuApp
-import me.weishu.kernelsu.ui.LocalUiMode
-import me.weishu.kernelsu.ui.UiMode
-import me.weishu.kernelsu.ui.navigation3.LocalNavigator
-import me.weishu.kernelsu.ui.navigation3.Route
-import me.weishu.kernelsu.ui.screen.flash.FlashIt
-import me.weishu.kernelsu.ui.util.DownloadManager
-import me.weishu.kernelsu.ui.util.download
-import me.weishu.kernelsu.ui.viewmodel.ModuleRepoDetailViewModel
-import me.weishu.kernelsu.ui.viewmodel.ModuleRepoViewModel
-import me.weishu.kernelsu.ui.viewmodel.ModuleViewModel
+import me.weishu.k10ernelsu.R
+import me.weishu.k10ernelsu.data.model.RepoRelease
+import me.weishu.k10ernelsu.data.registry.DownloadVerificationException
+import me.weishu.k10ernelsu.data.registry.ExpectedFile
+import me.weishu.k10ernelsu.data.registry.RegistryUrls
+import me.weishu.k10ernelsu.ksuApp
+import me.weishu.k10ernelsu.ui.LocalUiMode
+import me.weishu.k10ernelsu.ui.UiMode
+import me.weishu.k10ernelsu.ui.navigation3.LocalNavigator
+import me.weishu.k10ernelsu.ui.navigation3.Route
+import me.weishu.k10ernelsu.ui.screen.flash.FlashIt
+import me.weishu.k10ernelsu.ui.util.DownloadManager
+import me.weishu.k10ernelsu.ui.util.download
+import me.weishu.k10ernelsu.ui.viewmodel.ModuleRepoDetailViewModel
+import me.weishu.k10ernelsu.ui.viewmodel.ModuleRepoViewModel
+import me.weishu.k10ernelsu.ui.viewmodel.ModuleViewModel
 import okhttp3.Request
 import java.util.Locale
 
