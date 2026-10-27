@@ -8,6 +8,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.SystemBarStyle
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
@@ -105,7 +106,12 @@ import top.yukonga.miuix.kmp.blur.rememberLayerBackdrop
 import top.yukonga.miuix.kmp.nav.core.NavDisplay
 import top.yukonga.miuix.kmp.nav.core.NavDisplayEffects
 import top.yukonga.miuix.kmp.nav.core.rememberNavSystemCornerRadius
+import top.yukonga.miuix.kmp.nav.transition.NavMotion
+import top.yukonga.miuix.kmp.nav.transition.NavSettleSpec
 import top.yukonga.miuix.kmp.nav.transition.NavSwipeDirection
+import top.yukonga.miuix.kmp.nav.transition.NavTransition
+import top.yukonga.miuix.kmp.nav.transition.NavTransitions
+import top.yukonga.miuix.kmp.nav.transition.navGraphicsTransition
 import top.yukonga.miuix.kmp.theme.MiuixTheme
 import top.yukonga.miuix.kmp.utils.PagerGestureNestedScrollConnection
 import top.yukonga.miuix.kmp.utils.PagerInterceptionMode
@@ -199,6 +205,11 @@ class MainActivity : ComponentActivity() {
                     val navDisplay = @Composable {
                         NavDisplay(
                             backStack = navigator.backStack,
+                            transition = if (uiState.compactDashboardMode) {
+                                CompactDashboardTransition
+                            } else {
+                                NavTransitions.MiuixDefault
+                            },
                             effects = NavDisplayEffects(cornerClipRadius = rememberNavSystemCornerRadius()),
                             onBack = {
                                 when (val top = navigator.current()) {
@@ -284,6 +295,24 @@ class MainActivity : ComponentActivity() {
 
 val LocalMainPagerState = staticCompositionLocalOf<MainPagerState> { error("LocalMainPagerState not provided") }
 
+private val CompactDashboardTransition: NavTransition = navGraphicsTransition(
+    motion = NavMotion(
+        commit = NavSettleSpec.Tween(durationMillis = 120, easing = FastOutSlowInEasing),
+        cancel = NavSettleSpec.Tween(durationMillis = 120, easing = FastOutSlowInEasing),
+        programmatic = NavSettleSpec.Tween(durationMillis = 150, easing = FastOutSlowInEasing),
+    ),
+) { scope ->
+    val depth = scope.relativeDepth
+    val progress = (if (depth <= 0f) {
+        1f + depth.coerceAtLeast(-1f)
+    } else {
+        1f - depth.coerceAtMost(1f)
+    }).coerceIn(0f, 1f)
+    alpha = progress
+    scaleX = 0.96f + 0.04f * progress
+    scaleY = 0.96f + 0.04f * progress
+}
+
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun MainScreen(
@@ -297,7 +326,10 @@ fun MainScreen(
     val enableFloatingBottomBar = LocalEnableFloatingBottomBar.current
     val enableFloatingBottomBarBlur = LocalEnableFloatingBottomBarBlur.current
     val useNavigationRail = !compactDashboardMode && useNavigationRail(enableFloatingBottomBar)
-    val pagerState = rememberPagerState(initialPage = initialPage, pageCount = { MainPagerConfig.PAGE_COUNT })
+    val pagerState = rememberPagerState(
+        initialPage = if (compactDashboardMode) 0 else initialPage,
+        pageCount = { if (compactDashboardMode) 1 else MainPagerConfig.PAGE_COUNT },
+    )
     val mainPagerState = rememberMainPagerState(
         pagerState = pagerState,
         animatePageChanges = !useNavigationRail,
@@ -308,7 +340,7 @@ fun MainScreen(
     }
     val interceptPagerGestures = pagerMode == PagerInterceptionMode.CrossAxisInterceptor
     var userScrollEnabled by remember(isFullFeatured) { mutableStateOf(isFullFeatured) }
-    val pagerScrollEnabled = userScrollEnabled && !compactDashboardMode
+    val pagerScrollEnabled = !compactDashboardMode && userScrollEnabled
 
     val enableNavigationBadge = LocalEnableNavigationBadge.current
     val badgeEnabled = enableNavigationBadge && isFullFeatured
