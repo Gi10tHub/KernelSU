@@ -192,11 +192,12 @@ fun HomePagerMiuix(
                                         Icon(
                                             imageVector = Icons.Filled.Security,
                                             contentDescription = null,
-                                            tint = colorScheme.primary,
+                                            tint = colorScheme.onSurface,
                                         )
                                         Text(
                                             text = stringResource(R.string.superuser),
                                             modifier = Modifier.padding(start = 8.dp),
+                                            color = colorScheme.onSurface,
                                         )
                                     }
                                 }
@@ -214,11 +215,12 @@ fun HomePagerMiuix(
                                         Icon(
                                             imageVector = Icons.Filled.Extension,
                                             contentDescription = null,
-                                            tint = colorScheme.primary,
+                                            tint = colorScheme.onSurface,
                                         )
                                         Text(
                                             text = stringResource(R.string.module),
                                             modifier = Modifier.padding(start = 8.dp),
+                                            color = colorScheme.onSurface,
                                         )
                                     }
                                 }

@@ -80,9 +80,27 @@ fun HomePager(
                 }
             }
         },
-        onOpenSettings = { mainPagerState.animateToPage(3) },
-        onOpenSuperuser = { mainPagerState.animateToPage(1) },
-        onOpenModules = { mainPagerState.animateToPage(2) },
+        onOpenSettings = {
+            if (compactDashboardMode) {
+                navigator.push(Route.Settings)
+            } else {
+                mainPagerState.animateToPage(3)
+            }
+        },
+        onOpenSuperuser = {
+            if (compactDashboardMode) {
+                navigator.push(Route.SuperUser)
+            } else {
+                mainPagerState.animateToPage(1)
+            }
+        },
+        onOpenModules = {
+            if (compactDashboardMode) {
+                navigator.push(Route.Module)
+            } else {
+                mainPagerState.animateToPage(2)
+            }
+        },
     )
 
     when (LocalUiMode.current) {

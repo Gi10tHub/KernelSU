@@ -237,9 +237,27 @@ class MainActivity : ComponentActivity() {
                                 )
                             }
                             entry<Route.Home>(swipeDismiss = swipeDismiss) { mainScreenEntry() }
-                            entry<Route.SuperUser>(swipeDismiss = swipeDismiss) { mainScreenEntry() }
-                            entry<Route.Module>(swipeDismiss = swipeDismiss) { mainScreenEntry() }
-                            entry<Route.Settings>(swipeDismiss = swipeDismiss) { mainScreenEntry() }
+                            entry<Route.SuperUser>(swipeDismiss = swipeDismiss) {
+                                if (uiState.compactDashboardMode) {
+                                    SuperUserPager(navigator, 0.dp)
+                                } else {
+                                    mainScreenEntry()
+                                }
+                            }
+                            entry<Route.Module>(swipeDismiss = swipeDismiss) {
+                                if (uiState.compactDashboardMode) {
+                                    ModulePager(0.dp)
+                                } else {
+                                    mainScreenEntry()
+                                }
+                            }
+                            entry<Route.Settings>(swipeDismiss = swipeDismiss) {
+                                if (uiState.compactDashboardMode) {
+                                    SettingPager(navigator, 0.dp)
+                                } else {
+                                    mainScreenEntry()
+                                }
+                            }
                         }
                     }
 
@@ -369,7 +387,8 @@ fun MainScreen(
 
     LaunchedEffect(compactDashboardMode) {
         if (compactDashboardMode) {
-            mainPagerState.animateToPage(0)
+            mainPagerState.pagerState.scrollToPage(0)
+            mainPagerState.syncPage()
         }
     }
 

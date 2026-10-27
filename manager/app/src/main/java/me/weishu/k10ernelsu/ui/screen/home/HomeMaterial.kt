@@ -148,21 +148,43 @@ fun HomePagerMaterial(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.spacedBy(12.dp),
                 ) {
-                    Button(
-                        onClick = actions.onOpenSuperuser,
-                        modifier = Modifier.weight(1f),
-                    ) {
-                        Icon(Icons.Filled.Security, contentDescription = null)
-                        Spacer(Modifier.width(8.dp))
-                        Text(stringResource(R.string.superuser))
+                    SegmentedColumn(modifier = Modifier.weight(1f)) {
+                        item {
+                            SegmentedListItem(
+                                onClick = actions.onOpenSuperuser,
+                                headlineContent = {
+                                    Text(
+                                        text = stringResource(R.string.superuser),
+                                        style = MaterialTheme.typography.bodyLarge,
+                                    )
+                                },
+                                leadingContent = {
+                                    Icon(
+                                        imageVector = Icons.Filled.Security,
+                                        contentDescription = null,
+                                    )
+                                },
+                            )
+                        }
                     }
-                    Button(
-                        onClick = actions.onOpenModules,
-                        modifier = Modifier.weight(1f),
-                    ) {
-                        Icon(Icons.Filled.Extension, contentDescription = null)
-                        Spacer(Modifier.width(8.dp))
-                        Text(stringResource(R.string.module))
+                    SegmentedColumn(modifier = Modifier.weight(1f)) {
+                        item {
+                            SegmentedListItem(
+                                onClick = actions.onOpenModules,
+                                headlineContent = {
+                                    Text(
+                                        text = stringResource(R.string.module),
+                                        style = MaterialTheme.typography.bodyLarge,
+                                    )
+                                },
+                                leadingContent = {
+                                    Icon(
+                                        imageVector = Icons.Filled.Extension,
+                                        contentDescription = null,
+                                    )
+                                },
+                            )
+                        }
                     }
                 }
             }
