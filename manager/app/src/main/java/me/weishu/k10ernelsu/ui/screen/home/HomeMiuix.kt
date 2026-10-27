@@ -98,7 +98,7 @@ fun HomePagerMiuix(
     bottomInnerPadding: Dp,
     compactDashboardMode: Boolean = false,
 ) {
-    val scrollBehavior = MiuixScrollBehavior()
+    val scrollBehavior = if (compactDashboardMode) null else MiuixScrollBehavior()
     val enableBlur = LocalEnableBlur.current
     val backdrop = rememberBlurBackdrop(enableBlur)
     val blurActive = backdrop != null
@@ -122,7 +122,10 @@ fun HomePagerMiuix(
                     .fillMaxHeight()
                     .scrollEndHaptic()
                     .overScrollVertical()
-                    .nestedScroll(scrollBehavior.nestedScrollConnection)
+                    .then(
+                        if (scrollBehavior == null) Modifier
+                        else Modifier.nestedScroll(scrollBehavior.nestedScrollConnection)
+                    )
                     .padding(horizontal = 12.dp),
                 contentPadding = innerPadding,
                 overscrollEffect = null,
@@ -283,7 +286,7 @@ private fun UpdateCard(
 
 @Composable
 private fun TopBar(
-    scrollBehavior: ScrollBehavior,
+    scrollBehavior: ScrollBehavior?,
     backdrop: LayerBackdrop?,
     barColor: Color,
     compactDashboardMode: Boolean = false,

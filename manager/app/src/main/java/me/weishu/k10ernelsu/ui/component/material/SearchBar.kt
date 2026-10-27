@@ -33,6 +33,7 @@ import androidx.compose.material3.SearchBarDefaults
 import androidx.compose.material3.SearchBarValue
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Surface
+import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarScrollBehavior
 import androidx.compose.material3.rememberContainedSearchBarState
 import androidx.compose.runtime.Composable
@@ -55,6 +56,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
+import me.weishu.k10ernelsu.ui.LocalCompactDashboardMode
 
 @Composable
 fun SearchAppBar(
@@ -70,6 +72,7 @@ fun SearchAppBar(
     searchContent: @Composable BoxScope.(bottomPadding: Dp, closeSearch: () -> Unit) -> Unit = { _, _ -> }
 ) {
     val keyboardController = LocalSoftwareKeyboardController.current
+    val compactDashboardMode = LocalCompactDashboardMode.current
     val focusManager = LocalFocusManager.current
     val scaledDensity = LocalDensity.current
     val interactionSource = remember { MutableInteractionSource() }
@@ -183,14 +186,24 @@ fun SearchAppBar(
         Column(
             modifier = Modifier.fillMaxWidth()
         ) {
-            LargeFlexibleTopAppBar(
-                title = title,
-                colors = expressiveTopAppBarColors(),
-                navigationIcon = { if (navigationIcon != null) navigationIcon() },
-                actions = { if (actions != null) actions() },
-                windowInsets = WindowInsets.safeDrawing.only(WindowInsetsSides.Top + WindowInsetsSides.Horizontal),
-                scrollBehavior = scrollBehavior
-            )
+            if (compactDashboardMode) {
+                TopAppBar(
+                    title = title,
+                    colors = expressiveTopAppBarColors(),
+                    navigationIcon = { if (navigationIcon != null) navigationIcon() },
+                    actions = { if (actions != null) actions() },
+                    windowInsets = WindowInsets.safeDrawing.only(WindowInsetsSides.Top + WindowInsetsSides.Horizontal),
+                )
+            } else {
+                LargeFlexibleTopAppBar(
+                    title = title,
+                    colors = expressiveTopAppBarColors(),
+                    navigationIcon = { if (navigationIcon != null) navigationIcon() },
+                    actions = { if (actions != null) actions() },
+                    windowInsets = WindowInsets.safeDrawing.only(WindowInsetsSides.Top + WindowInsetsSides.Horizontal),
+                    scrollBehavior = scrollBehavior
+                )
+            }
 
             SearchBar(
                 modifier = Modifier

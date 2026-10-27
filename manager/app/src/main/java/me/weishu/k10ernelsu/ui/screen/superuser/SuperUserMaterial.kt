@@ -63,6 +63,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import me.weishu.k10ernelsu.R
 import me.weishu.k10ernelsu.data.model.AppInfo
+import me.weishu.k10ernelsu.ui.LocalCompactDashboardMode
 import me.weishu.k10ernelsu.ui.component.AppIconImage
 import me.weishu.k10ernelsu.ui.component.ScrollToTopOnChange
 import me.weishu.k10ernelsu.ui.component.material.ExpressiveScaffold
@@ -80,7 +81,17 @@ fun SuperUserPagerMaterial(
     actions: SuperUserActions,
     bottomInnerPadding: Dp,
 ) {
-    val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior(rememberTopAppBarState())
+    val compactDashboardMode = LocalCompactDashboardMode.current
+    val scrollBehavior = if (compactDashboardMode) {
+        null
+    } else {
+        TopAppBarDefaults.exitUntilCollapsedScrollBehavior(rememberTopAppBarState())
+    }
+    val scrollModifier = if (scrollBehavior == null) {
+        Modifier
+    } else {
+        Modifier.nestedScroll(scrollBehavior.nestedScrollConnection)
+    }
     val listState = rememberLazyListState()
     val searchListState = rememberLazyListState()
     val refreshTick = remember { mutableIntStateOf(0) }
@@ -252,7 +263,7 @@ fun SuperUserPagerMaterial(
                         state = searchListState,
                         modifier = Modifier
                             .fillMaxSize()
-                            .nestedScroll(scrollBehavior.nestedScrollConnection),
+                            .then(scrollModifier),
                         verticalArrangement = Arrangement.spacedBy(2.dp),
                         contentPadding = PaddingValues(
                             start = 16.dp,
@@ -286,7 +297,7 @@ fun SuperUserPagerMaterial(
                         state = searchListState,
                         modifier = Modifier
                             .fillMaxSize()
-                            .nestedScroll(scrollBehavior.nestedScrollConnection),
+                            .then(scrollModifier),
                         verticalArrangement = Arrangement.spacedBy(2.dp),
                         contentPadding = PaddingValues(
                             start = 16.dp,
@@ -346,7 +357,7 @@ fun SuperUserPagerMaterial(
                 state = listState,
                 modifier = Modifier
                     .fillMaxSize()
-                    .nestedScroll(scrollBehavior.nestedScrollConnection),
+                    .then(scrollModifier),
                 verticalArrangement = Arrangement.spacedBy(2.dp),
                 contentPadding = PaddingValues(
                     start = 16.dp,

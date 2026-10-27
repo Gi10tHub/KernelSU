@@ -103,6 +103,7 @@ import me.weishu.k10ernelsu.R
 import me.weishu.k10ernelsu.data.model.Module
 import me.weishu.k10ernelsu.data.model.ModuleUpdateInfo
 import me.weishu.k10ernelsu.data.repository.isSoftRebootPreferred
+import me.weishu.k10ernelsu.ui.LocalCompactDashboardMode
 import me.weishu.k10ernelsu.ui.component.ListPopupDefaults
 import me.weishu.k10ernelsu.ui.component.ObserveAsEvents
 import me.weishu.k10ernelsu.ui.component.ScrollToTopOnChange
@@ -190,9 +191,10 @@ fun ModulePagerMiuix(
         onDismiss = actions.onDismissConfirmRequest,
     )
 
-    val scrollBehavior = MiuixScrollBehavior()
-    val dynamicTopPadding by remember {
-        derivedStateOf { 12.dp * (1f - scrollBehavior.state.collapsedFraction) }
+    val compactDashboardMode = LocalCompactDashboardMode.current
+    val scrollBehavior = if (compactDashboardMode) null else MiuixScrollBehavior()
+    val dynamicTopPadding by remember(compactDashboardMode, scrollBehavior) {
+        derivedStateOf { 12.dp * (1f - (scrollBehavior?.state?.collapsedFraction ?: 0f)) }
     }
 
     val shortcutState = rememberModuleShortcutState(context)
@@ -533,7 +535,10 @@ fun ModulePagerMiuix(
                                 .fillMaxHeight()
                                 .scrollEndHaptic()
                                 .overScrollVertical()
-                                .nestedScroll(scrollBehavior.nestedScrollConnection),
+                                .then(
+                                    if (scrollBehavior == null) Modifier
+                                    else Modifier.nestedScroll(scrollBehavior.nestedScrollConnection)
+                                ),
                             modules = modules,
                             updateInfoMap = uiState.updateInfo,
                             actions = actions,

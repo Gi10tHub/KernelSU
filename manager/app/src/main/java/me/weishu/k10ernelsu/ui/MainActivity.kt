@@ -277,6 +277,7 @@ class MainActivity : ComponentActivity() {
 }
 
 val LocalMainPagerState = staticCompositionLocalOf<MainPagerState> { error("LocalMainPagerState not provided") }
+val LocalCompactDashboardMode = staticCompositionLocalOf { false }
 
 private val CompactDashboardTransition: NavTransition = navGraphicsTransition(
     motion = NavMotion(
@@ -424,7 +425,8 @@ fun MainScreen(
     MainScreenBackHandler(mainPagerState, navController, compactDashboardMode)
 
     CompositionLocalProvider(
-        LocalMainPagerState provides mainPagerState
+        LocalMainPagerState provides mainPagerState,
+        LocalCompactDashboardMode provides compactDashboardMode,
     ) {
         val pagerContent = @Composable { bottomInnerPadding: Dp ->
             Box(modifier = if (blurBackdrop != null) Modifier.layerBackdrop(blurBackdrop) else Modifier) {
