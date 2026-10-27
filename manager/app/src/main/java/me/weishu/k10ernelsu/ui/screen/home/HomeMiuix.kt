@@ -31,9 +31,11 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.MenuBook
 import androidx.compose.material.icons.filled.DeveloperBoard
+import androidx.compose.material.icons.filled.Extension
 import androidx.compose.material.icons.filled.FilterList
 import androidx.compose.material.icons.filled.Fingerprint
 import androidx.compose.material.icons.filled.Security
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.Smartphone
 import androidx.compose.material.icons.filled.Tag
 import androidx.compose.material.icons.filled.VolunteerActivism
@@ -72,6 +74,7 @@ import top.yukonga.miuix.kmp.basic.ButtonDefaults
 import top.yukonga.miuix.kmp.basic.Card
 import top.yukonga.miuix.kmp.basic.CardDefaults
 import top.yukonga.miuix.kmp.basic.Icon
+import top.yukonga.miuix.kmp.basic.IconButton
 import top.yukonga.miuix.kmp.basic.MiuixScrollBehavior
 import top.yukonga.miuix.kmp.basic.Scaffold
 import top.yukonga.miuix.kmp.basic.ScrollBehavior
@@ -93,6 +96,7 @@ fun HomePagerMiuix(
     state: HomeUiState,
     actions: HomeActions,
     bottomInnerPadding: Dp,
+    compactDashboardMode: Boolean = false,
 ) {
     val scrollBehavior = MiuixScrollBehavior()
     val enableBlur = LocalEnableBlur.current
@@ -105,6 +109,8 @@ fun HomePagerMiuix(
                 scrollBehavior = scrollBehavior,
                 backdrop = backdrop,
                 barColor = barColor,
+                compactDashboardMode = compactDashboardMode,
+                onOpenSettings = actions.onOpenSettings,
             )
         },
         popupHost = { },
@@ -167,6 +173,57 @@ fun HomePagerMiuix(
                             state = state,
                             actions = actions,
                         )
+                        if (compactDashboardMode) {
+                            Row(
+                                modifier = Modifier.fillMaxWidth(),
+                                horizontalArrangement = Arrangement.spacedBy(12.dp),
+                            ) {
+                                Card(
+                                    modifier = Modifier.weight(1f),
+                                    onClick = actions.onOpenSuperuser,
+                                ) {
+                                    Row(
+                                        modifier = Modifier
+                                            .fillMaxWidth()
+                                            .padding(16.dp),
+                                        horizontalArrangement = Arrangement.Center,
+                                        verticalAlignment = Alignment.CenterVertically,
+                                    ) {
+                                        Icon(
+                                            imageVector = Icons.Filled.Security,
+                                            contentDescription = null,
+                                            tint = colorScheme.primary,
+                                        )
+                                        Text(
+                                            text = stringResource(R.string.superuser),
+                                            modifier = Modifier.padding(start = 8.dp),
+                                        )
+                                    }
+                                }
+                                Card(
+                                    modifier = Modifier.weight(1f),
+                                    onClick = actions.onOpenModules,
+                                ) {
+                                    Row(
+                                        modifier = Modifier
+                                            .fillMaxWidth()
+                                            .padding(16.dp),
+                                        horizontalArrangement = Arrangement.Center,
+                                        verticalAlignment = Alignment.CenterVertically,
+                                    ) {
+                                        Icon(
+                                            imageVector = Icons.Filled.Extension,
+                                            contentDescription = null,
+                                            tint = colorScheme.primary,
+                                        )
+                                        Text(
+                                            text = stringResource(R.string.module),
+                                            modifier = Modifier.padding(start = 8.dp),
+                                        )
+                                    }
+                                }
+                            }
+                        }
                         InfoCard(
                             systemInfo = state.systemInfo,
                             modifier = Modifier.fillMaxWidth(),
@@ -227,12 +284,23 @@ private fun TopBar(
     scrollBehavior: ScrollBehavior,
     backdrop: LayerBackdrop?,
     barColor: Color,
+    compactDashboardMode: Boolean = false,
+    onOpenSettings: () -> Unit = {},
 ) {
     BlurredBar(backdrop) {
         TopAppBar(
             color = barColor,
             title = stringResource(R.string.app_name),
             actions = {
+                if (compactDashboardMode) {
+                    IconButton(onClick = onOpenSettings) {
+                        Icon(
+                            imageVector = Icons.Filled.Settings,
+                            contentDescription = stringResource(R.string.settings),
+                            tint = colorScheme.onBackground,
+                        )
+                    }
+                }
                 RebootListPopupMiuix()
             },
             scrollBehavior = scrollBehavior

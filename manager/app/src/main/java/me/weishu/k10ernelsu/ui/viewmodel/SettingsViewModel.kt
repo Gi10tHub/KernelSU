@@ -44,6 +44,7 @@ class SettingsViewModel(
             val enableFloatingBottomBar = repo.enableFloatingBottomBar
             val enableFloatingBottomBarBlur = repo.enableFloatingBottomBarBlur
             val enableNavigationBadge = repo.enableNavigationBadge
+            val compactDashboardMode = repo.compactDashboardMode
             val pageScale = repo.pageScale
             val moduleDescriptionMaxLines = repo.moduleDescriptionMaxLines
             val enableWebDebugging = repo.enableWebDebugging
@@ -101,6 +102,7 @@ class SettingsViewModel(
                     enableFloatingBottomBar = enableFloatingBottomBar,
                     enableFloatingBottomBarBlur = enableFloatingBottomBarBlur,
                     enableNavigationBadge = enableNavigationBadge,
+                    compactDashboardMode = compactDashboardMode,
                     pageScale = pageScale,
                     moduleDescriptionMaxLines = moduleDescriptionMaxLines,
                     enableWebDebugging = enableWebDebugging,
@@ -244,6 +246,11 @@ class SettingsViewModel(
     fun setEnableNavigationBadge(enabled: Boolean) {
         repo.enableNavigationBadge = enabled
         _uiState.update { it.copy(enableNavigationBadge = enabled) }
+    }
+
+    fun setCompactDashboardMode(enabled: Boolean) {
+        repo.compactDashboardMode = enabled
+        _uiState.update { it.copy(compactDashboardMode = enabled) }
     }
 
     fun setPageScale(scale: Float) {

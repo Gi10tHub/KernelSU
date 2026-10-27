@@ -25,9 +25,11 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material.icons.automirrored.filled.MenuBook
 import androidx.compose.material.icons.filled.DeveloperBoard
+import androidx.compose.material.icons.filled.Extension
 import androidx.compose.material.icons.filled.FilterList
 import androidx.compose.material.icons.filled.Fingerprint
 import androidx.compose.material.icons.filled.Security
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.Smartphone
 import androidx.compose.material.icons.filled.Tag
 import androidx.compose.material.icons.filled.VolunteerActivism
@@ -37,6 +39,7 @@ import androidx.compose.material.icons.rounded.Warning
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.LargeFlexibleTopAppBar
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.ListItemDefaults
@@ -78,11 +81,18 @@ fun HomePagerMaterial(
     state: HomeUiState,
     actions: HomeActions,
     bottomInnerPadding: Dp,
+    compactDashboardMode: Boolean = false,
 ) {
     val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior(rememberTopAppBarState())
 
     ExpressiveScaffold(
-        topBar = { TopBar(scrollBehavior = scrollBehavior) },
+        topBar = {
+            TopBar(
+                scrollBehavior = scrollBehavior,
+                compactDashboardMode = compactDashboardMode,
+                onOpenSettings = actions.onOpenSettings,
+            )
+        },
         contentWindowInsets = WindowInsets.safeDrawing.only(WindowInsetsSides.Top + WindowInsetsSides.Horizontal)
     ) { innerPadding ->
         Column(
@@ -133,6 +143,29 @@ fun HomePagerMaterial(
                 state = state,
                 actions = actions,
             )
+            if (compactDashboardMode) {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.spacedBy(12.dp),
+                ) {
+                    Button(
+                        onClick = actions.onOpenSuperuser,
+                        modifier = Modifier.weight(1f),
+                    ) {
+                        Icon(Icons.Filled.Security, contentDescription = null)
+                        Spacer(Modifier.width(8.dp))
+                        Text(stringResource(R.string.superuser))
+                    }
+                    Button(
+                        onClick = actions.onOpenModules,
+                        modifier = Modifier.weight(1f),
+                    ) {
+                        Icon(Icons.Filled.Extension, contentDescription = null)
+                        Spacer(Modifier.width(8.dp))
+                        Text(stringResource(R.string.module))
+                    }
+                }
+            }
             InfoCard(systemInfo = state.systemInfo)
             SupportLinks(onOpenUrl = actions.onOpenUrl)
             Spacer(
@@ -180,11 +213,23 @@ private fun UpdateCard(
 
 @Composable
 private fun TopBar(
-    scrollBehavior: TopAppBarScrollBehavior? = null
+    scrollBehavior: TopAppBarScrollBehavior? = null,
+    compactDashboardMode: Boolean = false,
+    onOpenSettings: () -> Unit = {},
 ) {
     LargeFlexibleTopAppBar(
         title = { Text(stringResource(R.string.app_name)) },
-        actions = { RebootListPopup() },
+        actions = {
+            if (compactDashboardMode) {
+                IconButton(onClick = onOpenSettings) {
+                    Icon(
+                        imageVector = Icons.Filled.Settings,
+                        contentDescription = stringResource(R.string.settings),
+                    )
+                }
+            }
+            RebootListPopup()
+        },
         colors = expressiveTopAppBarColors(),
         windowInsets = WindowInsets.safeDrawing.only(WindowInsetsSides.Top + WindowInsetsSides.Horizontal),
         scrollBehavior = scrollBehavior

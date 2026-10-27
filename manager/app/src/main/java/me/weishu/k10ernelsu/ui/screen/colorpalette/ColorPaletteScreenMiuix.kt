@@ -415,6 +415,20 @@ fun ColorPaletteScreenMiuix(
                             selectedIndex = uiState.pagerInterceptionMode.coerceIn(0, 2),
                             onSelectedIndexChange = actions.onSetPagerInterceptionMode,
                         )
+                        SwitchPreference(
+                            title = stringResource(id = R.string.settings_compact_dashboard),
+                            summary = stringResource(id = R.string.settings_compact_dashboard_summary),
+                            startAction = {
+                                Icon(
+                                    Icons.Rounded.ViewCarousel,
+                                    modifier = Modifier.padding(end = 6.dp),
+                                    contentDescription = stringResource(id = R.string.settings_compact_dashboard),
+                                    tint = colorScheme.onBackground,
+                                )
+                            },
+                            checked = uiState.compactDashboardMode,
+                            onCheckedChange = actions.onSetCompactDashboardMode,
+                        )
 
                         var sliderValue by remember(uiState.pageScale) { mutableFloatStateOf(uiState.pageScale) }
                         ArrowPreference(

@@ -98,6 +98,10 @@ class SettingsRepositoryImpl : SettingsRepository {
         get() = prefs.getBoolean("enable_navigation_badge", true)
         set(value) = prefs.edit { putBoolean("enable_navigation_badge", value) }
 
+    override var compactDashboardMode: Boolean
+        get() = prefs.getBoolean("compact_dashboard_mode", false)
+        set(value) = prefs.edit { putBoolean("compact_dashboard_mode", value) }
+
     override var navigationRailExpanded: Boolean
         get() = prefs.getBoolean("nav_rail_expanded", false)
         set(value) = prefs.edit { putBoolean("nav_rail_expanded", value) }

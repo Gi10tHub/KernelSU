@@ -173,6 +173,8 @@
     <string name="settings_pager_gesture_native">Default</string>
     <string name="settings_pager_gesture_cross_axis">Cross-axis</string>
     <string name="settings_pager_gesture_ios_like">iOS-like</string>
+    <string name="settings_compact_dashboard">Compact Dashboard Mode</string>
+    <string name="settings_compact_dashboard_summary">Hide bottom navigation, move Settings to the home app bar, and show Superuser and Module shortcuts below the status card.</string>
     <string name="settings_module_check_update">Check for module updates</string>
     <string name="grant_root_failed">Failed to grant Root!</string>
     <string name="home_pr_build_warning">This is a PR debug build. Do NOT use it in production!</string>

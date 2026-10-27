@@ -23,6 +23,7 @@ import kotlinx.coroutines.withContext
 import me.weishu.k10ernelsu.R
 import me.weishu.k10ernelsu.magica.MagicaService
 import me.weishu.k10ernelsu.ui.LocalUiMode
+import me.weishu.k10ernelsu.ui.LocalMainPagerState
 import me.weishu.k10ernelsu.ui.UiMode
 import me.weishu.k10ernelsu.ui.component.dialog.rememberLoadingDialog
 import me.weishu.k10ernelsu.ui.navigation3.Navigator
@@ -35,6 +36,7 @@ fun HomePager(
     navigator: Navigator,
     bottomInnerPadding: Dp,
     isCurrentPage: Boolean = true,
+    compactDashboardMode: Boolean = false,
 ) {
     val viewModel = viewModel<HomeViewModel>()
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
@@ -42,6 +44,7 @@ fun HomePager(
     val context = LocalContext.current
     val loadingDialog = rememberLoadingDialog()
     val scope = rememberCoroutineScope()
+    val mainPagerState = LocalMainPagerState.current
     val latestIsCurrentPage by rememberUpdatedState(isCurrentPage)
     val initialResumeHandled = rememberSaveable { mutableStateOf(false) }
 
@@ -77,6 +80,9 @@ fun HomePager(
                 }
             }
         },
+        onOpenSettings = { mainPagerState.animateToPage(3) },
+        onOpenSuperuser = { mainPagerState.animateToPage(1) },
+        onOpenModules = { mainPagerState.animateToPage(2) },
     )
 
     when (LocalUiMode.current) {
@@ -84,12 +90,14 @@ fun HomePager(
             state = uiState,
             actions = actions,
             bottomInnerPadding = bottomInnerPadding,
+            compactDashboardMode = compactDashboardMode,
         )
 
         UiMode.Material -> HomePagerMaterial(
             state = uiState,
             actions = actions,
             bottomInnerPadding = bottomInnerPadding,
+            compactDashboardMode = compactDashboardMode,
         )
     }
 }

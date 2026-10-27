@@ -332,6 +332,15 @@ fun ColorPaletteScreenMaterial(
                                 onItemSelected = actions.onSetPagerInterceptionMode,
                             )
                         },
+                        {
+                            SegmentedSwitchItem(
+                                icon = Icons.Rounded.ViewCarousel,
+                                title = stringResource(R.string.settings_compact_dashboard),
+                                summary = stringResource(R.string.settings_compact_dashboard_summary),
+                                checked = uiState.compactDashboardMode,
+                                onCheckedChange = actions.onSetCompactDashboardMode,
+                            )
+                        },
                     ),
                 )
             }

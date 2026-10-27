@@ -190,6 +190,7 @@ class MainActivity : ComponentActivity() {
                         MainScreen(
                             initialPage = selectedMainPage,
                             pagerInterceptionMode = uiState.pagerInterceptionMode,
+                            compactDashboardMode = uiState.compactDashboardMode,
                             onPageChanged = viewModel::setSelectedMainPage,
                         )
                     }
@@ -269,13 +270,14 @@ val LocalMainPagerState = staticCompositionLocalOf<MainPagerState> { error("Loca
 fun MainScreen(
     initialPage: Int = 0,
     pagerInterceptionMode: Int = PagerInterceptionMode.CrossAxisInterceptor.ordinal,
+    compactDashboardMode: Boolean = false,
     onPageChanged: (Int) -> Unit = {},
 ) {
     val navController = LocalNavigator.current
     val enableBlur = LocalEnableBlur.current
     val enableFloatingBottomBar = LocalEnableFloatingBottomBar.current
     val enableFloatingBottomBarBlur = LocalEnableFloatingBottomBarBlur.current
-    val useNavigationRail = useNavigationRail(enableFloatingBottomBar)
+    val useNavigationRail = !compactDashboardMode && useNavigationRail(enableFloatingBottomBar)
     val pagerState = rememberPagerState(initialPage = initialPage, pageCount = { MainPagerConfig.PAGE_COUNT })
     val mainPagerState = rememberMainPagerState(
         pagerState = pagerState,
@@ -287,6 +289,7 @@ fun MainScreen(
     }
     val interceptPagerGestures = pagerMode == PagerInterceptionMode.CrossAxisInterceptor
     var userScrollEnabled by remember(isFullFeatured) { mutableStateOf(isFullFeatured) }
+    val pagerScrollEnabled = userScrollEnabled && !compactDashboardMode
 
     val enableNavigationBadge = LocalEnableNavigationBadge.current
     val badgeEnabled = enableNavigationBadge && isFullFeatured
@@ -364,6 +367,12 @@ fun MainScreen(
         mainPagerState.syncPage()
     }
 
+    LaunchedEffect(compactDashboardMode) {
+        if (compactDashboardMode) {
+            mainPagerState.animateToPage(0)
+        }
+    }
+
     MainScreenBackHandler(mainPagerState, navController)
 
     CompositionLocalProvider(
@@ -377,13 +386,19 @@ fun MainScreen(
                         .pagerGestureOverride(
                             pagerState = mainPagerState.pagerState,
                             mode = pagerMode,
-                            enabled = userScrollEnabled,
+                            enabled = pagerScrollEnabled,
                         )
-                        .then(if (enableFloatingBottomBar && enableFloatingBottomBarBlur) Modifier.layerBackdrop(backdrop) else Modifier),
+                        .then(
+                            if (!compactDashboardMode && enableFloatingBottomBar && enableFloatingBottomBarBlur) {
+                                Modifier.layerBackdrop(backdrop)
+                            } else {
+                                Modifier
+                            }
+                        ),
                     state = mainPagerState.pagerState,
                     beyondViewportPageCount = if (contentReady) 3 else 0,
                     overscrollEffect = null,
-                    userScrollEnabled = userScrollEnabled && !interceptPagerGestures,
+                    userScrollEnabled = pagerScrollEnabled && !interceptPagerGestures,
                     pageNestedScrollConnection = if (interceptPagerGestures) {
                         PagerGestureNestedScrollConnection
                     } else {
@@ -399,7 +414,14 @@ fun MainScreen(
                 ) { page ->
                     val isCurrentPage = page == settledPage
                     when (page) {
-                        0 -> if (contentReady || isCurrentPage) HomePager(navController, bottomInnerPadding, isCurrentPage)
+                        0 -> if (contentReady || isCurrentPage) {
+                            HomePager(
+                                navigator = navController,
+                                bottomInnerPadding = bottomInnerPadding,
+                                isCurrentPage = isCurrentPage,
+                                compactDashboardMode = compactDashboardMode,
+                            )
+                        }
                         1 -> if (contentReady || isCurrentPage) SuperUserPager(navController, bottomInnerPadding, isCurrentPage)
                         2 -> if (contentReady || isCurrentPage) ModulePager(bottomInnerPadding, isCurrentPage)
                         3 -> if (contentReady || isCurrentPage) SettingPager(navController, bottomInnerPadding, isCurrentPage)
@@ -408,7 +430,19 @@ fun MainScreen(
             }
         }
 
-        if (useNavigationRail) {
+        if (compactDashboardMode) {
+            when (uiMode) {
+                UiMode.Material -> androidx.compose.material3.Scaffold(
+                    containerColor = MaterialTheme.colorScheme.surfaceContainer
+                ) { innerPadding ->
+                    pagerContent(innerPadding.calculateBottomPadding())
+                }
+
+                UiMode.Miuix -> Scaffold { innerPadding ->
+                    pagerContent(innerPadding.calculateBottomPadding())
+                }
+            }
+        } else if (useNavigationRail) {
             val startInsets = WindowInsets.systemBars.union(WindowInsets.displayCutout)
                 .only(WindowInsetsSides.Start)
             val navBarBottomPadding = WindowInsets.systemBars.asPaddingValues().calculateBottomPadding()
