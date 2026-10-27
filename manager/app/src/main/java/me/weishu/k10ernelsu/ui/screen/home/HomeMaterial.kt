@@ -44,6 +44,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.LargeFlexibleTopAppBar
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.ListItemDefaults
+import androidx.compose.material3.LocalMinimumInteractiveComponentSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -244,19 +245,25 @@ private fun TopBar(
         title = { Text(stringResource(R.string.app_name)) },
         actions = {
             if (compactDashboardMode) {
-                Row(
-                    horizontalArrangement = Arrangement.spacedBy(0.dp),
-                    verticalAlignment = Alignment.CenterVertically,
-                ) {
-                    RebootListPopup(modifier = Modifier.size(40.dp))
-                    IconButton(
-                        modifier = Modifier.size(40.dp),
-                        onClick = onOpenSettings,
+                CompositionLocalProvider(LocalMinimumInteractiveComponentSize provides Dp.Unspecified) {
+                    Row(
+                        horizontalArrangement = Arrangement.spacedBy(0.dp),
+                        verticalAlignment = Alignment.CenterVertically,
                     ) {
-                        Icon(
-                            imageVector = Icons.Filled.Settings,
-                            contentDescription = stringResource(R.string.settings),
+                        RebootListPopup(
+                            modifier = Modifier.size(32.dp),
+                            compact = true,
                         )
+                        IconButton(
+                            modifier = Modifier.size(32.dp),
+                            onClick = onOpenSettings,
+                        ) {
+                            Icon(
+                                imageVector = Icons.Filled.Settings,
+                                contentDescription = stringResource(R.string.settings),
+                                modifier = Modifier.size(22.dp),
+                            )
+                        }
                     }
                 }
             } else {

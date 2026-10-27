@@ -299,15 +299,19 @@ private fun TopBar(
                         horizontalArrangement = Arrangement.spacedBy(0.dp),
                         verticalAlignment = Alignment.CenterVertically,
                     ) {
-                        RebootListPopupMiuix(modifier = Modifier.size(40.dp))
+                        RebootListPopupMiuix(
+                            modifier = Modifier.size(32.dp),
+                            compact = true,
+                        )
                         IconButton(
-                            modifier = Modifier.size(40.dp),
+                            modifier = Modifier.size(32.dp),
                             onClick = onOpenSettings,
                         ) {
                             Icon(
                                 imageVector = Icons.Filled.Settings,
                                 contentDescription = stringResource(R.string.settings),
                                 tint = colorScheme.onBackground,
+                                modifier = Modifier.size(22.dp),
                             )
                         }
                     }

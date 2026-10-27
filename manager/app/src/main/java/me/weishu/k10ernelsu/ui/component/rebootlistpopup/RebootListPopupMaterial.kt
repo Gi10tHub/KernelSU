@@ -1,5 +1,6 @@
 package me.weishu.k10ernelsu.ui.component.rebootlistpopup
 
+import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.PowerSettingsNew
 import androidx.compose.material3.DropdownMenuGroup
@@ -16,6 +17,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
 import me.weishu.k10ernelsu.R
 import me.weishu.k10ernelsu.ui.component.KsuIsValid
 
@@ -33,7 +35,10 @@ fun RebootDropdownItems(onItemClick: (String) -> Unit) {
 }
 
 @Composable
-fun RebootListPopupMaterial(modifier: Modifier = Modifier) {
+fun RebootListPopupMaterial(
+    modifier: Modifier = Modifier,
+    compact: Boolean = false,
+) {
     var expanded by remember { mutableStateOf(false) }
 
     KsuIsValid {
@@ -45,7 +50,8 @@ fun RebootListPopupMaterial(modifier: Modifier = Modifier) {
         ) {
             Icon(
                 imageVector = Icons.Filled.PowerSettingsNew,
-                contentDescription = stringResource(id = R.string.reboot)
+                contentDescription = stringResource(id = R.string.reboot),
+                modifier = if (compact) Modifier.size(22.dp) else Modifier,
             )
         }
 

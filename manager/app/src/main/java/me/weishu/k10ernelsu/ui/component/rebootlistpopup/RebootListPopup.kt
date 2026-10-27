@@ -59,9 +59,12 @@ fun rememberRebootAction(): (String) -> Unit {
 }
 
 @Composable
-fun RebootListPopup(modifier: Modifier = Modifier) {
+fun RebootListPopup(
+    modifier: Modifier = Modifier,
+    compact: Boolean = false,
+) {
     when (LocalUiMode.current) {
-        UiMode.Miuix -> RebootListPopupMiuix(modifier = modifier)
-        UiMode.Material -> RebootListPopupMaterial(modifier = modifier)
+        UiMode.Miuix -> RebootListPopupMiuix(modifier = modifier, compact = compact)
+        UiMode.Material -> RebootListPopupMaterial(modifier = modifier, compact = compact)
     }
 }
