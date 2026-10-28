@@ -16,6 +16,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.WindowInsetsSides
@@ -59,6 +60,7 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.LargeFlexibleTopAppBar
+import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.LoadingIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.MenuDefaults
@@ -98,6 +100,7 @@ import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import me.weishu.k10ernelsu.R
+import me.weishu.k10ernelsu.ui.LocalCompactDashboardMode
 import me.weishu.k10ernelsu.data.model.RepoModule
 import me.weishu.k10ernelsu.data.model.RepoRelease
 import me.weishu.k10ernelsu.ui.component.ScrollToTopOnChange
@@ -133,7 +136,9 @@ fun ModuleRepoScreenMaterial(
     val refreshTick = remember { mutableIntStateOf(0) }
     val pullToRefreshState = rememberPullToRefreshState()
 
-    val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior(rememberTopAppBarState())
+    val compactDashboardMode = LocalCompactDashboardMode.current
+    val scrollBehavior = if (compactDashboardMode) null else
+        TopAppBarDefaults.exitUntilCollapsedScrollBehavior(rememberTopAppBarState())
     val snackbarHostState = remember { SnackbarHostState() }
 
     ExpressiveScaffold(
@@ -277,7 +282,10 @@ fun ModuleRepoScreenMaterial(
                     listState = listState,
                     modifier = Modifier
                         .fillMaxSize()
-                        .nestedScroll(scrollBehavior.nestedScrollConnection),
+                        .then(
+                            if (scrollBehavior == null) Modifier
+                            else Modifier.nestedScroll(scrollBehavior.nestedScrollConnection)
+                        ),
                     onModuleClick = actions.onOpenRepoDetail
                 )
             }
@@ -471,28 +479,38 @@ fun ModuleRepoDetailScreenMaterial(
     var pendingDownload by remember { mutableStateOf<(() -> Unit)?>(null) }
     val confirmDialog = rememberConfirmDialog(onConfirm = { pendingDownload?.invoke() })
 
-    val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior(rememberTopAppBarState())
+    val compactDashboardMode = LocalCompactDashboardMode.current
+    val scrollBehavior = if (compactDashboardMode) null else
+        TopAppBarDefaults.exitUntilCollapsedScrollBehavior(rememberTopAppBarState())
 
     ExpressiveScaffold(
         topBar = {
-            LargeFlexibleTopAppBar(
-                title = { Text(text = state.detail?.module?.moduleName ?: module.moduleName) },
-                navigationIcon = {
-                    TopBarBackButton(onClick = actions.onBack)
-                },
-                actions = {
-                    if (state.webUrl.isNotEmpty()) {
-                        IconButton(onClick = actions.onOpenWebUrl) {
-                            Icon(
-                                imageVector = Icons.AutoMirrored.Outlined.ChromeReaderMode,
-                                contentDescription = null,
-                            )
-                        }
+            val title: @Composable () -> Unit = { Text(text = state.detail?.module?.moduleName ?: module.moduleName) }
+            val navigationIcon: @Composable () -> Unit = {
+                TopBarBackButton(onClick = actions.onBack)
+            }
+            val actionsContent: @Composable RowScope.() -> Unit = {
+                if (state.webUrl.isNotEmpty()) {
+                    IconButton(onClick = actions.onOpenWebUrl) {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Outlined.ChromeReaderMode,
+                            contentDescription = null,
+                        )
                     }
-                },
-                colors = expressiveTopAppBarColors(),
-                scrollBehavior = scrollBehavior
-            )
+                }
+            }
+            val colors = expressiveTopAppBarColors()
+            if (compactDashboardMode) {
+                TopAppBar(title = title, navigationIcon = navigationIcon, actions = actionsContent, colors = colors)
+            } else {
+                LargeFlexibleTopAppBar(
+                    title = title,
+                    navigationIcon = navigationIcon,
+                    actions = actionsContent,
+                    colors = colors,
+                    scrollBehavior = scrollBehavior
+                )
+            }
         },
         contentWindowInsets = WindowInsets.systemBars.add(WindowInsets.displayCutout).only(WindowInsetsSides.Horizontal),
     ) { innerPadding ->
@@ -514,7 +532,7 @@ fun ModuleRepoDetailScreenMaterial(
                     start = innerPadding.calculateStartPadding(layoutDirection),
                     end = innerPadding.calculateEndPadding(layoutDirection),
                     bottom = innerPadding.calculateBottomPadding()
-                            + WindowInsets.systemBars.asPaddingValues().calculateBottomPadding() + 16.dp
+                        + WindowInsets.systemBars.asPaddingValues().calculateBottomPadding() + 16.dp
                 )
                 when (page) {
                     0 -> ReadmePage(
@@ -625,7 +643,7 @@ private fun ReadmePage(
     state: ModuleRepoDetailUiState,
     onRetry: () -> Unit,
     innerPadding: PaddingValues,
-    scrollBehavior: TopAppBarScrollBehavior
+    scrollBehavior: TopAppBarScrollBehavior?
 ) {
     val layoutDirection = LocalLayoutDirection.current
     val isReady = rememberContentReady()
@@ -634,7 +652,10 @@ private fun ReadmePage(
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
-            .nestedScroll(scrollBehavior.nestedScrollConnection),
+            .then(
+                if (scrollBehavior == null) Modifier
+                else Modifier.nestedScroll(scrollBehavior.nestedScrollConnection)
+            ),
         contentPadding = PaddingValues(
             top = innerPadding.calculateTopPadding(),
             start = innerPadding.calculateStartPadding(layoutDirection),
@@ -712,7 +733,7 @@ fun ReleasesPage(
     state: ModuleRepoDetailUiState,
     onRetry: () -> Unit,
     innerPadding: PaddingValues,
-    scrollBehavior: TopAppBarScrollBehavior,
+    scrollBehavior: TopAppBarScrollBehavior?,
     confirmTitle: String,
     confirmDialog: ConfirmDialogHandle,
     scope: CoroutineScope,
@@ -726,7 +747,10 @@ fun ReleasesPage(
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
-            .nestedScroll(scrollBehavior.nestedScrollConnection),
+            .then(
+                if (scrollBehavior == null) Modifier
+                else Modifier.nestedScroll(scrollBehavior.nestedScrollConnection)
+            ),
         contentPadding = PaddingValues(
             top = innerPadding.calculateTopPadding(),
             start = innerPadding.calculateStartPadding(layoutDirection) + 16.dp,
@@ -979,7 +1003,7 @@ private fun InfoLinkItem(
 fun InfoPage(
     state: ModuleRepoDetailUiState,
     innerPadding: PaddingValues,
-    scrollBehavior: TopAppBarScrollBehavior,
+    scrollBehavior: TopAppBarScrollBehavior?,
     uriHandler: UriHandler,
 ) {
     val layoutDirection = LocalLayoutDirection.current
@@ -988,7 +1012,10 @@ fun InfoPage(
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
-            .nestedScroll(scrollBehavior.nestedScrollConnection),
+            .then(
+                if (scrollBehavior == null) Modifier
+                else Modifier.nestedScroll(scrollBehavior.nestedScrollConnection)
+            ),
         contentPadding = PaddingValues(
             top = innerPadding.calculateTopPadding(),
             start = innerPadding.calculateStartPadding(layoutDirection),

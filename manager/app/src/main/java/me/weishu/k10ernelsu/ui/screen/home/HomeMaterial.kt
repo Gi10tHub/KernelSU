@@ -8,6 +8,7 @@ import androidx.compose.animation.shrinkVertically
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.WindowInsetsSides
@@ -48,6 +49,7 @@ import androidx.compose.material3.LocalMinimumInteractiveComponentSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.TopAppBarScrollBehavior
 import androidx.compose.material3.contentColorFor
@@ -85,7 +87,11 @@ fun HomePagerMaterial(
     bottomInnerPadding: Dp,
     compactDashboardMode: Boolean = false,
 ) {
-    val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior(rememberTopAppBarState())
+    val scrollBehavior = if (compactDashboardMode) {
+        null
+    } else {
+        TopAppBarDefaults.exitUntilCollapsedScrollBehavior(rememberTopAppBarState())
+    }
 
     ExpressiveScaffold(
         topBar = {
@@ -100,7 +106,10 @@ fun HomePagerMaterial(
         Column(
             modifier = Modifier
                 .padding(innerPadding)
-                .nestedScroll(scrollBehavior.nestedScrollConnection)
+                .then(
+                    if (scrollBehavior == null) Modifier
+                    else Modifier.nestedScroll(scrollBehavior.nestedScrollConnection)
+                )
                 .verticalScroll(rememberScrollState())
                 .padding(horizontal = 16.dp),
             verticalArrangement = Arrangement.spacedBy(13.dp)
@@ -241,39 +250,50 @@ private fun TopBar(
     compactDashboardMode: Boolean = false,
     onOpenSettings: () -> Unit = {},
 ) {
-    LargeFlexibleTopAppBar(
-        title = { Text(stringResource(R.string.app_name)) },
-        actions = {
-            if (compactDashboardMode) {
-                CompositionLocalProvider(LocalMinimumInteractiveComponentSize provides Dp.Unspecified) {
-                    Row(
-                        horizontalArrangement = Arrangement.spacedBy(0.dp),
-                        verticalAlignment = Alignment.CenterVertically,
+    val title: @Composable () -> Unit = { Text(stringResource(R.string.app_name)) }
+    val actions: @Composable RowScope.() -> Unit = {
+        if (compactDashboardMode) {
+            CompositionLocalProvider(LocalMinimumInteractiveComponentSize provides Dp.Unspecified) {
+                Row(
+                    horizontalArrangement = Arrangement.spacedBy(0.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    RebootListPopup(
+                        modifier = Modifier.size(32.dp),
+                        compact = true,
+                    )
+                    IconButton(
+                        modifier = Modifier.size(32.dp),
+                        onClick = onOpenSettings,
                     ) {
-                        RebootListPopup(
-                            modifier = Modifier.size(32.dp),
-                            compact = true,
+                        Icon(
+                            imageVector = Icons.Filled.Settings,
+                            contentDescription = stringResource(R.string.settings),
+                            modifier = Modifier.size(22.dp),
                         )
-                        IconButton(
-                            modifier = Modifier.size(32.dp),
-                            onClick = onOpenSettings,
-                        ) {
-                            Icon(
-                                imageVector = Icons.Filled.Settings,
-                                contentDescription = stringResource(R.string.settings),
-                                modifier = Modifier.size(22.dp),
-                            )
-                        }
                     }
                 }
-            } else {
-                RebootListPopup()
             }
-        },
-        colors = expressiveTopAppBarColors(),
-        windowInsets = WindowInsets.safeDrawing.only(WindowInsetsSides.Top + WindowInsetsSides.Horizontal),
-        scrollBehavior = scrollBehavior
-    )
+        } else {
+            RebootListPopup()
+        }
+    }
+    if (compactDashboardMode) {
+        TopAppBar(
+            title = title,
+            actions = actions,
+            colors = expressiveTopAppBarColors(),
+            windowInsets = WindowInsets.safeDrawing.only(WindowInsetsSides.Top + WindowInsetsSides.Horizontal),
+        )
+    } else {
+        LargeFlexibleTopAppBar(
+            title = title,
+            actions = actions,
+            colors = expressiveTopAppBarColors(),
+            windowInsets = WindowInsets.safeDrawing.only(WindowInsetsSides.Top + WindowInsetsSides.Horizontal),
+            scrollBehavior = scrollBehavior
+        )
+    }
 }
 
 @Composable

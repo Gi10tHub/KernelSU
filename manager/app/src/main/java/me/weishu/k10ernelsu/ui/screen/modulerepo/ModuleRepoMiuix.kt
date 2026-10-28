@@ -74,6 +74,7 @@ import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import me.weishu.k10ernelsu.R
+import me.weishu.k10ernelsu.ui.LocalCompactDashboardMode
 import me.weishu.k10ernelsu.data.model.RepoModule
 import me.weishu.k10ernelsu.data.model.RepoRelease
 import me.weishu.k10ernelsu.ui.component.ListPopupDefaults
@@ -145,9 +146,10 @@ fun ModuleRepoScreenMiuix(
         actions.onSearchTextChange(searchStatus.searchText)
     }
 
-    val scrollBehavior = MiuixScrollBehavior()
-    val dynamicTopPadding by remember {
-        derivedStateOf { 12.dp * (1f - scrollBehavior.state.collapsedFraction) }
+    val compactDashboardMode = LocalCompactDashboardMode.current
+    val scrollBehavior = if (compactDashboardMode) null else MiuixScrollBehavior()
+    val dynamicTopPadding by remember(compactDashboardMode, scrollBehavior) {
+        derivedStateOf { 12.dp * (1f - (scrollBehavior?.state?.collapsedFraction ?: 0f)) }
     }
 
     val enableBlur = LocalEnableBlur.current
@@ -403,7 +405,10 @@ fun ModuleRepoScreenMiuix(
                                 .fillMaxHeight()
                                 .scrollEndHaptic()
                                 .overScrollVertical()
-                                .nestedScroll(scrollBehavior.nestedScrollConnection),
+                                .then(
+                                    if (scrollBehavior == null) Modifier
+                                    else Modifier.nestedScroll(scrollBehavior.nestedScrollConnection)
+                                ),
                             contentPadding = PaddingValues(
                                 top = innerPadding.calculateTopPadding() + 6.dp,
                                 start = innerPadding.calculateStartPadding(layoutDirection),
@@ -668,7 +673,7 @@ private fun CachedDetailNoticeMiuix(modifier: Modifier = Modifier) {
 private fun ReadmePage(
     state: ModuleRepoDetailUiState,
     onRetry: () -> Unit,
-    innerPadding: PaddingValues, scrollBehavior: ScrollBehavior, backdrop: LayerBackdrop?
+    innerPadding: PaddingValues, scrollBehavior: ScrollBehavior?, backdrop: LayerBackdrop?
 ) {
     val layoutDirection = LocalLayoutDirection.current
     val isReady = rememberContentReady()
@@ -679,7 +684,10 @@ private fun ReadmePage(
                 .fillMaxHeight()
                 .scrollEndHaptic()
                 .overScrollVertical()
-                .nestedScroll(scrollBehavior.nestedScrollConnection),
+                .then(
+                    if (scrollBehavior == null) Modifier
+                    else Modifier.nestedScroll(scrollBehavior.nestedScrollConnection)
+                ),
             contentPadding = PaddingValues(
                 top = innerPadding.calculateTopPadding(),
                 start = innerPadding.calculateStartPadding(layoutDirection),
@@ -769,7 +777,7 @@ fun ReleasesPage(
     state: ModuleRepoDetailUiState,
     onRetry: () -> Unit,
     innerPadding: PaddingValues,
-    scrollBehavior: ScrollBehavior,
+    scrollBehavior: ScrollBehavior?,
     backdrop: LayerBackdrop?,
     actionIconTint: Color,
     secondaryContainer: Color,
@@ -789,7 +797,10 @@ fun ReleasesPage(
                 .fillMaxHeight()
                 .scrollEndHaptic()
                 .overScrollVertical()
-                .nestedScroll(scrollBehavior.nestedScrollConnection),
+                .then(
+                    if (scrollBehavior == null) Modifier
+                    else Modifier.nestedScroll(scrollBehavior.nestedScrollConnection)
+                ),
             contentPadding = PaddingValues(
                 top = innerPadding.calculateTopPadding(),
                 start = innerPadding.calculateStartPadding(layoutDirection),
@@ -1109,7 +1120,7 @@ private fun InfoCardMiuix(title: String, rows: List<@Composable () -> Unit>) {
 fun InfoPage(
     state: ModuleRepoDetailUiState,
     innerPadding: PaddingValues,
-    scrollBehavior: ScrollBehavior,
+    scrollBehavior: ScrollBehavior?,
     backdrop: LayerBackdrop?,
     actionIconTint: Color,
     secondaryContainer: Color,
@@ -1124,7 +1135,10 @@ fun InfoPage(
                 .fillMaxHeight()
                 .scrollEndHaptic()
                 .overScrollVertical()
-                .nestedScroll(scrollBehavior.nestedScrollConnection),
+                .then(
+                    if (scrollBehavior == null) Modifier
+                    else Modifier.nestedScroll(scrollBehavior.nestedScrollConnection)
+                ),
             contentPadding = PaddingValues(
                 top = innerPadding.calculateTopPadding(),
                 start = innerPadding.calculateStartPadding(layoutDirection),
@@ -1272,7 +1286,8 @@ fun ModuleRepoDetailScreenMiuix(
     var pendingDownload by remember { mutableStateOf<(() -> Unit)?>(null) }
     val confirmDialog = rememberConfirmDialog(onConfirm = { pendingDownload?.invoke() })
 
-    val scrollBehavior = MiuixScrollBehavior()
+    val compactDashboardMode = LocalCompactDashboardMode.current
+    val scrollBehavior = if (compactDashboardMode) null else MiuixScrollBehavior()
 
     val backdrop = rememberBlurBackdrop(enableBlur)
     val blurActive = backdrop != null
@@ -1283,8 +1298,8 @@ fun ModuleRepoDetailScreenMiuix(
     )
     val pagerState = rememberPagerState(initialPage = 0, pageCount = { tabs.size })
     val tabRowHeight = 40.dp
-    val dynamicTopPadding = remember(scrollBehavior) {
-        { 12.dp * (1f - scrollBehavior.state.collapsedFraction) }
+    val dynamicTopPadding = remember(compactDashboardMode, scrollBehavior) {
+        { 12.dp * (1f - (scrollBehavior?.state?.collapsedFraction ?: 0f)) }
     }
     val coroutineScope = rememberCoroutineScope()
 

@@ -57,6 +57,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.flow.onEach
 import me.weishu.k10ernelsu.R
+import me.weishu.k10ernelsu.ui.LocalCompactDashboardMode
 import me.weishu.k10ernelsu.ui.component.miuix.effect.BgEffectBackground
 import me.weishu.k10ernelsu.ui.component.miuix.effect.ColorBlendToken
 import me.weishu.k10ernelsu.ui.theme.LocalEnableBlur
@@ -92,7 +93,8 @@ fun AboutScreenMiuix(
     state: AboutUiState,
     actions: AboutScreenActions,
 ) {
-    val topAppBarScrollBehavior = MiuixScrollBehavior()
+    val compactDashboardMode = LocalCompactDashboardMode.current
+    val topAppBarScrollBehavior = if (compactDashboardMode) null else MiuixScrollBehavior()
     val lazyListState = rememberLazyListState()
     var logoHeightPx by remember { mutableIntStateOf(0) }
 
@@ -125,7 +127,7 @@ fun AboutScreenMiuix(
                     scrollBehavior = topAppBarScrollBehavior,
                     color = barColor,
                     titleColor = colorScheme.onSurface.copy(
-                        alpha = ((scrollProgress - 0.35f) / 0.65f).coerceIn(0f, 1f),
+                        alpha = if (compactDashboardMode) 1f else ((scrollProgress - 0.35f) / 0.65f).coerceIn(0f, 1f),
                     ),
                     navigationIcon = {
                         IconButton(
@@ -167,7 +169,7 @@ private fun AboutContent(
     state: AboutUiState,
     actions: AboutScreenActions,
     innerPadding: PaddingValues,
-    topAppBarScrollBehavior: ScrollBehavior,
+    topAppBarScrollBehavior: ScrollBehavior?,
     lazyListState: LazyListState,
     scrollProgress: Float,
     onLogoHeightChanged: (Int) -> Unit,
@@ -373,7 +375,10 @@ private fun AboutContent(
                 .fillMaxSize()
                 .scrollEndHaptic()
                 .overScrollVertical()
-                .nestedScroll(topAppBarScrollBehavior.nestedScrollConnection),
+                .then(
+                    if (topAppBarScrollBehavior == null) Modifier
+                    else Modifier.nestedScroll(topAppBarScrollBehavior.nestedScrollConnection)
+                ),
             contentPadding = PaddingValues(
                 top = scrollPadding.calculateTopPadding(),
                 start = scrollPadding.calculateStartPadding(layoutDirection),

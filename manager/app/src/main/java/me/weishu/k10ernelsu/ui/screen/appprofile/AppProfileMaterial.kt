@@ -9,6 +9,7 @@ import androidx.compose.animation.shrinkVertically
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.WindowInsetsSides
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -33,6 +34,7 @@ import androidx.compose.material3.DropdownMenuPopup
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.LargeFlexibleTopAppBar
+import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.MenuDefaults
 import androidx.compose.material3.SnackbarHostState
@@ -59,6 +61,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import me.weishu.k10ernelsu.Natives
 import me.weishu.k10ernelsu.R
+import me.weishu.k10ernelsu.ui.LocalCompactDashboardMode
 import me.weishu.k10ernelsu.ui.component.AppIconImage
 import me.weishu.k10ernelsu.ui.component.material.ExpressiveScaffold
 import me.weishu.k10ernelsu.ui.component.material.ExpressiveToggleButton
@@ -85,7 +88,9 @@ fun AppProfileScreenMaterial(
     actions: AppProfileActions,
     snackBarHost: SnackbarHostState,
 ) {
-    val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior(rememberTopAppBarState())
+    val compactDashboardMode = LocalCompactDashboardMode.current
+    val scrollBehavior = if (compactDashboardMode) null else
+        TopAppBarDefaults.exitUntilCollapsedScrollBehavior(rememberTopAppBarState())
 
     ExpressiveScaffold(
         topBar = {
@@ -109,7 +114,10 @@ fun AppProfileScreenMaterial(
                 .padding(paddingValues)
                 .fillMaxHeight()
                 .imePadding()
-                .nestedScroll(scrollBehavior.nestedScrollConnection)
+                .then(
+                    if (scrollBehavior == null) Modifier
+                    else Modifier.nestedScroll(scrollBehavior.nestedScrollConnection)
+                )
                 .verticalScroll(rememberScrollState()),
             packageName = if (state.isUidGroup) {
                 ""
@@ -344,12 +352,11 @@ private fun TopBar(
     onRestartApp: (String, Int) -> Unit,
 ) {
     val haptic = LocalHapticFeedback.current
-    LargeFlexibleTopAppBar(
-        title = { Text(stringResource(R.string.profile)) },
-        navigationIcon = {
+    val title: @Composable () -> Unit = { Text(stringResource(R.string.profile)) }
+    val navigationIcon: @Composable () -> Unit = {
             TopBarBackButton(onClick = onBack)
-        },
-        actions = {
+        }
+    val actions: @Composable RowScope.() -> Unit = {
             if (!isUidGroup && showActions) {
                 var showDropdown by remember { mutableStateOf(false) }
 
@@ -386,11 +393,27 @@ private fun TopBar(
                     }
                 }
             }
-        },
-        colors = expressiveTopAppBarColors(),
-        windowInsets = WindowInsets.safeDrawing.only(WindowInsetsSides.Top + WindowInsetsSides.Horizontal),
-        scrollBehavior = scrollBehavior
-    )
+        }
+    val colors = expressiveTopAppBarColors()
+    val windowInsets = WindowInsets.safeDrawing.only(WindowInsetsSides.Top + WindowInsetsSides.Horizontal)
+    if (LocalCompactDashboardMode.current) {
+        TopAppBar(
+            title = title,
+            navigationIcon = navigationIcon,
+            actions = actions,
+            colors = colors,
+            windowInsets = windowInsets,
+        )
+    } else {
+        LargeFlexibleTopAppBar(
+            title = title,
+            navigationIcon = navigationIcon,
+            actions = actions,
+            colors = colors,
+            windowInsets = windowInsets,
+            scrollBehavior = scrollBehavior
+        )
+    }
 }
 
 @Composable

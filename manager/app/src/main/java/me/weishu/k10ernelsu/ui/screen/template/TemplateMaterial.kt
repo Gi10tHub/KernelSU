@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.WindowInsetsSides
@@ -31,6 +32,7 @@ import androidx.compose.material3.DropdownMenuPopup
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.LargeFlexibleTopAppBar
+import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.LoadingIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.MenuDefaults
@@ -58,6 +60,7 @@ import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import me.weishu.k10ernelsu.R
+import me.weishu.k10ernelsu.ui.LocalCompactDashboardMode
 import me.weishu.k10ernelsu.data.model.TemplateInfo
 import me.weishu.k10ernelsu.ui.component.material.ExpressiveScaffold
 import me.weishu.k10ernelsu.ui.component.material.SegmentedItem
@@ -79,7 +82,9 @@ fun AppProfileTemplateScreenMaterial(
     snackBarHost: SnackbarHostState,
 ) {
     val haptic = LocalHapticFeedback.current
-    val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior(rememberTopAppBarState())
+    val compactDashboardMode = LocalCompactDashboardMode.current
+    val scrollBehavior = if (compactDashboardMode) null else
+        TopAppBarDefaults.exitUntilCollapsedScrollBehavior(rememberTopAppBarState())
     val pullToRefreshState = rememberPullToRefreshState()
     val listState = rememberLazyListState()
     val threshold = with(LocalDensity.current) { 100.dp.toPx() }
@@ -185,7 +190,10 @@ fun AppProfileTemplateScreenMaterial(
                 LazyColumn(
                     modifier = Modifier
                         .fillMaxSize()
-                        .nestedScroll(scrollBehavior.nestedScrollConnection),
+                        .then(
+                            if (scrollBehavior == null) Modifier
+                            else Modifier.nestedScroll(scrollBehavior.nestedScrollConnection)
+                        ),
                     state = listState,
                     verticalArrangement = androidx.compose.foundation.layout.Arrangement.spacedBy(2.dp),
                     contentPadding = PaddingValues(
@@ -268,14 +276,9 @@ private fun TopBar(
     scrollBehavior: TopAppBarScrollBehavior? = null
 ) {
     val haptic = LocalHapticFeedback.current
-    LargeFlexibleTopAppBar(
-        title = {
-            Text(stringResource(R.string.settings_profile_template))
-        },
-        navigationIcon = {
-            TopBarBackButton(onClick = onBack)
-        },
-        actions = {
+    val title: @Composable () -> Unit = { Text(stringResource(R.string.settings_profile_template)) }
+    val navigationIcon: @Composable () -> Unit = { TopBarBackButton(onClick = onBack) }
+    val actions: @Composable RowScope.() -> Unit = {
             var showDropdown by remember { mutableStateOf(false) }
             IconButton(
                 onClick = { showDropdown = true }
@@ -308,8 +311,17 @@ private fun TopBar(
                     }
                 }
             }
-        },
-        colors = expressiveTopAppBarColors(),
-        scrollBehavior = scrollBehavior
-    )
+        }
+    val colors = expressiveTopAppBarColors()
+    if (LocalCompactDashboardMode.current) {
+        TopAppBar(title = title, navigationIcon = navigationIcon, actions = actions, colors = colors)
+    } else {
+        LargeFlexibleTopAppBar(
+            title = title,
+            navigationIcon = navigationIcon,
+            actions = actions,
+            colors = colors,
+            scrollBehavior = scrollBehavior
+        )
+    }
 }

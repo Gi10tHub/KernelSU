@@ -62,6 +62,7 @@ import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import me.weishu.k10ernelsu.R
+import me.weishu.k10ernelsu.ui.LocalCompactDashboardMode
 import me.weishu.k10ernelsu.ui.component.ListPopupDefaults
 import me.weishu.k10ernelsu.ui.component.ScrollToTopOnChange
 import me.weishu.k10ernelsu.ui.component.SearchStatus
@@ -110,9 +111,10 @@ fun SulogScreenMiuix(
 ) {
     val enableBlur = LocalEnableBlur.current
     val density = LocalDensity.current
-    val scrollBehavior = MiuixScrollBehavior()
-    val dynamicTopPadding by remember {
-        derivedStateOf { 12.dp * (1f - scrollBehavior.state.collapsedFraction) }
+    val compactDashboardMode = LocalCompactDashboardMode.current
+    val scrollBehavior = if (compactDashboardMode) null else MiuixScrollBehavior()
+    val dynamicTopPadding by remember(compactDashboardMode, scrollBehavior) {
+        derivedStateOf { 12.dp * (1f - (scrollBehavior?.state?.collapsedFraction ?: 0f)) }
     }
     val backdrop = rememberBlurBackdrop(enableBlur)
     val blurActive = backdrop != null
@@ -305,7 +307,10 @@ fun SulogScreenMiuix(
                             .fillMaxHeight()
                             .scrollEndHaptic()
                             .overScrollVertical()
-                            .nestedScroll(scrollBehavior.nestedScrollConnection),
+                            .then(
+                                if (scrollBehavior == null) Modifier
+                                else Modifier.nestedScroll(scrollBehavior.nestedScrollConnection)
+                            ),
                         contentPadding = PaddingValues(
                             top = innerPadding.calculateTopPadding() + 6.dp,
                             start = innerPadding.calculateStartPadding(layoutDirection),

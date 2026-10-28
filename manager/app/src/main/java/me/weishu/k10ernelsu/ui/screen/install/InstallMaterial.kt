@@ -23,6 +23,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.LargeFlexibleTopAppBar
+import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
@@ -38,6 +39,7 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import me.weishu.k10ernelsu.R
+import me.weishu.k10ernelsu.ui.LocalCompactDashboardMode
 import me.weishu.k10ernelsu.ui.component.dialog.rememberConfirmDialog
 import me.weishu.k10ernelsu.ui.component.material.ExpressiveScaffold
 import me.weishu.k10ernelsu.ui.component.material.SegmentedCheckboxItem
@@ -60,7 +62,9 @@ internal fun InstallScreenMaterial(
     actions: InstallScreenActions,
     snackBarHost: SnackbarHostState,
 ) {
-    val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior(rememberTopAppBarState())
+    val compactDashboardMode = LocalCompactDashboardMode.current
+    val scrollBehavior = if (compactDashboardMode) null else
+        TopAppBarDefaults.exitUntilCollapsedScrollBehavior(rememberTopAppBarState())
 
     ExpressiveScaffold(
         topBar = {
@@ -76,7 +80,10 @@ internal fun InstallScreenMaterial(
             modifier = Modifier
                 .padding(innerPadding)
                 .fillMaxHeight()
-                .nestedScroll(scrollBehavior.nestedScrollConnection)
+                .then(
+                    if (scrollBehavior == null) Modifier
+                    else Modifier.nestedScroll(scrollBehavior.nestedScrollConnection)
+                )
                 .verticalScroll(rememberScrollState()),
             verticalArrangement = Arrangement.spacedBy(13.dp)
         ) {
@@ -278,13 +285,19 @@ private fun TopBar(
     onBack: () -> Unit = {},
     scrollBehavior: TopAppBarScrollBehavior? = null
 ) {
-    LargeFlexibleTopAppBar(
-        title = { Text(stringResource(R.string.install)) },
-        navigationIcon = {
-            TopBarBackButton(onClick = onBack)
-        },
-        colors = expressiveTopAppBarColors(),
-        windowInsets = WindowInsets.safeDrawing.only(WindowInsetsSides.Top + WindowInsetsSides.Horizontal),
-        scrollBehavior = scrollBehavior
-    )
+    val title: @Composable () -> Unit = { Text(stringResource(R.string.install)) }
+    val navigationIcon: @Composable () -> Unit = { TopBarBackButton(onClick = onBack) }
+    val colors = expressiveTopAppBarColors()
+    val windowInsets = WindowInsets.safeDrawing.only(WindowInsetsSides.Top + WindowInsetsSides.Horizontal)
+    if (LocalCompactDashboardMode.current) {
+        TopAppBar(title = title, navigationIcon = navigationIcon, colors = colors, windowInsets = windowInsets)
+    } else {
+        LargeFlexibleTopAppBar(
+            title = title,
+            navigationIcon = navigationIcon,
+            colors = colors,
+            windowInsets = windowInsets,
+            scrollBehavior = scrollBehavior
+        )
+    }
 }

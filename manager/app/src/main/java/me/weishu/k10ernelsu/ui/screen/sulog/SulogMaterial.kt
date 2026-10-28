@@ -65,6 +65,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import me.weishu.k10ernelsu.R
+import me.weishu.k10ernelsu.ui.LocalCompactDashboardMode
 import me.weishu.k10ernelsu.ui.component.ScrollToTopOnChange
 import me.weishu.k10ernelsu.ui.component.material.ExpressiveScaffold
 import me.weishu.k10ernelsu.ui.component.material.SearchAppBar
@@ -83,7 +84,9 @@ fun SulogScreenMaterial(
     state: SulogScreenState,
     actions: SulogActions,
 ) {
-    val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior(rememberTopAppBarState())
+    val compactDashboardMode = LocalCompactDashboardMode.current
+    val scrollBehavior = if (compactDashboardMode) null else
+        TopAppBarDefaults.exitUntilCollapsedScrollBehavior(rememberTopAppBarState())
     val pullToRefreshState = rememberPullToRefreshState()
     val listState = rememberLazyListState()
     val searchListState = rememberLazyListState()
@@ -174,7 +177,10 @@ fun SulogScreenMaterial(
                         state = searchListState,
                         modifier = Modifier
                             .fillMaxSize()
-                            .nestedScroll(scrollBehavior.nestedScrollConnection),
+                            .then(
+                                if (scrollBehavior == null) Modifier
+                                else Modifier.nestedScroll(scrollBehavior.nestedScrollConnection)
+                            ),
                         contentPadding = PaddingValues(
                             start = 16.dp,
                             end = 16.dp,
@@ -220,7 +226,10 @@ fun SulogScreenMaterial(
                 state = listState,
                 modifier = Modifier
                     .fillMaxSize()
-                    .nestedScroll(scrollBehavior.nestedScrollConnection),
+                    .then(
+                        if (scrollBehavior == null) Modifier
+                        else Modifier.nestedScroll(scrollBehavior.nestedScrollConnection)
+                    ),
                 contentPadding = PaddingValues(start = 16.dp, end = 16.dp, bottom = 8.dp),
             ) {
                 item {

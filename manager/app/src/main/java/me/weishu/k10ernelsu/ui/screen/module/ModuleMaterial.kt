@@ -130,6 +130,7 @@ import me.weishu.k10ernelsu.R
 import me.weishu.k10ernelsu.data.model.Module
 import me.weishu.k10ernelsu.data.model.ModuleUpdateInfo
 import me.weishu.k10ernelsu.data.repository.isSoftRebootPreferred
+import me.weishu.k10ernelsu.ui.LocalCompactDashboardMode
 import me.weishu.k10ernelsu.ui.component.ObserveAsEvents
 import me.weishu.k10ernelsu.ui.component.ScrollToTopOnChange
 import me.weishu.k10ernelsu.ui.component.dialog.rememberConfirmDialog
@@ -158,7 +159,17 @@ fun ModulePagerMaterial(
     val context = LocalContext.current
     val resource = LocalResources.current
 
-    val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior(rememberTopAppBarState())
+    val compactDashboardMode = LocalCompactDashboardMode.current
+    val scrollBehavior = if (compactDashboardMode) {
+        null
+    } else {
+        TopAppBarDefaults.exitUntilCollapsedScrollBehavior(rememberTopAppBarState())
+    }
+    val scrollModifier = if (scrollBehavior == null) {
+        Modifier
+    } else {
+        Modifier.nestedScroll(scrollBehavior.nestedScrollConnection)
+    }
 
     val pullToRefreshState = rememberPullToRefreshState()
 
@@ -451,7 +462,7 @@ fun ModulePagerMaterial(
             ) { latestModuleList.value }
             ModuleList(
                 bottomInnerPadding = bottomInnerPadding,
-                modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
+                modifier = scrollModifier,
                 listState = listState,
                 displayModules = uiState.moduleList,
                 updateInfoMap = uiState.updateInfo,

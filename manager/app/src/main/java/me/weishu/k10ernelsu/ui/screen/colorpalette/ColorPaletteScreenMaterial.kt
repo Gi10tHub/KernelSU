@@ -59,6 +59,7 @@ import androidx.compose.material.icons.rounded.ViewCarousel
 import androidx.compose.material3.ButtonGroupDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.LargeFlexibleTopAppBar
+import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Slider
 import androidx.compose.material3.Surface
@@ -85,6 +86,7 @@ import androidx.compose.ui.unit.dp
 import com.materialkolor.PaletteStyle
 import com.materialkolor.dynamiccolor.ColorSpec
 import me.weishu.k10ernelsu.R
+import me.weishu.k10ernelsu.ui.LocalCompactDashboardMode
 import me.weishu.k10ernelsu.ui.component.bottombar.useNavigationRail
 import me.weishu.k10ernelsu.ui.component.material.ExpressiveScaffold
 import me.weishu.k10ernelsu.ui.component.material.ExpressiveToggleButton
@@ -104,7 +106,9 @@ fun ColorPaletteScreenMaterial(
     state: ColorPaletteUiState,
     actions: ColorPaletteScreenActions,
 ) {
-    val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior(rememberTopAppBarState())
+    val compactDashboardMode = LocalCompactDashboardMode.current
+    val scrollBehavior = if (compactDashboardMode) null else
+        TopAppBarDefaults.exitUntilCollapsedScrollBehavior(rememberTopAppBarState())
     val uiState = state.uiState
     val currentColorMode = state.currentColorMode
     val currentKeyColor = uiState.keyColor
@@ -114,15 +118,22 @@ fun ColorPaletteScreenMaterial(
 
     ExpressiveScaffold(
         topBar = {
-            LargeFlexibleTopAppBar(
-                navigationIcon = {
-                    TopBarBackButton(onClick = actions.onBack)
-                },
-                title = { Text(stringResource(R.string.settings_theme)) },
-                colors = expressiveTopAppBarColors(),
-                windowInsets = WindowInsets.safeDrawing.only(WindowInsetsSides.Top + WindowInsetsSides.Horizontal),
-                scrollBehavior = scrollBehavior
-            )
+            if (compactDashboardMode) {
+                TopAppBar(
+                    navigationIcon = { TopBarBackButton(onClick = actions.onBack) },
+                    title = { Text(stringResource(R.string.settings_theme)) },
+                    colors = expressiveTopAppBarColors(),
+                    windowInsets = WindowInsets.safeDrawing.only(WindowInsetsSides.Top + WindowInsetsSides.Horizontal),
+                )
+            } else {
+                LargeFlexibleTopAppBar(
+                    navigationIcon = { TopBarBackButton(onClick = actions.onBack) },
+                    title = { Text(stringResource(R.string.settings_theme)) },
+                    colors = expressiveTopAppBarColors(),
+                    windowInsets = WindowInsets.safeDrawing.only(WindowInsetsSides.Top + WindowInsetsSides.Horizontal),
+                    scrollBehavior = scrollBehavior
+                )
+            }
         },
         contentWindowInsets = WindowInsets.safeDrawing.only(WindowInsetsSides.Top + WindowInsetsSides.Horizontal)
     ) { paddingValues ->
@@ -135,7 +146,10 @@ fun ColorPaletteScreenMaterial(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(paddingValues)
-                .nestedScroll(scrollBehavior.nestedScrollConnection),
+                .then(
+                    if (scrollBehavior == null) Modifier
+                    else Modifier.nestedScroll(scrollBehavior.nestedScrollConnection)
+                ),
             verticalArrangement = Arrangement.spacedBy(13.dp)
         ) {
             item {
